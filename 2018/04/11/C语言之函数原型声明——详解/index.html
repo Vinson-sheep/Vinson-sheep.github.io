@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>C语言之函数原型声明——详解 | Vinson-sheep | Vinson Sheep is on his time zone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+    <meta name="keywords" content="C语言">
+    <meta name="description" content="以前写javascript的时候解析器会有变量声明提前这一功能，但是C语言不会提前，相反我们编写的代码中需要函数原型声明。何谓函数原型声明呢？我在这篇文章中会详细讨论。总之，函数原型声明实现起来简单，但是非常重要。">
+<meta name="keywords" content="C语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言之函数原型声明——详解">
+<meta property="og:url" content="/2018/04/11/C语言之函数原型声明——详解/index.html">
+<meta property="og:site_name" content="Vinson-sheep">
+<meta property="og:description" content="以前写javascript的时候解析器会有变量声明提前这一功能，但是C语言不会提前，相反我们编写的代码中需要函数原型声明。何谓函数原型声明呢？我在这篇文章中会详细讨论。总之，函数原型声明实现起来简单，但是非常重要。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-11T11:17:38.263Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C语言之函数原型声明——详解">
+<meta name="twitter:description" content="以前写javascript的时候解析器会有变量声明提前这一功能，但是C语言不会提前，相反我们编写的代码中需要函数原型声明。何谓函数原型声明呢？我在这篇文章中会详细讨论。总之，函数原型声明实现起来简单，但是非常重要。">
+    
+        <link rel="alternate" type="application/atom+xml" title="Vinson-sheep" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Vinson-sheep</h5>
+          <a href="mailto:775014077@qq.com" title="775014077@qq.com" class="mail">775014077@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Article
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tag
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/algorithum/"  >
+                <i class="icon icon-lg icon-puzzle-piece"></i>
+                Algorithum
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/gallery"  >
+                <i class="icon icon-lg icon-paint-brush"></i>
+                Gallery
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/短篇小说/"  >
+                <i class="icon icon-lg icon-pencil"></i>
+                Novel
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Vinson-sheep/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">C语言之函数原型声明——详解</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">C语言之函数原型声明——详解</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-11T10:44:39.000Z" itemprop="datePublished" class="page-time">
+  2018-04-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/语言学习/">语言学习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-C语言之函数原型声明——详解"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">C语言之函数原型声明——详解</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-11 18:44:39" datetime="2018-04-11T10:44:39.000Z"  itemprop="datePublished">2018-04-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/语言学习/">语言学习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>以前写javascript的时候解析器会有变量声明提前这一功能，但是C语言不会提前，相反我们编写的代码中需要函数原型声明。何谓函数原型声明呢？我在这篇文章中会详细讨论。总之，函数原型声明实现起来简单，但是非常重要。<br><a id="more"></a></p>
+</blockquote>
+<p>javascript的变量声明提前是指函数中的所有变量会在函数执行之前放在函数的参数链上，如果没写过js，可以理解为变量声明自动被放在函数的开头，这样之后的表达式访问自然就没有问题了。</p>
+<p>但是C语言不会，它要求被调用的函数和变量需要在表达式之前，所以我们的代码中不能把函数和变量声明放在任意地方。于是就有<strong>函数原型声明</strong>一说。</p>
+<p>无论写什么语言，相信我们都已经养成了先声明变量再调用变量的习惯。但是函数就不一定了。在写高级语言的时候，我们习惯把程序主体函数(main)放在前边，被调用的函数放在底部。这样能够给与工程很明确的结构。</p>
+<p>既然C语言需要将被调用的函数放在调用函数前面，那么整体代码肯定是头重脚轻的。</p>
+<p>我们来看看正确的做法：<em>摘录一个书本的例子《C Primer Plus》p127</em><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pound.c -- 定义一个带参数的函数</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pound</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> times = <span class="number">5</span>;</span><br><span class="line">	<span class="keyword">char</span> ch = <span class="string">'!'</span>;</span><br><span class="line">	<span class="keyword">float</span> f = <span class="number">6.0f</span>;</span><br><span class="line"></span><br><span class="line">	pound(times);</span><br><span class="line">	pound(ch);</span><br><span class="line">	pound(f);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pound</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">while</span> (n-- &gt; <span class="number">0</span>)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"#"</span>);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编译后运行，结果是<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#####</span><br><span class="line">#################################</span><br><span class="line">######</span><br></pre></td></tr></table></figure></p>
+<p>在这里，函数原型声明是<code>void pound(int n);</code>，非常简单，对吧？仅仅一条简单的语句就能避免头重脚轻的状况。</p>
+<p><strong>但是我们要注意格式！</strong></p>
+<p>下面我们来讨论这条语句是怎么工作的：</p>
+<p>在ANSI C之前，C使用的是<strong>函数声明</strong>，而不是函数原型。<strong>函数声明只声明了函数名和返回值</strong>，没有指明参数类型。为了向下兼容，C现在仍然允许这样的形式<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pound</span><span class="params">()</span></span>; <span class="comment">/* ANSI C之前的函数声明 */</span></span><br></pre></td></tr></table></figure></p>
+<p>我们不妨用上面的语句试一试，会得出什么结果？<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#####</span><br><span class="line">#################################</span><br></pre></td></tr></table></figure></p>
+<p>对比上面的输出结果，第三行的返回明显没有了，为什么呢？（md的空行打不出来，郁闷）</p>
+<p><em>摘录自《C Primer Plus》p128</em></p>
+<blockquote>
+<p>第一次函数调用，pound(times)没有问题，因为times是int类型。第二次函数调用，pound(ch)也没问题，因为即使缺少函数原型，C也会把char和short类型自动升级为int类型。第三次函数调用,pound(f)会失败，因为缺少函数原型，float会被自动升级为double，这没什么用。虽然程序仍然能运行，但是输出的内容不正确。在函数调用中显式强制类型转换，可以修复这个问题：<br><code>pound((int)f); // 把f强制类型转换为正确的类型</code><br>注意，如果f的值太大，超过了int类型表示的范围，这样做也不行。</p>
+</blockquote>
+<p>如果实际参数和函数的形式参数类型不一致，编译器会自动将实际参数类型“升级”。“升级”是按照<code>int</code>、<code>float</code>、<code>double</code>等从左到右递增顺序，结合上面书本解析，得出的结论是<strong>函数原型声明中带有对形式参数类型的声明，能够在函数被调用之前显式改变实参类型，避免了隐式类型转换的混乱，以及输出结果的不正确</strong>。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-04-11T11:17:38.263Z" itemprop="dateUpdated">2018-04-11 19:17:38</time>
+</span><br>
+
+
+        
+        如果文章写得好，就打赏支持一下吧
+        
+    </div>
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="Vinson-sheep">
+            Vinson-sheep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C语言/">C语言</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2018/04/11/C语言之函数原型声明——详解/&title=《C语言之函数原型声明——详解》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2018/04/11/C语言之函数原型声明——详解/&title=《C语言之函数原型声明——详解》 — Vinson-sheep&source=
+以前写javascript的时候解析器会有变量声明提前这一功能，但是C语言不会提前，相反我们编写的代码中需要函数原型声明。何谓函数原型声明呢？我在这篇文..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2018/04/11/C语言之函数原型声明——详解/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《C语言之函数原型声明——详解》 — Vinson-sheep&url=/2018/04/11/C语言之函数原型声明——详解/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2018/04/11/C语言之函数原型声明——详解/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/04/14/C语言为什么不能解引用未初始化的指针——实践归纳/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">C语言为什么不能解引用未初始化的指针——实践归纳</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/10/C语言数据类型上溢下溢——实验/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">C语言数据类型上溢下溢——实验</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        爱你哟~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Vinson-sheep &copy; 2016 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17065873号-1</a><br>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2018/04/11/C语言之函数原型声明——详解/&title=《C语言之函数原型声明——详解》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2018/04/11/C语言之函数原型声明——详解/&title=《C语言之函数原型声明——详解》 — Vinson-sheep&source=
+以前写javascript的时候解析器会有变量声明提前这一功能，但是C语言不会提前，相反我们编写的代码中需要函数原型声明。何谓函数原型声明呢？我在这篇文..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2018/04/11/C语言之函数原型声明——详解/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《C语言之函数原型声明——详解》 — Vinson-sheep&url=/2018/04/11/C语言之函数原型声明——详解/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2018/04/11/C语言之函数原型声明——详解/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACNElEQVR42u3ay44CMQxEUf7/p4M0W0ioKqdHinOzQtCv0wtjx3695DX+1uc3n98rv86OUc4qLRgwYBzLGMulHKPc2L2LfhYMGDDuYayD7OwGSlBeY5TvlT8AGDBgwHAf0b2a/rJgwIABYxfDuP3yXjBgwIDhlpd6qakH1vULeqQWhwEDxoEMtzHwn58f7G/AgAHjEMYwl1KyZueOwoIBA0ZvxhOJXRam9SBrZLgwYMBowXBDodvm1I/Pgj4MGDDuYbhjE3ryp19NaR5Mj4EBA8Y1jFLIi1qbWbIola8wYMBoxKjfpp5cZgVwuN0GAwaMAxl6ANVLU3cLz/0VBgwYdzJ2DXLpV1OK4XXIhgEDxj2M7HLu8JZbjmYvBQYMGF0ZlfIyG7OoPIORGsKAAaMRw51Y0Dfd9JROT0ZLwRcGDBgtGHoyp6dxu9LKsM0AAwaMRgx3k0sPnTo7C9BftttgwIDRjqFfzh2M0IfJ3EG0Hy0BGDBgtGPo22HZYEQWZPX0cfq/AQMGjEaMbHirUr5m23ZGfwMGDBjXMOqtSgUZbvfrARcGDBgtGNl4hJsyZi0HJeCWpjxgwIBxCGOYqz5mUW+LSv8bMGDAaMQoJWFyQFQeVAnfbrsCBgwYnRhZkM0e1G1SGkEWBgwYFzCyMlU/d+9gx7SUhQEDxvWMrNGYFbd2mggDBgwY0fCW2wZwSTBgwLiNUW8GuNv3bvn6I6GEAQNGa0bWGNg18qW8uA0AGDBgnMp4A32ttz27t8cuAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

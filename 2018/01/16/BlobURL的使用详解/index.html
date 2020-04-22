@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>BlobURL的使用详解 | Vinson-sheep | Vinson Sheep is on his time zone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+    <meta name="keywords" content="HTML5,javascript,原创">
+    <meta name="description" content="Blob是二进制大对象，在前端数据交换中占有重要地位。可能大家会对Blob很熟悉，但是BlobURL就相对陌生。其实BlobURL十分强大，其中一个应用就是在线预览图片。">
+<meta name="keywords" content="HTML5,javascript,原创">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BlobURL的使用详解">
+<meta property="og:url" content="/2018/01/16/BlobURL的使用详解/index.html">
+<meta property="og:site_name" content="Vinson-sheep">
+<meta property="og:description" content="Blob是二进制大对象，在前端数据交换中占有重要地位。可能大家会对Blob很熟悉，但是BlobURL就相对陌生。其实BlobURL十分强大，其中一个应用就是在线预览图片。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-10T03:45:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BlobURL的使用详解">
+<meta name="twitter:description" content="Blob是二进制大对象，在前端数据交换中占有重要地位。可能大家会对Blob很熟悉，但是BlobURL就相对陌生。其实BlobURL十分强大，其中一个应用就是在线预览图片。">
+    
+        <link rel="alternate" type="application/atom+xml" title="Vinson-sheep" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Vinson-sheep</h5>
+          <a href="mailto:775014077@qq.com" title="775014077@qq.com" class="mail">775014077@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Article
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tag
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/algorithum/"  >
+                <i class="icon icon-lg icon-puzzle-piece"></i>
+                Algorithum
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/gallery"  >
+                <i class="icon icon-lg icon-paint-brush"></i>
+                Gallery
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/短篇小说/"  >
+                <i class="icon icon-lg icon-pencil"></i>
+                Novel
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Vinson-sheep/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">BlobURL的使用详解</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">BlobURL的使用详解</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-01-16T11:35:52.000Z" itemprop="datePublished" class="page-time">
+  2018-01-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#BlobURL的应用"><span class="post-toc-number">1.</span> <span class="post-toc-text">BlobURL的应用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用blob-URL"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用blob URL</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-BlobURL的使用详解"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">BlobURL的使用详解</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-01-16 19:35:52" datetime="2018-01-16T11:35:52.000Z"  itemprop="datePublished">2018-01-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>Blob是二进制大对象，在前端数据交换中占有重要地位。可能大家会对Blob很熟悉，但是BlobURL就相对陌生。其实BlobURL十分强大，其中一个应用就是在线预览图片。<br><a id="more"></a></p>
+</blockquote>
+<p><em>原创文章</em></p>
+<h2 id="BlobURL的应用"><a href="#BlobURL的应用" class="headerlink" title="BlobURL的应用"></a>BlobURL的应用</h2><p>讨论BlobURL的应用，我们需要做些小实践。比如下列代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// HTML</span></span><br><span class="line">&lt;input type=<span class="string">'file'</span> /&gt;\</span><br><span class="line">&lt;img src=<span class="string">''</span> /&gt;</span><br><span class="line"><span class="comment">// js</span></span><br><span class="line"><span class="keyword">var</span> fileIpt = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"input"</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> img = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"img"</span>)[<span class="number">0</span>];</span><br><span class="line">fileIpt.onchange = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> URL = e.target.files[<span class="number">0</span>];</span><br><span class="line">    <span class="built_in">console</span>.log(URL);</span><br><span class="line">    img.src = URL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上代码通过上传文件，获取文件地址并赋值给img，img在页面呈现图片。然而，浏览器（chrome为例）的控制台输出的是<code>C:\fakepath\xxx.gif</code>，显然不是本地真实路径。这是浏览器出于安全性考虑的结果。<strong>所以无法预览图片</strong>。</p>
+<p>所以，问题就是我们很难获取一个本地路径并预览图片，而BlobURL提供了解决方案。首先看看《javascript权威指南》对于这方面的描述：</p>
+<blockquote>
+<p>Blob URL和创建它们的脚本拥有同样的源。这使得它们比file://URL更加灵活，由于file://URL是非同源的，因此要在Web应用中使得它们相对比较麻烦。</p>
+</blockquote>
+<p>因此我们Blob URL能够正确反映本地路径。</p>
+<h2 id="使用blob-URL"><a href="#使用blob-URL" class="headerlink" title="使用blob URL"></a>使用blob URL</h2><p>我们改写以上例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 出于兼容性考虑，编写getBlobURL</span></span><br><span class="line"><span class="keyword">var</span> getBlobURL = (<span class="built_in">window</span>.URL &amp;&amp; URL.createObjectURL.bind(URL)) ||</span><br><span class="line">      (<span class="built_in">window</span>.webkitURL &amp;&amp; webkitURL.createObjectURL.bind(webkitURL)) ||</span><br><span class="line">      <span class="built_in">window</span>.createObjectURL;</span><br><span class="line"><span class="comment">// revokeBlobURL可以取消blobURL的使用</span></span><br><span class="line"><span class="keyword">var</span> revokeBlobURL = (<span class="built_in">window</span>.URL &amp;&amp; URL.revokeObjectURL.bind(URL)) ||</span><br><span class="line">      (<span class="built_in">window</span>.webkitURL &amp;&amp; webkitURL.revokeObjectURL.bind(webkitURL)) ||</span><br><span class="line">      <span class="built_in">window</span>.revokeObjectURL;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fileIpt = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"input"</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> img = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"img"</span>)[<span class="number">0</span>];</span><br><span class="line">fileIpt.onchange = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> URL = webkitURL.createObjectURL(e.target.files[<span class="number">0</span>]);</span><br><span class="line">    <span class="built_in">console</span>.log(URL);</span><br><span class="line">    img.src = URL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>尝试上传一张图片，客户端能够对图片正确渲染。查看控制台，输出<code>blob:xxx</code>。预览成功！</p>
+<p>有人会说，把图片上传之后再预览也是可以实现在线预览图片的。缺点很明显，非常麻烦，并且占用内存和服务端流量。</p>
+<p><strong>传送门：</strong></p>
+<ol>
+<li><a href="https://www.cnblogs.com/daiye/archive/2009/09/16/1567419.html" target="_blank" rel="noopener">IE8上传文件时javascript取文件的本地路径的问题C:\fakepath\</a></li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-04-10T03:45:12.000Z" itemprop="dateUpdated">2018-04-10 11:45:12</time>
+</span><br>
+
+
+        
+        如果文章写得好，就打赏支持一下吧
+        
+    </div>
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="Vinson-sheep">
+            Vinson-sheep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/">HTML5</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/原创/">原创</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2018/01/16/BlobURL的使用详解/&title=《BlobURL的使用详解》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2018/01/16/BlobURL的使用详解/&title=《BlobURL的使用详解》 — Vinson-sheep&source=
+Blob是二进制大对象，在前端数据交换中占有重要地位。可能大家会对Blob很熟悉，但是BlobURL就相对陌生。其实BlobURL十分强大，其中一个应用..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2018/01/16/BlobURL的使用详解/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《BlobURL的使用详解》 — Vinson-sheep&url=/2018/01/16/BlobURL的使用详解/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2018/01/16/BlobURL的使用详解/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/01/17/webstorm支持nodejs/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">webstorm支持nodejs</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/01/15/FileSaver的使用/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">FileSaver的使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        爱你哟~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Vinson-sheep &copy; 2016 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17065873号-1</a><br>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2018/01/16/BlobURL的使用详解/&title=《BlobURL的使用详解》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2018/01/16/BlobURL的使用详解/&title=《BlobURL的使用详解》 — Vinson-sheep&source=
+Blob是二进制大对象，在前端数据交换中占有重要地位。可能大家会对Blob很熟悉，但是BlobURL就相对陌生。其实BlobURL十分强大，其中一个应用..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2018/01/16/BlobURL的使用详解/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《BlobURL的使用详解》 — Vinson-sheep&url=/2018/01/16/BlobURL的使用详解/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2018/01/16/BlobURL的使用详解/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByUlEQVR42u3aQW7EIAwF0Ln/pVOp22not50wGemxqmiBly4sbPN6xeP4HWczx9tYr13PXzBwcXHH3GM5znATaLLP2Z64uLg7udXt3ueTHfLfns7j4uI+jLsmJmEoCZS4uLjfxe1devJVuLi4T+Mmx1RZk/kLcjVcXNwBt1owvePnG+u7uLi4Re5RHL1j1teXwum4uLhbuEkpc1LUOFtbTa4K/V5cXNwxd13QzMPNPB1K/im4uLj7uXnrdFJOzZsuf+yMi4u7kZs/jOg9wMo/ch1ScXFx93OrKdAkvak2Tk6rOLi4uDdwq/Ehf6hx1dOuqKGCi4t7Kbe6IH+c0Su7RFccXFzcLdzeA6xJkKp+Ei4u7n5utY2ah7n8ehS1ZHBxcTdye8fnCVL+mOOfYIeLi7uFO2mW5J9XLY9GBVNcXNzbuNemOnNcobKLi4t7M7f3uGrSbilE2fdAhouLu4XbC0OFBxNB2EquWbi4uHu4+eiFvDtW4eLi7uH2Ep48lcoTrejahIuLu5FbDV69I3sXF1xc3Cdze83X/G+ioImLi/tIbu8J12Tg4uJ+ipskP1e1VPPPG+VquLi4A26v8Zk3R6uFD1xc3I9yfwDiyGLp+CNVbAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>Linux常用命令杂烩 | Vinson-sheep | Vinson Sheep is on his time zone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+    <meta name="keywords" content="Linux">
+    <meta name="description" content="最近看了一些有关Linux的书籍，记录一下一些常用的命令或者快捷键，方便自己查阅。">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux常用命令杂烩">
+<meta property="og:url" content="/2018/01/31/Linux常用命令杂烩/index.html">
+<meta property="og:site_name" content="Vinson-sheep">
+<meta property="og:description" content="最近看了一些有关Linux的书籍，记录一下一些常用的命令或者快捷键，方便自己查阅。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-10T03:45:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux常用命令杂烩">
+<meta name="twitter:description" content="最近看了一些有关Linux的书籍，记录一下一些常用的命令或者快捷键，方便自己查阅。">
+    
+        <link rel="alternate" type="application/atom+xml" title="Vinson-sheep" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Vinson-sheep</h5>
+          <a href="mailto:775014077@qq.com" title="775014077@qq.com" class="mail">775014077@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Article
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tag
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/algorithum/"  >
+                <i class="icon icon-lg icon-puzzle-piece"></i>
+                Algorithum
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/gallery"  >
+                <i class="icon icon-lg icon-paint-brush"></i>
+                Gallery
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/短篇小说/"  >
+                <i class="icon icon-lg icon-pencil"></i>
+                Novel
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Vinson-sheep/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Linux常用命令杂烩</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Linux常用命令杂烩</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-01-31T11:47:43.000Z" itemprop="datePublished" class="page-time">
+  2018-01-31
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/工具/">工具</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#bash快捷键"><span class="post-toc-number">1.</span> <span class="post-toc-text">bash快捷键</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#常用通用命令"><span class="post-toc-number">2.</span> <span class="post-toc-text">常用通用命令</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#文件权限管理"><span class="post-toc-number">3.</span> <span class="post-toc-text">文件权限管理</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#列文件和解压包"><span class="post-toc-number">4.</span> <span class="post-toc-text">列文件和解压包</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#关机-重启-退出"><span class="post-toc-number">5.</span> <span class="post-toc-text">关机/重启/退出</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#bash内部命令"><span class="post-toc-number">6.</span> <span class="post-toc-text">bash内部命令</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#系统信息相关命令"><span class="post-toc-number">7.</span> <span class="post-toc-text">系统信息相关命令</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#文件操作命令"><span class="post-toc-number">8.</span> <span class="post-toc-text">文件操作命令</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#进程及任务管理相关命令"><span class="post-toc-number">9.</span> <span class="post-toc-text">进程及任务管理相关命令</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#网络相关命令"><span class="post-toc-number">10.</span> <span class="post-toc-text">网络相关命令</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-Linux常用命令杂烩"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Linux常用命令杂烩</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-01-31 19:47:43" datetime="2018-01-31T11:47:43.000Z"  itemprop="datePublished">2018-01-31</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/工具/">工具</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>最近看了一些有关Linux的书籍，记录一下一些常用的命令或者快捷键，方便自己查阅。<br><a id="more"></a></p>
+</blockquote>
+<p><em>摘录自《Linux操作系统基础教程（第二版）》——王良明 编著</em></p>
+<h1 id="bash快捷键"><a href="#bash快捷键" class="headerlink" title="bash快捷键"></a>bash快捷键</h1><p><em>《基础教程（二）》p65</em></p>
+<blockquote>
+<p>命令行其实就是行编辑器——在这里编辑即将要执行的命令。在这个小小的编辑器里（只有一行），bash提供了许多快捷键，掌握最常用的几个快捷键并灵活运用，能带来意想不到的高效便利。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">快捷键</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">Ctrl+A</td>
+<td style="text-align:left">光标跳到行首</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">Ctrl+E</td>
+<td style="text-align:left">光标跳到行尾</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">Ctrl+U</td>
+<td style="text-align:left">删除从光标位置到行首的所有字符</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">Ctrl+K</td>
+<td style="text-align:left">删除从光标位置道行尾的所有字符</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">Ctrl+W</td>
+<td style="text-align:left">删除光标左侧的一个单词</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">Ctrl+L</td>
+<td style="text-align:left">清屏</td>
+</tr>
+</tbody>
+</table>
+<h1 id="常用通用命令"><a href="#常用通用命令" class="headerlink" title="常用通用命令"></a>常用通用命令</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">help</td>
+<td style="text-align:left">列出所有内部命令</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">help alias</td>
+<td style="text-align:left">取得内部命令alias的帮助信息</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">man 5 passwd</td>
+<td style="text-align:left">获取passwd命令的帮助信息（默认在1号节中找）</td>
+</tr>
+</tbody>
+</table>
+<h1 id="文件权限管理"><a href="#文件权限管理" class="headerlink" title="文件权限管理"></a>文件权限管理</h1><p><em>《基础教程（二）》p57</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">chmod 644 file</td>
+<td style="text-align:left">修改文件file的权限为rw-r–r–</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">chmod -R 755 ./abc</td>
+<td style="text-align:left">把目录abc及其子目录下的所有文件的权限改成755</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">chown zsan file</td>
+<td style="text-align:left">修改file的主人为用户zsan</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">chgrp class2 file</td>
+<td style="text-align:left">修改file的组群为class2</td>
+</tr>
+</tbody>
+</table>
+<h1 id="列文件和解压包"><a href="#列文件和解压包" class="headerlink" title="列文件和解压包"></a>列文件和解压包</h1><p><em>《基础教程（二）》p59</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">ls</td>
+<td style="text-align:left">以列方式列出当前目录下的文件和目录</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">ls -l</td>
+<td style="text-align:left">以行方式列出当前目录下的文件的详细信息</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">ls -la</td>
+<td style="text-align:left">意义同上，但隐藏文件也显示出来</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">ls -lt</td>
+<td style="text-align:left">按文件修改时间排序显示</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">ls -lS</td>
+<td style="text-align:left">按文件大小排序显示</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">ls -lh</td>
+<td style="text-align:left">文件大小转换为人们易读的方式显示</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">ls -R</td>
+<td style="text-align:left">递归显示下层目录中的内容</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">tar -cvf abc.tar ./123</td>
+<td style="text-align:left">打包“/123”目录为abc.tar</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">tar -xvf abc.tar</td>
+<td style="text-align:left">解压到当前目录下</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">tar -tvf abc.tar</td>
+<td style="text-align:left">显示包中的文件</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">tar -czf file.tar.gz ./123</td>
+<td style="text-align:left">压缩（gzip压缩格式)</td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">tar -xzf file.tar.gz</td>
+<td style="text-align:left">解压</td>
+</tr>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:left">tar -cjf file.tar.bz2 ./123</td>
+<td style="text-align:left">压缩（bzip2压缩格式）</td>
+</tr>
+<tr>
+<td style="text-align:left">13</td>
+<td style="text-align:left">tar -xjf file.tar.bz2</td>
+<td style="text-align:left">解压</td>
+</tr>
+</tbody>
+</table>
+<h1 id="关机-重启-退出"><a href="#关机-重启-退出" class="headerlink" title="关机/重启/退出"></a>关机/重启/退出</h1><p><em>《基础教程（二）》p69</em></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">shutdown -h now</td>
+<td style="text-align:left">立即关机</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">shutdown -h +10 “请各位退出”</td>
+<td style="text-align:left">10分钟后关机，同时广播通告</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">shutdown -r 16:30</td>
+<td style="text-align:left">在16:30重启计算机</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">shutdown -h 23:59</td>
+<td style="text-align:left">在23:59关机</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">reboot</td>
+<td style="text-align:left">立即重启电脑</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">halt</td>
+<td style="text-align:left">立即关机（比较粗暴），另一个命令是poweroff</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">exit</td>
+<td style="text-align:left">退出登录（注销）</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">sync</td>
+<td style="text-align:left">把磁盘I/O高速缓存中的内容同步到磁盘</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">systemctl hibernate</td>
+<td style="text-align:left">进入睡眠</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">systemctl rescue</td>
+<td style="text-align:left">系统进入急救模式</td>
+</tr>
+</tbody>
+</table>
+<h1 id="bash内部命令"><a href="#bash内部命令" class="headerlink" title="bash内部命令"></a>bash内部命令</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">history、history -c、history -w</td>
+<td style="text-align:left">显示历史命令、清除历史命令、把命令缓冲区中的命令输出道HISTFILE定义的文件中</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">alias、alias l=’ls -la’、alias woman=man</td>
+<td style="text-align:left">显示全部的命令别名、定义命令别名l、定义命令别名woman。此后，执行命令l实际上就是执行“ls -la”</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">unalias woman</td>
+<td style="text-align:left">删除别名woman</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">which ls</td>
+<td style="text-align:left">显示命令ls所在的目录</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">echo “I love you”</td>
+<td style="text-align:left">在屏幕上显示信息</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">export ABC=”Hello World”</td>
+<td style="text-align:left">定义用户环境变量ABC，值是“Hello World”</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">env</td>
+<td style="text-align:left">显示所有用户的环境变量</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">unset CBA</td>
+<td style="text-align:left">删除Shell变量CBA</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">source ~/.bashrc或者.~/.bashrc</td>
+<td style="text-align:left">执行“~/.bashrc”并输出里面定义的环境变量</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">pwd</td>
+<td style="text-align:left">显示用户所在的当前目录</td>
+</tr>
+</tbody>
+</table>
+<h1 id="系统信息相关命令"><a href="#系统信息相关命令" class="headerlink" title="系统信息相关命令"></a>系统信息相关命令</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">date +”%Y-%m-%d %H:%M”</td>
+<td style="text-align:left">按格式显示系统时间，如2014-06-23 16:29</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">date 072316312014</td>
+<td style="text-align:left">设置系统时间，格式是[MMDDhhmm[[CC]YY][.ss]]</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">cal、cal -y</td>
+<td style="text-align:left">显示本月日历、显示本年日历</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">clear</td>
+<td style="text-align:left">清屏（相当于快捷键Ctrl+L）</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">bc</td>
+<td style="text-align:left">高精度计算机。输入quit退出bc</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">Ubuntu系统：service sshd restart 红帽7.0：systemctl restart sshd.service</td>
+<td style="text-align:left">重启sshd服务，Ubuntu系统中所有的服务脚本在/etc/init.d/目录下，其他动作还有stop——停止服务、start——启动服务、status——查看服务状态、reload——使服务重读配置文件</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">systemctl -t service</td>
+<td style="text-align:left">显示全部的服务（红帽7.0特有的命令）</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">sysv-rc-conf –list</td>
+<td style="text-align:left">显示全部的服务（Ubuntu特有的命令）</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">update-rc.d ssh defaults</td>
+<td style="text-align:left">在2,3,4,5运行级别启动服务ssh，在0,1,6关闭服务ssh（Ubuntu阵营）</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">uptime</td>
+<td style="text-align:left">简要显示系统的连续运行时间、当前用户数和负荷</td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">uname -a</td>
+<td style="text-align:left">显示操作系统的信息</td>
+</tr>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:left">df -T</td>
+<td style="text-align:left">显示已挂载分区的使用情况</td>
+</tr>
+<tr>
+<td style="text-align:left">13</td>
+<td style="text-align:left">du -sh /etc/</td>
+<td style="text-align:left">查看目录/etc占用磁盘的大小</td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">dmesg</td>
+<td style="text-align:left">显示系统启动日志</td>
+</tr>
+</tbody>
+</table>
+<h1 id="文件操作命令"><a href="#文件操作命令" class="headerlink" title="文件操作命令"></a>文件操作命令</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">tree /etc/</td>
+<td style="text-align:left">显示/etc的目录树</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">touch abc1</td>
+<td style="text-align:left">如果abc1事先存在，就把它的修改时间改为现在的系统时间，如果不存在就创建一个空文件</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">find /etc/ -name sshd*</td>
+<td style="text-align:left">在/etc/及其子目录中查找以sshd开头的文件</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">find /etc -mmin 10</td>
+<td style="text-align:left">递归查找/etc及其子目录中最近十分钟中内修改过的文件</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">ls / &#124; tee /tmp/abc.txt</td>
+<td style="text-align:left">tee建立二通，一方面输出到屏幕，一方面输出到文件/tem/abc.txt/</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">diff file1 file2</td>
+<td style="text-align:left">显示两个文件的差异</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">du -sh /etc/</td>
+<td style="text-align:left">查看目录/etc占用磁盘的大小</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">split -b 4M bigfile.dat part-</td>
+<td style="text-align:left">把文件bigfile.dat切割成4M大小的以part-为前缀的文件，如part-aa、part-ab等。合并文件可以采用命令cat：cat part-aa&gt;bigfile1.dat &amp;&amp; catpart-ab&gt;&gt;bigfile1.dat ..</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">grep “UsePam yes” *</td>
+<td style="text-align:left">在当前目录下的所有文件中查找包含UsePam yes的行</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">grep -R wlm /etc/ *</td>
+<td style="text-align:left">递归查找/etc/中以及子目录中的所有文件，把包含wlm的行显示出来</td>
+</tr>
+<tr>
+<td style="text-align:left">11</td>
+<td style="text-align:left">dd if=/dev/zero of=1.bat bs=512 count=1024</td>
+<td style="text-align:left">从设备/dev/zero读取0并写入到文件1.dat中，每一次读取512个字节，共读取1024次，因此1.dat的大小是0.5MB，即512×1024</td>
+</tr>
+<tr>
+<td style="text-align:left">12</td>
+<td style="text-align:left">dd if=/dev/sda of=/boot/mainboot bs=512 count=1</td>
+<td style="text-align:left">把文件/boot/mainboot文件中，共512个字节</td>
+</tr>
+<tr>
+<td style="text-align:left">13</td>
+<td style="text-align:left">od -t x1 mainboot</td>
+<td style="text-align:left">以十六进制显示文件mainboot的内容(x1的1是数字！)</td>
+</tr>
+<tr>
+<td style="text-align:left">14</td>
+<td style="text-align:left">xxd 2.dat &gt;2.txt ，xxd -r 2.txt &gt;2.dat</td>
+<td style="text-align:left">把二进制文件2.dat转换为十六进制字符文件2.txt，第二个命令做相反操作</td>
+</tr>
+<tr>
+<td style="text-align:left">15</td>
+<td style="text-align:left">sed -i ‘s&#124;oldw&#124;new12&#124;g’ file1.txt</td>
+<td style="text-align:left">把文件file1.txt中的所有oldw替换成new12</td>
+</tr>
+<tr>
+<td style="text-align:left">16</td>
+<td style="text-align:left">gzip 2.dat</td>
+<td style="text-align:left">压缩2.dat，压缩后的文件名为2.dat.gz</td>
+</tr>
+<tr>
+<td style="text-align:left">17</td>
+<td style="text-align:left">gzip -d 2.dat.gz</td>
+<td style="text-align:left">解压</td>
+</tr>
+<tr>
+<td style="text-align:left">18</td>
+<td style="text-align:left">bzip2 file2.dat</td>
+<td style="text-align:left">压缩file2.dat，压缩后的文件名是file2.dat.bz2。对于大文件，bzip2的压缩效率要高于gzip</td>
+</tr>
+<tr>
+<td style="text-align:left">19</td>
+<td style="text-align:left">bzip2 -d file2.dat.bz2</td>
+<td style="text-align:left">解压</td>
+</tr>
+<tr>
+<td style="text-align:left">20</td>
+<td style="text-align:left">strings /bin/ls</td>
+<td style="text-align:left">显示二进制文件/bin/ls里的可见字符</td>
+</tr>
+</tbody>
+</table>
+<h1 id="进程及任务管理相关命令"><a href="#进程及任务管理相关命令" class="headerlink" title="进程及任务管理相关命令"></a>进程及任务管理相关命令</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">ps -ef</td>
+<td style="text-align:left">显示当前系统中的进程。第二列是进程号，最后一列是该进程执行的二进制程序</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">kill -9 7208</td>
+<td style="text-align:left">立即杀死进程号为7208的进程。本质上是向进程7208发送信号9，这是马上结束进程的信号，其他的信号可用命令kill-l查看</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">pkill -9-u osadmin</td>
+<td style="text-align:left">立即杀死用户osadmin的全部进程，用户被动退出系统</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">killall -9 sendmail</td>
+<td style="text-align:left">杀死由程序sendmail产生的全部进程</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">jobs</td>
+<td style="text-align:left">显示后台任务，第一列是任务号</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">fg 、 fg 2</td>
+<td style="text-align:left">把最靠前的任务切换到前台、把2号任务切换到前台</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">Ctrl+Z</td>
+<td style="text-align:left">把正在执行的前台任务切换到后台，并暂停运行。例如正在用vim编辑一个文件，这时可以按Ctrl+Z把vim切到后台，然后执行fg又可切回到前台</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">bg 、 bg 3</td>
+<td style="text-align:left">继续在后台执行最靠前的那个暂停的后台任务，继续在后台执行3号任务。</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">nohup command1 &amp;</td>
+<td style="text-align:left">在后台执行command1命令，且脱离用户登录的终端，这样即使用户登出，命令也不会退出。</td>
+</tr>
+</tbody>
+</table>
+<h1 id="网络相关命令"><a href="#网络相关命令" class="headerlink" title="网络相关命令"></a>网络相关命令</h1><table>
+<thead>
+<tr>
+<th style="text-align:left">序号</th>
+<th style="text-align:left">命令</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">netstat -tnlp</td>
+<td style="text-align:left">显示处于监听状态的TCP端口</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">netstat -unlp</td>
+<td style="text-align:left">显示处于监听状态的UDP端口</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">ifconfig</td>
+<td style="text-align:left">显示网卡参数。红帽7.0还可以使用命令nmcli dev查看全部网络设备</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">ethtool eth0</td>
+<td style="text-align:left">查看第一块网卡的链路状态，例如是否链接交换机。注意：红帽7.0的网卡命名为ensx</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">ifconfig eth1 add 192.168.0.10 up</td>
+<td style="text-align:left">配置第二块网卡地址为192.168.0.10，并启动它</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">ifup eth0、ifdown eth1</td>
+<td style="text-align:left">启动第一块网卡、禁用第二块网卡</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">ping 192.168.1.100、ping <a href="http://www.baidu.com" target="_blank" rel="noopener">www.baidu.com</a></td>
+<td style="text-align:left">向另一台计算机发ICMP包来检测网络是否连通。</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">route</td>
+<td style="text-align:left">显示路由表</td>
+</tr>
+<tr>
+<td style="text-align:left">9</td>
+<td style="text-align:left">route add -net 192.168.10.0 netmask 255.255.255.0 gw 10.2.65.1</td>
+<td style="text-align:left">增加一条到达192.168.10.0网段的路由，网关是10.2.65.1</td>
+</tr>
+<tr>
+<td style="text-align:left">10</td>
+<td style="text-align:left">traceroute <a href="http://www.veryopen.org" target="_blank" rel="noopener">www.veryopen.org</a></td>
+<td style="text-align:left">跟踪到达<a href="http://www.veryopen.org的路由路径" target="_blank" rel="noopener">www.veryopen.org的路由路径</a></td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-04-10T03:45:14.000Z" itemprop="dateUpdated">2018-04-10 11:45:14</time>
+</span><br>
+
+
+        
+        如果文章写得好，就打赏支持一下吧
+        
+    </div>
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="Vinson-sheep">
+            Vinson-sheep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2018/01/31/Linux常用命令杂烩/&title=《Linux常用命令杂烩》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2018/01/31/Linux常用命令杂烩/&title=《Linux常用命令杂烩》 — Vinson-sheep&source=
+最近看了一些有关Linux的书籍，记录一下一些常用的命令或者快捷键，方便自己查阅。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2018/01/31/Linux常用命令杂烩/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux常用命令杂烩》 — Vinson-sheep&url=/2018/01/31/Linux常用命令杂烩/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2018/01/31/Linux常用命令杂烩/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/02/01/vi-vim介绍/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">vi/vim介绍</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/01/24/PM2使用入门指南（转）/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">PM2使用入门指南（转）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        爱你哟~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Vinson-sheep &copy; 2016 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17065873号-1</a><br>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2018/01/31/Linux常用命令杂烩/&title=《Linux常用命令杂烩》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2018/01/31/Linux常用命令杂烩/&title=《Linux常用命令杂烩》 — Vinson-sheep&source=
+最近看了一些有关Linux的书籍，记录一下一些常用的命令或者快捷键，方便自己查阅。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2018/01/31/Linux常用命令杂烩/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Linux常用命令杂烩》 — Vinson-sheep&url=/2018/01/31/Linux常用命令杂烩/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2018/01/31/Linux常用命令杂烩/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABx0lEQVR42u3aQW7DMAwEwPz/0+61RRpnV7IUtxidjKSxRj0QFMnHI17Ht/X8yfPnz8/nb7t44eLiTnOP05Vwk/e3h3/5flxc3I3c821ebdkGqbGQh4uLe39unugkn+Di4v4nbp6gtFcmXFzc+3CTbdpfnSc9y+9quLi4E9y8SrnueUl9FxcXd4h7lCsPTHlhpdgdFxd3CzcPKFclPW36gouL+yluvn3eVsmvMfm+uLi4e7htSXSsBTtTKPnxjIuLu4WbpDhjxxhrokShExcXdyO3TUSS3yb/iHp3XFzcxdyZUaq2dDKWEr25/ODi4i7g5kHn2i7nzLFxcXFXc68dnphvqRbtE1xc3MXc6E/jJKY9XjHYgYuLu4U701LNyyjtCFeUeOHi4i7mtuMUj2AlxdBBNC4u7kbu/HjlTHOl2BcXF3cjNw9YbTLUlmWLFAcXF3cBd6w1MtNkzcewooiLi4u7gNsGlHw8Kz9eW3jFxcXdw80bn2O9zrbwiouLex9uG2jyo86sX96Gi4t7e27bgMlHst50g3Fxcf8Utx3NTEqrCwMZLi7u9OVn7Nu2wHrZXQ0XF3eC2zY78wGL/Mo0U3DBxcW9lPsFnJ25aGl7mAcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

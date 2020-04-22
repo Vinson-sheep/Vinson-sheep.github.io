@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Vinson-sheep</title>
+  
+  <subtitle>Vinson Sheep is on his time zone</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="/"/>
+  <updated>2020-04-22T15:12:21.800Z</updated>
+  <id>/</id>
+  
+  <author>
+    <name>Vinson-sheep</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>英文短文朗读规则</title>
+    <link href="/2020/04/22/%E8%8B%B1%E6%96%87%E7%9F%AD%E6%96%87%E6%9C%97%E8%AF%BB%E8%A7%84%E5%88%99-md/"/>
+    <id>/2020/04/22/英文短文朗读规则-md/</id>
+    <published>2020-04-22T15:06:07.000Z</published>
+    <updated>2020-04-22T15:12:21.800Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>A manual for speaking English.<br><a id="more"></a></p></blockquote><h1 id="发音规则"><a href="#发音规则" class="headerlink" title="发音规则"></a>发音规则</h1><p>中文说圆润，多加练习。</p><h2 id="1-词中重音"><a href="#1-词中重音" class="headerlink" title="1. 词中重音"></a>1. 词中重音</h2><p>名词多数第一个重读，二元动词放在第二个音节</p><h2 id="2-句中重音"><a href="#2-句中重音" class="headerlink" title="2. 句中重音"></a>2. 句中重音</h2><ol><li>一个内容词，重读；</li><li>两个内容词，第二个重读；</li><li>a+n : stress n；</li><li>a+a+n: stress first a and n；</li><li>n+n : stress the first n (+ing = n)；</li><li>v-prep: stress v (make-up)；</li><li>n+ prep : stress prep；</li><li>人名地名: stress the last；</li><li>Abbr: strss the last letter；<br>10 .from me/ for them 全部轻读</li><li>prep + 两个词以上，要重读最后一个</li><li>anything是虚的</li></ol><h2 id="3-升降调"><a href="#3-升降调" class="headerlink" title="3. 升降调"></a>3. 升降调</h2><ol><li>yes/no (声调)</li><li>wh (降调)</li><li>并列词 除了最后一个降调，其他升调</li><li>介绍性语句，升调</li></ol><h2 id="4-省略"><a href="#4-省略" class="headerlink" title="4. 省略"></a>4. 省略</h2><ol><li>元音合并、辅音省略</li><li>her him he she 省略辅音</li><li>辅音一致可以省略一个 sh sh</li></ol><h2 id="5-浊化"><a href="#5-浊化" class="headerlink" title="5. 浊化"></a>5. 浊化</h2><ol><li>辅音字母在两元音之间要被浊化 photo -&gt; phodo</li><li>p-b t-d s-z c-g-k f-v 浊化</li></ol><h2 id="6-其他"><a href="#6-其他" class="headerlink" title="6. 其他"></a>6. 其他</h2><p>basically/actually/practically/physically/accidentally/generally 省略a音</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;A manual for speaking English.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="English" scheme="/categories/English/"/>
+    
+    
+      <category term="发音" scheme="/tags/%E5%8F%91%E9%9F%B3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>visual c++ 2010 express: LNK1123</title>
+    <link href="/2020/03/28/visual-c-2010-express-LNK1123/"/>
+    <id>/2020/03/28/visual-c-2010-express-LNK1123/</id>
+    <published>2020-03-28T10:37:42.000Z</published>
+    <updated>2020-03-28T10:59:38.772Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>the first time I installed visual c++ express 2010, I found that there are something wrong in progress funtion. It said : <code>LINK : fatal error LNK1123: failure during conversion to COFF: file invalid or corrupt</code>.</p></blockquote><p>If I just compile my <code>.cpp</code> file, it works well. But when runing the <code>.exe</code> file, it is not.</p><p>The key problem is that the <code>cvtres.exe</code> in VC directory does not work, because it is too old to support the application. However, the windows system has a new one. That is, when the application start to work, it will find the old one and ignore the other.</p><p>The solution is simple. First, open <code>...\VCExpress\VC\bin</code> and find out <code>cvtres.exe</code>. Second, rename <code>cvtres.exe</code> to <code>cvtres_old.exe</code>.</p><p>OKay, your app is working well.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;the first time I installed visual c++ express 2010, I found that there are something wrong in progress funtion. It said : &lt;c
+      
+    
+    </summary>
+    
+      <category term="工具" scheme="/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="visual c++" scheme="/tags/visual-c/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How to make Atom adapted to Markdown by Plug-ins</title>
+    <link href="/2019/04/02/How-to-make-Atom-adapted-to-Markdown-by-Plug-ins/"/>
+    <id>/2019/04/02/How-to-make-Atom-adapted-to-Markdown-by-Plug-ins/</id>
+    <published>2019-04-01T16:33:57.000Z</published>
+    <updated>2019-04-01T16:45:55.164Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Atom is light application for simple modification. Usually, I use Atom to write Markdown. Althouth it has a default configuration, it is not enough for me to type a MD document dignity elegantly. So, Plug-ins is required.<br><a id="more"></a></p></blockquote><p>Just several steps, let’s go!</p><h2 id="go-into-the-interface"><a href="#go-into-the-interface" class="headerlink" title="go into the interface"></a>go into the interface</h2><p>Packages&gt;&gt;Settings View&gt;&gt;Open&gt;&gt;Install</p><h2 id="download-what-you-need"><a href="#download-what-you-need" class="headerlink" title="download what you need"></a>download what you need</h2><ol><li>language-markdown</li><li>markdown-writer</li><li>markdown-preview</li></ol><p>Then you can press <code>Ctrl+Shift+M</code> to open Markdown preview.</p><p>That’s all! Bye.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Atom is light application for simple modification. Usually, I use Atom to write Markdown. Althouth it has a default configuration, it is not enough for me to type a MD document dignity elegantly. So, Plug-ins is required.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="工具" scheme="/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="markdown" scheme="/tags/markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>漫画正弦 Comic Sine</title>
+    <link href="/2019/04/01/%E6%9B%B2%E7%BA%BF%E6%B1%82%E8%A7%A3Curve-Solving/"/>
+    <id>/2019/04/01/曲线求解Curve-Solving/</id>
+    <published>2019-04-01T14:17:24.000Z</published>
+    <updated>2019-04-01T17:17:19.356Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>最近，我的老师们讲述了他们的现实故事和独有的人生真理，让我对于人生真理求解的过程有了进一步的理解。现实，它在我人生某个阶段抛出了一个终极问题：人生求解曲线应该是怎么样的？于是有了这篇文章。这篇文章讲述了一个业余梦想家的故事。<br><a id="more"></a></p></blockquote><p>2025年，中国又完成了一个小目标。某些人，期待狂欢。</p><p>雨露清晨，美国纽约。小号中式房间里，Sine习惯性地穿上了他那洗的发白T裇和牛仔裤，带上了标志性的右指套。捎上一份不那么重要的演讲稿，Sine打开了房门，走下了楼梯。</p><p>今天，和其他时间稍微不一样。</p><p>一个披着红色头发的少年，站在街角，等待着命运的到来。Sine走出公寓门口，刚转了身，少年尾随其后，从腰间掏出了一把USP，往那个人心脏处开了一枪。Sine倒下了。临死瞬间，Sine看着天空，脑海记忆闪烁。</p><p>时间倒退27年。</p><p>那时候，Sine还没得到“他的名字”，他最初叫“李正弦”。出生前，他父亲从书架上摸出了一本古老的《高等数学》，快速浏览片刻，就指着那个弯曲的图像，为他命了名，希望他长大能当个数学家，并在日常中给他灌输知识。</p><p>但在正弦5岁那年，有一件事情改变了他的轨道。当时，日本动漫产业飞速发展，无数至今为人熟知的作品市场挂在中国电视屏幕。正弦当时深深迷上了《灌篮高手》，他用了他2个月的零花钱，买了好几本正版的漫画书。他第一次被平面图形和篮球运动的碰撞深深打动。他把书翻了又翻，每次细看总有不一样的快乐。这件事后来被父亲知道了，以有碍学习之名，将漫画书撕个粉碎。</p><p>但他内心感受到召唤，来自二维世界的召唤。</p><p>正弦像很多孩子那样，度过了小学、中学、高中。正弦很刻苦学习，在年级排名也不差，父亲因此也不怎么在意他那小小的兴趣。他有时拿起铅笔画画，用歪曲的图像阐述着他曾经幼稚的故事。有时上网冲浪，翻遍各大网站寻找优秀的漫画作品。他有一些志同道合的朋友，这些朋友都对二维世界非常沉迷。他对他的朋友吹牛说，他大学要学动画。</p><p>但现实是一条曲线。</p><p>高考填报志愿期间，正弦背着父母，把志愿改成了二本学校，专业改成了动画制作。这次“尝试偷渡”首先被老师发现了，再后是父母。正弦免不了父亲的一顿毒打，一向疼爱儿子的妈妈，这次也站在父亲那边。正弦的成绩确实可以上一本，但它远远不够拿到一个他想要的专业。面对灼热的气氛，正弦人生第一次跪了下来，他说，这是他人生唯一的请求，这是他所喜欢的专业，他最钟爱的事业，请父母相信，他一定会做得很好的。父母潸然泪下，点了点头。</p><p>本应是这样的。</p><p>实际那个男孩，他的所有勇气，在跪下之前，早已消逝。他早就知道，那时候的中国动画行业非常不景气，原因首先是国家的不支持，其次是盗版泛滥，漫画家和动画公司要想幸存，几乎不可能。这样一条路，连自己也看不到未来。他顺从了父母的想法，填了一本的学校，学了跟数学有关的专业。</p><p>从那时起，整个大学期间，每当他看到了优秀的设计、精良的动画，内心就会被绞痛。</p><p>未完待续…</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;最近，我的老师们讲述了他们的现实故事和独有的人生真理，让我对于人生真理求解的过程有了进一步的理解。现实，它在我人生某个阶段抛出了一个终极问题：人生求解曲线应该是怎么样的？于是有了这篇文章。这篇文章讲述了一个业余梦想家的故事。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="短篇小说" scheme="/categories/%E7%9F%AD%E7%AF%87%E5%B0%8F%E8%AF%B4/"/>
+    
+    
+      <category term="短篇小说" scheme="/tags/%E7%9F%AD%E7%AF%87%E5%B0%8F%E8%AF%B4/"/>
+    
+      <category term="short novel" scheme="/tags/short-novel/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>chrome extension</title>
+    <link href="/2019/04/01/%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6chrome-extension%EF%BC%88%E8%8B%B1%E6%96%87%EF%BC%89/"/>
+    <id>/2019/04/01/谷歌浏览器插件chrome-extension（英文）/</id>
+    <published>2019-04-01T12:55:26.000Z</published>
+    <updated>2020-03-18T13:09:36.233Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Several days ago, I re-installed my computer system, means I have lost my chrome extensions I showed fancy to. Back then, however, I slipped up and spent time a lot to handle this extension. For friendly using in the future, I take a note about the process.<br><a id="more"></a></p></blockquote><h2 id="程序包无效-The-package-is-invalid"><a href="#程序包无效-The-package-is-invalid" class="headerlink" title="程序包无效 The package is invalid"></a>程序包无效 The package is invalid</h2><p>While there are a lot of useful extensions to install, I attempt to go throuth the <code>google store</code> to pick up them. Sadly, domestic wall is too steady that I can’t drop by the site. What about installing by hand? For some reasons, it doesn’t work! A paper written by <a href="https://blog.csdn.net/ppdyhappy/article/details/81014800" target="_blank" rel="noopener">ppdyhappy</a> sort the problem.</p><ol><li><p>Firstly, you should download a <code>.crx</code> extension package you like from the extension site. Of course, when you draw the <code>.crx</code> package into the chrome, it will respond with <strong>the package is invalid</strong>.</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55330517-d1662900-54c3-11e9-8f53-7fcc26108d65.png" alt title>                </div>                <div class="image-caption"></div>            </figure></li><li><p>Change the file extensive name <code>.crx</code> of what you have downloaded into <code>.zip</code> or <code>.rar</code>.</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55330819-96b0c080-54c4-11e9-978a-e5355835a632.jpg" alt title>                </div>                <div class="image-caption"></div>            </figure></li><li>Right click this file. After decompressed with decompression software like <strong>WINRAR</strong>, you will get a new folder.<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55331178-5140c300-54c5-11e9-8fdd-8decc6196ccb.png" alt title>                </div>                <div class="image-caption"></div>            </figure></li><li>Key in Address Bar <code>chrome://extensions/</code> to open the <code>chrome browser extensive management interface</code>. Switch on the <strong>Developer mode(开发者模式)</strong>, and choose <strong>加载正在开发的扩展程序..</strong>，upload the folder you have decompressed.<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55331906-dc6e8880-54c6-11e9-8d38-271face04711.jpg" alt title>                </div>                <div class="image-caption"></div>            </figure></li><li>Normally, you have added a extension to chrome. If you suffer from the attendant problme, you can click <a href="https://blog.csdn.net/ppdyhappy/article/details/81014800" target="_blank" rel="noopener">original site</a> in search of solution.<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55332411-e9d84280-54c7-11e9-8d14-51ed6948479a.png" alt title>                </div>                <div class="image-caption"></div>            </figure></li></ol><h2 id="必备插件-Essential-extension"><a href="#必备插件-Essential-extension" class="headerlink" title="必备插件 Essential extension"></a>必备插件 Essential extension</h2><h3 id="1-谷歌访问助手-Google-Access-Assistant"><a href="#1-谷歌访问助手-Google-Access-Assistant" class="headerlink" title="1. 谷歌访问助手 Google Access Assistant"></a>1. 谷歌访问助手 Google Access Assistant</h3><p>Google Access Assistant is a awesome extension, allowing you to access <strong>google.com(谷歌搜索)</strong>、<strong>mail.google.com（gmail邮箱）</strong> and <strong>chrome store(谷歌商店访问)</strong> without VPN. But you just can use it in 12 hours unless you follow the action of <a href="https://jingyan.baidu.com/article/d2b1d102a89a925c7f37d445.html" target="_blank" rel="noopener">this site</a>. Because of being modified by third party, it smells of nasty money.</p><h3 id="2-Tampermonkey"><a href="#2-Tampermonkey" class="headerlink" title="2. Tampermonkey"></a>2. Tampermonkey</h3><p>This extension allow you to download file beyond 1G in the <strong>Baidu</strong> website, instead of download a PC application in addition. What you should do is just to download the <strong>Tampermonkey</strong> and pose apropriate <strong>script</strong>. More detail about how is in this site</p><p><a href="http://www.cnplugins.com/tool/baiduyun-tampermonkey.html" target="_blank" rel="noopener">图文详解如何利用chrome插件tampermonkey突破百度云盘下载限制</a></p><h3 id="3-Adblock-Plus"><a href="#3-Adblock-Plus" class="headerlink" title="3. Adblock Plus"></a>3. Adblock Plus</h3><p>When you are surfing online, there are no end of websites showing off their product by Ad block. Since you have <strong>Adblock Plus</strong>, you get rid of chaos and click throuth the website more quickly.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;Several days ago, I re-installed my computer system, means I have lost my chrome extensions I showed fancy to. Back then, however, I slipped up and spent time a lot to handle this extension. For friendly using in the future, I take a note about the process.&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="chrome extension" scheme="/tags/chrome-extension/"/>
+    
+      <category term="browser" scheme="/tags/browser/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于科学使用计算机</title>
+    <link href="/2019/03/28/%E5%85%B3%E4%BA%8E%E7%A7%91%E5%AD%A6%E4%BD%BF%E7%94%A8%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    <id>/2019/03/28/关于科学使用计算机/</id>
+    <published>2019-03-27T16:00:04.000Z</published>
+    <updated>2019-04-06T08:02:54.012Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>想象一下，你的上司，或者你的男女朋友，不经意看见你的电脑桌面有十几二十个图标，会有什么反应？你把你的房间收拾得很好，但总不能让你的电脑留下”Nasty”的骂名对吧？根据我的个人经验，总结了计算机管理中比较好的“习惯”。<br><a id="more"></a></p></blockquote><p><em>总的来说，计算机管理方法是——优雅</em></p><p><em>内容有点多，但是坚持下真的可以赢得上司的加分</em></p><h2 id="桌面管理"><a href="#桌面管理" class="headerlink" title="桌面管理"></a>桌面管理</h2><h3 id="1-桌面凌乱"><a href="#1-桌面凌乱" class="headerlink" title="1.桌面凌乱"></a>1.桌面凌乱</h3><p>桌面保持整洁，像博主我的桌面就只有5个图标，这样能够提高效率。<code>This PC</code>是我的电脑；<code>Sundries</code>是杂物，专门放一些无法分类的小文件，比如头像等；<code>Entertain</code>是娱乐文件夹，放置了所有程序的快捷方式；<code>Recycle Bin</code>是垃圾桶；<code>Work Place</code>是工作文件夹，无论是学习资料，还是最近的工作文件（毕业论文），我都放进去了，当然是“软链接”。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55093389-482faa80-50ef-11e9-93b2-6ac65bbab7c9.png" alt="my desktop" title>                </div>                <div class="image-caption">my desktop</div>            </figure><h3 id="2-软链接使用"><a href="#2-软链接使用" class="headerlink" title="2. 软链接使用"></a>2. 软链接使用</h3><p>比如我正在写<strong>毕业论文</strong>，我要进入<code>This Pc</code>，然后又点击别的什么玩意，找啊找啊，多麻烦。这时候，请使用<strong>软链接</strong>，在<code>Work Place</code>文件夹中新建一个<code>short cut</code>。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55096391-c0e53580-50f4-11e9-8de9-f3c41ea3e824.png" alt="short cut" title>                </div>                <div class="image-caption">short cut</div>            </figure></p><p>让它指向你的毕业论文文件夹即可，这时候就可以用<code>Work Place</code>进入你的毕业论文文件夹了。当你写完论文了，又可以将这个软链接删除。</p><h3 id="3-Start开始的使用"><a href="#3-Start开始的使用" class="headerlink" title="3. Start开始的使用"></a>3. Start开始的使用</h3><p>大家可以欣赏下我的<code>Start</code>（win 10）。按键盘左下角的<code>win</code>键进入，或者windows默认的左下角（对应图中的右上角）。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55098108-2edf2c00-50f8-11e9-8f5f-340ee8865637.png" alt="desktop" title>                </div>                <div class="image-caption">desktop</div>            </figure><br>我习惯把常用软件都放在这个地方，这样快捷方便，而且很优雅，这是我推荐win 10的原因（win7/xp的朋友自然没这种待遇）。</p><h3 id="4-关于桌面管理软件"><a href="#4-关于桌面管理软件" class="headerlink" title="4. 关于桌面管理软件"></a>4. 关于桌面管理软件</h3><p>某些软件，比如<code>wallpaper</code>诸如之类的软件，能够为你的桌面增加一些模块，有的能够列出你常用的软件，有的为你的桌面装扮炫酷的壁纸和特效。这类软件前者占用资源相对较少，后者则非常恐怖。但如果你的电脑已经进入暮年了，那还是不要用这些花里胡哨的东西了。</p><h2 id="管理软件"><a href="#管理软件" class="headerlink" title="管理软件"></a>管理软件</h2><h3 id="1-杀毒软件"><a href="#1-杀毒软件" class="headerlink" title="1. 杀毒软件"></a>1. 杀毒软件</h3><p>首推<code>火绒</code>。火绒是非常简洁的杀毒软件，内含垃圾清理等模块，基本满足一般PC的需求，并且不会有弹窗，杀毒性能优秀。永远不推荐360，360有很多捆绑软件，稍有不甚就下载了。当长期使用360，后台一些程序会长期占用你的CPU和内存，但它没什么作用，这跟病毒有什么区别？</p><h3 id="2-驱动软件"><a href="#2-驱动软件" class="headerlink" title="2. 驱动软件"></a>2. 驱动软件</h3><p>硬件要配合软件，长期更新硬件驱动（比如显卡驱动）有助于让你的计算机再相同配置下跑得更快。</p><p>我推荐<code>鲁大师</code>和<code>驱动精灵</code>。我常用的是<code>鲁大师</code>，没什么，就是用习惯了。<code>驱动精灵</code>用过一段时间，但是弹窗相对厉害，就停止了。</p><h2 id="其他软件"><a href="#其他软件" class="headerlink" title="其他软件"></a>其他软件</h2><h3 id="1-浏览器"><a href="#1-浏览器" class="headerlink" title="1. 浏览器"></a>1. 浏览器</h3><p>推荐用谷歌的<code>chrome</code>，除了快，还能使用一些插件。其他浏览器像<code>firefox</code>、<code>opera</code>、<code>Edge</code>等，我都推荐，但是<code>chrome</code>真的公认的优秀。很多前后端（网页）做得比较垃圾（我不是指谁，就是说我学校的教务系统），需要用到<code>360</code>、<code>UC</code>一类浏览器，但我还是建议，长期使用<code>chrome</code>比较好。<code>360</code>等浏览器可以留在你的硬盘，但一定要屏蔽掉所有副作用，比如<strong>篡改你的主页</strong>（最恶心，没有之一）。</p><h3 id="2-没想到，嘿嘿"><a href="#2-没想到，嘿嘿" class="headerlink" title="2. 没想到，嘿嘿"></a>2. 没想到，嘿嘿</h3><h2 id="习惯养成"><a href="#习惯养成" class="headerlink" title="习惯养成"></a>习惯养成</h2><h3 id="1-开机不启动"><a href="#1-开机不启动" class="headerlink" title="1. 开机不启动"></a>1. 开机不启动</h3><p>很多软件，比如<code>鲁大师</code>，会设置开机启动。但我明明有了<code>火绒</code>这个真爱了，为甚么还要你这个二奶呢？不用的程序请禁用掉，否则从开机开始一直占用你的资源。否则，不要问为什么会卡。</p><h3 id="2-下载的软件不要放在C盘"><a href="#2-下载的软件不要放在C盘" class="headerlink" title="2. 下载的软件不要放在C盘"></a>2. 下载的软件不要放在C盘</h3><p>C盘是系统盘，应该保持它只放系统文件就可以了。如果有病毒感染，第一时间受灾的必定是系统盘，更不用说挽救你桌面的毕业论文了。</p><h3 id="3-删除捆绑软件"><a href="#3-删除捆绑软件" class="headerlink" title="3. 删除捆绑软件"></a>3. 删除捆绑软件</h3><p><code>360</code>等总是捆绑一些软件污染我们的电脑，记得在控制面板清理干净。</p><h3 id="4-定期杀毒和清理垃圾"><a href="#4-定期杀毒和清理垃圾" class="headerlink" title="4. 定期杀毒和清理垃圾"></a>4. 定期杀毒和清理垃圾</h3><p>不用多说了，大家都懂。</p><h3 id="5-实在不行，那就重装"><a href="#5-实在不行，那就重装" class="headerlink" title="5. 实在不行，那就重装"></a>5. 实在不行，那就重装</h3><p>我给许多人装过系统，但是部分反映他们的电脑很快就很卡。这就很奇怪了，我明明给你们装的是同一个ghost安装包，我自己重装也是用这个安装包。计算机很少会出现系统不兼容的问题，因为…系统不兼容硬件诶，那可是大事情啊，老是吃软饭的微软居然会做出不靠谱的系统？我对于“系统不兼容硬件”这种观点保持怀疑的态度，更何况已经更新了许多个版本了。但不管怎么说，人生苦短，实在不行，我选择重装。<a href="/2019/02/16/win10专业版安装/">重装教程</a></p><blockquote><p>保持计算机整洁是个好习惯。多折腾、多去折磨那些陷害我们的捆绑软件，是对强迫他们提升服务体验的间接途径，是一个优秀消费者的维权意识体验，是让自己后院（你的PC）长期绿树开花的优秀习惯。最后，祝每位看到最后的读者，能为自己的上司带来美好的清晨。</p></blockquote><p><em>end</em></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;想象一下，你的上司，或者你的男女朋友，不经意看见你的电脑桌面有十几二十个图标，会有什么反应？你把你的房间收拾得很好，但总不能让你的电脑留下”Nasty”的骂名对吧？根据我的个人经验，总结了计算机管理中比较好的“习惯”。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="计算机管理" scheme="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>removable disk病毒删除</title>
+    <link href="/2019/03/02/removable-disk%E7%97%85%E6%AF%92%E5%88%A0%E9%99%A4/"/>
+    <id>/2019/03/02/removable-disk病毒删除/</id>
+    <published>2019-03-01T16:55:22.000Z</published>
+    <updated>2019-03-01T17:11:28.049Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>前阵子在红外实验室的电脑发现了一个病毒，名为removable disk。当你将U盘插入到感染病毒的电脑中，你U盘里面的东西会“消失”。<br><a id="more"></a></p></blockquote><p>要处理这个病毒，可以选择以下方法（亲测）。</p><ol><li>将U盘在别的电脑清空，保留一个<strong>杀毒软件安装包</strong>（杀毒软件我推荐<strong>火绒</strong>）</li><li>将U盘插入到受病毒感染的电脑上，这时候可以发现东西都不见了</li><li>操作：<strong>我的电脑</strong>-&gt;<strong>查看</strong>-&gt;<strong>隐藏的项目</strong>，可以在U盘看到存在一个<strong>无名</strong>隐藏文件夹</li><li>点击这个<strong>无名</strong>隐藏的文件夹，可以看到你U盘里面的东西都转移到这里了</li><li>将文件夹里面的东西（杀毒软件安装包）复制到U盘的主目录，然后打开杀毒软件安装包，安装杀毒软件</li><li>进入<strong>杀毒软件</strong>进行全盘杀毒（像火绒这类杀完毒都会报警），这时候重启发现U盘的东西还在（成功了）</li><li>为了避免已经中毒的U盘再次感染电脑，请<strong>保留杀毒软件</strong></li></ol><p>完成</p>]]></content>
+    
+    <summary type="html">
+    
+      no
+    
+    </summary>
+    
+    
+      <category term="病毒" scheme="/tags/%E7%97%85%E6%AF%92/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>win10专业版安装</title>
+    <link href="/2019/02/16/win10%E4%B8%93%E4%B8%9A%E7%89%88%E5%AE%89%E8%A3%85/"/>
+    <id>/2019/02/16/win10专业版安装/</id>
+    <published>2019-02-16T13:30:34.000Z</published>
+    <updated>2019-03-01T16:53:58.315Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>win10专业版，半年激活一下，安装流程记录。<br><a id="more"></a></p></blockquote><h2 id="1-重装准备"><a href="#1-重装准备" class="headerlink" title="1. 重装准备"></a>1. 重装准备</h2><ol><li>一个8G以上的<strong>U盘</strong>，最好将里面的东西清理干净</li><li>在PC上安装<a href="http://www.winbaicai.com/" target="_blank" rel="noopener">大白菜U盘启动盘制作工具</a></li><li>启动大白菜工具，进入操作界面（如图）<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/52900648-53133780-3233-11e9-8f1d-69b181a59249.png" alt="大白菜界面" title>                </div>                <div class="image-caption">大白菜界面</div>            </figure></li><li>选择要刻录的U盘，再点击<strong>一键制作成USB启动盘</strong></li><li>可以选择性点击<strong>模拟启动</strong>，观看PE操作界面</li><li>准备一个<em>win10专业纯净版ghost</em>，后缀为iso，复制到U盘里面（PE和iso文件是独立的）</li></ol><h2 id="2-重装开始"><a href="#2-重装开始" class="headerlink" title="2. 重装开始"></a>2. 重装开始</h2><ol><li>重启电脑，一般来说，不需要设置BIOS的启动顺序，直接就能进入PE选择界面（如图）<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/52900742-adf95e80-3234-11e9-847d-c223673111fb.png" alt="大白菜选择界面" title>                </div>                <div class="image-caption">大白菜选择界面</div>            </figure></li><li>选择<strong>启动Win10 X64 PE（2G以上启动）</strong>，进入PE<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/52900767-16e0d680-3235-11e9-9f32-bccf0742939c.png" alt="PE" title>                </div>                <div class="image-caption">PE</div>            </figure></li><li>之后操作，按照<a href="http://www.winbaicai.com/video_460.html" target="_blank" rel="noopener">官方操作指南</a>即可</li><li>另外，选择ghost的时候，建议选择<strong>Win10专业纯净版</strong>，因为个人自己下载的ghost并没有被识别。</li></ol><h2 id="3-重装问题"><a href="#3-重装问题" class="headerlink" title="3. 重装问题"></a>3. 重装问题</h2><h3 id="垃圾捆绑软件"><a href="#垃圾捆绑软件" class="headerlink" title="垃圾捆绑软件"></a>垃圾捆绑软件</h3><p>大白菜这个ghost，表面是写着纯净版，实际上捆绑了五六个如360等流氓软件，通用方法：<strong>进入控制面板逐一删除</strong>。</p><h3 id="数字间隔问题"><a href="#数字间隔问题" class="headerlink" title="数字间隔问题"></a>数字间隔问题</h3><p>通过默认输入法打汉字，字距没有问题，但英文、数字等都有很大间隔，看起来很不和谐，这是圆角半角的问题，建议方法：参照<strong><a href="https://jingyan.baidu.com/article/1e5468f948b3a6484861b75e.html" target="_blank" rel="noopener">这里</a></strong></p><h3 id="fn关闭问题"><a href="#fn关闭问题" class="headerlink" title="fn关闭问题"></a>fn关闭问题</h3><p>笔记本特有问题。输入一些字符的时候（比如<code>0</code>）会输出<code>0</code>键上面另外的符号（如<code>)</code>），如果按着<code>fn</code>键再按<code>0</code>，这才输出<code>0</code>。这个是fn键默认开启的原因，建议方法：<strong>同时按下<code>Fn</code>+<code>Num lock</code></strong>关闭<code>fn键</code></p><h3 id="不能连接校园网"><a href="#不能连接校园网" class="headerlink" title="不能连接校园网"></a>不能连接校园网</h3><p>这个是输入法问题，解决以上两个问题即可解决。</p><h3 id="win10激活问题"><a href="#win10激活问题" class="headerlink" title="win10激活问题"></a>win10激活问题</h3><p>普通家庭版Win10是可以免费的，但是由于安装的是专业版，功能更为强大，目前没有完美的破解方案，所以只能通过“薛定谔的激活”来维持。建议方法：保存并使用自带<strong>KMSAuto</strong>工具</p><h3 id="旧系统清除问题"><a href="#旧系统清除问题" class="headerlink" title="旧系统清除问题"></a>旧系统清除问题</h3><p>安装了新系统之后，旧系统残留在其他地方，这使得用户每次开机都得选择启动盘，这非常麻烦，最好是将旧系统盘格式化，但是用新系统格式化旧系统盘会提示<strong>权限不够</strong>。建议方法：进入PE，点击<strong>分区工具</strong>，格式化旧系统盘</p><h3 id="删除引导"><a href="#删除引导" class="headerlink" title="删除引导"></a>删除引导</h3><p>即使格式化旧系统盘，旧引导可能残留。建议方法：进入PE，点击<strong>引导修复</strong>，处理掉旧印度</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;win10专业版，半年激活一下，安装流程记录。&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="装机" scheme="/tags/%E8%A3%85%E6%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>英语重音和升降调规则总结</title>
+    <link href="/2018/05/27/%E8%8B%B1%E8%AF%AD%E9%87%8D%E9%9F%B3%E5%92%8C%E5%8D%87%E9%99%8D%E8%B0%83%E8%A7%84%E5%88%99%E6%80%BB%E7%BB%93/"/>
+    <id>/2018/05/27/英语重音和升降调规则总结/</id>
+    <published>2018-05-27T09:02:47.000Z</published>
+    <updated>2018-05-27T14:27:55.323Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>看过《RWBY》后非常陶醉于其中的美式幽默和快速流利的oral English，虽然这学期有语音语调的课程，但并没有认真学。以至于我现在找了许多资料，总结一下英语重音和升降调规则。<br><a id="more"></a></p></blockquote><blockquote><p>学英语很多年了，但是老师从来就没有教过你如何正确发音……另一方面，我们缺乏与外国人直接交流的经验。下面总结英语口语的关键点</p></blockquote><p><em>（长期更新）</em></p><h1 id="弱读和重读"><a href="#弱读和重读" class="headerlink" title="弱读和重读"></a>弱读和重读</h1><p>一般来说，实意词（名词、动词、形容词、副词等）需要重读，虚词（it、the等）需要弱读。一个单词被重读，是不需要重读所有的音节的，我们仅仅需要处理这个单词的<strong>词重音</strong>就可以了。</p><p>对于双音节词语来说，如果重音在前，读起来像拼音的一声; 如果重音在后，读起来就想拼音的四声。</p><h2 id="重音规则"><a href="#重音规则" class="headerlink" title="重音规则"></a>重音规则</h2><h3 id="1-名词-一般都重读"><a href="#1-名词-一般都重读" class="headerlink" title="1. 名词 一般都重读"></a>1. 名词 一般都重读</h3><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">There <span class="keyword">is</span> a <span class="symbol">'book</span> <span class="keyword">on</span> the <span class="symbol">'desk</span>.</span><br></pre></td></tr></table></figure><h3 id="2-形容词-一般都应重读"><a href="#2-形容词-一般都应重读" class="headerlink" title="2. 形容词 一般都应重读"></a>2. 形容词 一般都应重读</h3><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The <span class="symbol">'sky</span> <span class="keyword">is</span> <span class="symbol">'blue.</span></span><br></pre></td></tr></table></figure><h3 id="3-数词-一般都应重读"><a href="#3-数词-一般都应重读" class="headerlink" title="3. 数词 一般都应重读"></a>3. 数词 一般都应重读</h3><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">His <span class="symbol">'first</span> daughter <span class="keyword">is</span> fif<span class="symbol">'teen.</span></span><br></pre></td></tr></table></figure><h3 id="4-动词-主要动词，或称实意动词、行为动词-都要重读"><a href="#4-动词-主要动词，或称实意动词、行为动词-都要重读" class="headerlink" title="4. 动词 主要动词，或称实意动词、行为动词 都要重读"></a>4. 动词 主要动词，或称实意动词、行为动词 都要重读</h3><figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">He <span class="symbol">'takes</span> a <span class="symbol">'walk</span> <span class="keyword">after</span> <span class="symbol">'supper</span> <span class="symbol">'every</span> <span class="symbol">'day</span>.</span><br></pre></td></tr></table></figure><h3 id="5-副词，大部分副词需要重读"><a href="#5-副词，大部分副词需要重读" class="headerlink" title="5. 副词，大部分副词需要重读"></a>5. 副词，大部分副词需要重读</h3><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">They can speak English <span class="symbol">'fluently.</span></span><br></pre></td></tr></table></figure><h3 id="6-代词"><a href="#6-代词" class="headerlink" title="6. 代词"></a>6. 代词</h3><p>常重读的代词有：</p><ol><li>指示代词<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">'This</span> <span class="keyword">is</span> <span class="symbol">'not</span> what I <span class="symbol">'mean.</span></span><br></pre></td></tr></table></figure></li></ol><p>但如指示代词前后都有重音时，该指示代词失去重音。<br><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">'How</span> <span class="keyword">do</span> you <span class="symbol">'like</span> those <span class="symbol">'little</span> ones?</span><br></pre></td></tr></table></figure></p><ol start="2"><li><p>反身代词</p><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">He him<span class="comment">'self cooked the dinner.</span></span><br></pre></td></tr></table></figure></li><li><p>不定代词</p><figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">We are <span class="comment">'many, they are 'few.</span></span><br></pre></td></tr></table></figure></li><li><p>疑问代词</p><figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'What can I '</span><span class="keyword">do</span> <span class="keyword">for</span> you?</span><br></pre></td></tr></table></figure></li></ol><p>更详细看<a href="https://wenku.baidu.com/view/cf8cc9e8f524ccbff12184e6.html" target="_blank" rel="noopener">这里</a></p><h1 id="Stress-Time"><a href="#Stress-Time" class="headerlink" title="Stress Time"></a>Stress Time</h1><p><strong>汉语是音节计时型语言</strong>，一句话的长短往往取决于一句话中音节数目的多少。</p><p><strong>英语是重音计时型语言</strong>，一句话的长短往往取决于一句话中重音数目的多少。</p><p>比如，<br><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">好！太好了！ <span class="comment">// 四个stress Time，四个时间单位</span></span><br><span class="line"><span class="type">Good!</span> <span class="type">Wonderful!</span> <span class="comment">// 重音落在good和won，两个时间单位</span></span><br></pre></td></tr></table></figure></p><h1 id="停顿"><a href="#停顿" class="headerlink" title="停顿"></a>停顿</h1><p>为什么我们会跟读英语的时候感觉跟不上气了？</p><p>我们在讲英文的时候其实和讲中文一样，在说的时候是不会在意哪里需要停顿，但是我们中文说得很好，英文就有困难了。这就需要大量练习去适应英语口语的停顿规则。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;看过《RWBY》后非常陶醉于其中的美式幽默和快速流利的oral English，虽然这学期有语音语调的课程，但并没有认真学。以至于我现在找了许多资料，总结一下英语重音和升降调规则。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="英语学习" scheme="/categories/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="英语" scheme="/tags/%E8%8B%B1%E8%AF%AD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言之按位运算符</title>
+    <link href="/2018/04/20/C%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%8C%89%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
+    <id>/2018/04/20/C语言之按位运算符/</id>
+    <published>2018-04-20T12:53:52.000Z</published>
+    <updated>2018-04-20T14:31:11.255Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>实话说，写了一年多的代码了，从来没有想过要对数据进行按位运算。接触之后发现这跟《数据逻辑》的部分知识结构相吻合，比如与门、或门、非门等。相信学计算机的大家们早已烂透在心底了。我这里做一个记录，方便以后写C的时候查询。<br><a id="more"></a></p></blockquote><p>在C语言中，可以单独操控变量中的位。</p><p>处理一个值中的位的两个C工具：<strong>位运算符</strong>和<strong>位字段</strong></p><h1 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h1><h2 id="按位逻辑运算符"><a href="#按位逻辑运算符" class="headerlink" title="按位逻辑运算符"></a>按位逻辑运算符</h2><h3 id="二进制反码或按位取反："><a href="#二进制反码或按位取反：" class="headerlink" title="二进制反码或按位取反：~"></a>二进制反码或按位取反：~</h3><p>一元运算符~把1变为0，把0变为1。例子如下：<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~(<span class="number">10011010</span>) <span class="comment">// 表达式</span></span><br><span class="line">(<span class="number">01100101</span>)  <span class="comment">// 结果值</span></span><br><span class="line"></span><br><span class="line">val = ~val;</span><br></pre></td></tr></table></figure></p><h3 id="按位与：-amp"><a href="#按位与：-amp" class="headerlink" title="按位与：&amp;"></a>按位与：&amp;</h3><p>二元运算符&amp;通过逐位比较两个运算对象，生成一个新值。对于每个位，只有两个运算对象中相应的位都为1时，结果才为1。例子如下：<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10010011</span>)&amp;(<span class="number">00111101</span>) <span class="comment">// 表达式</span></span><br><span class="line">(<span class="number">00010001</span>)  <span class="comment">// 结果值</span></span><br><span class="line"></span><br><span class="line">val &amp;= <span class="number">0377</span>;</span><br><span class="line">val = val &amp; <span class="number">0377</span>;</span><br></pre></td></tr></table></figure></p><h3 id="按位或："><a href="#按位或：" class="headerlink" title="按位或：|"></a>按位或：|</h3><p>二元运算符，通过逐位比较两个运算对象，生成一个新值。对于每个位，如果两个运算对象中相应的位为1，结果就为1.<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10010011</span>)|(<span class="number">00111101</span>) <span class="comment">// 表达式</span></span><br><span class="line">(<span class="number">10111111</span>)  <span class="comment">// 结果值</span></span><br><span class="line"></span><br><span class="line">val |= <span class="number">0377</span>;</span><br><span class="line">val = val | <span class="number">0377</span>;</span><br></pre></td></tr></table></figure></p><h3 id="按位异或："><a href="#按位异或：" class="headerlink" title="按位异或：^"></a>按位异或：^</h3><p>二位运算符……逐位比较两个运算对象。对于每个位，如果两个运算对象中相应的位一个为1（但不是两个为1），结果为1。<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10010011</span>)^(<span class="number">00111101</span>) <span class="comment">// 表达式</span></span><br><span class="line">(<span class="number">10101110</span>)  <span class="comment">// 结果值</span></span><br><span class="line"></span><br><span class="line">val ^= <span class="number">0377</span>;</span><br><span class="line">val = val ^ <span class="number">0377</span>;</span><br></pre></td></tr></table></figure></p><h2 id="移位运算符"><a href="#移位运算符" class="headerlink" title="移位运算符"></a>移位运算符</h2><p>下面介绍C的移位运算符。移位运算符向左或右移动位。</p><h3 id="左移：-lt-lt"><a href="#左移：-lt-lt" class="headerlink" title="左移：&lt;&lt;"></a>左移：&lt;&lt;</h3><p>左侧运算对象移出左末端位的值丢失，用0填充空出的位置。<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10001010</span>)  &lt;&lt; <span class="number">2</span>  <span class="comment">// 表达式</span></span><br><span class="line">(<span class="number">00101000</span>)        <span class="comment">// 结果值</span></span><br></pre></td></tr></table></figure></p><h3 id="右移：-gt-gt"><a href="#右移：-gt-gt" class="headerlink" title="右移：&gt;&gt;"></a>右移：&gt;&gt;</h3><p>对于无符号类型，用0填充空出的位置。<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10001010</span>) &gt;&gt; <span class="number">2</span>   <span class="comment">// 表达式，无符号值</span></span><br><span class="line">(<span class="number">00100010</span>)        <span class="comment">// 所有系统都得到该结果值</span></span><br></pre></td></tr></table></figure></p><p>对于有符号类型，其结果取决于机器。<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10001010</span>) &gt;&gt; <span class="number">2</span>   <span class="comment">// 表达式，有符号值</span></span><br><span class="line">(<span class="number">00100010</span>)        <span class="comment">// 在某些系统中的结果值</span></span><br><span class="line">(<span class="number">10001010</span>) &gt;&gt; <span class="number">2</span>   <span class="comment">// 表达式，有符号值</span></span><br><span class="line">(<span class="number">11100010</span>)        <span class="comment">// 在另一些系统上的结果值</span></span><br></pre></td></tr></table></figure></p><h1 id="位字段"><a href="#位字段" class="headerlink" title="位字段"></a>位字段</h1><p>操控位的第二种方法是<strong>位字段</strong>。</p><p>下面的声明建立一个4个1位的字段：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> autfd : <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> bldfc : <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> undln : <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> itals : <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>这时候就能通过下列语句赋值：<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">prnt.itals</span> = <span class="number">0</span><span class="comment">;</span></span><br><span class="line"><span class="attr">prnt.undln</span> = <span class="number">1</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p><p>注意需要赋的值不能超过位数所能表示的最大数值，不然会占用下一个unsigned int类型的存储位置。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;实话说，写了一年多的代码了，从来没有想过要对数据进行按位运算。接触之后发现这跟《数据逻辑》的部分知识结构相吻合，比如与门、或门、非门等。相信学计算机的大家们早已烂透在心底了。我这里做一个记录，方便以后写C的时候查询。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="语言学习" scheme="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="C语言" scheme="/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言对const的一些理解</title>
+    <link href="/2018/04/14/C%E8%AF%AD%E8%A8%80%E5%AF%B9const%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/"/>
+    <id>/2018/04/14/C语言对const的一些理解/</id>
+    <published>2018-04-13T17:08:00.000Z</published>
+    <updated>2018-04-13T17:45:00.384Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>编写过ES6的我对const用得也不多，看了一些关于const的特殊用法之后，觉得我对const有了新的理解。<br><a id="more"></a></p></blockquote><p><em>windows 10</em></p><h1 id="初始化数据"><a href="#初始化数据" class="headerlink" title="初始化数据"></a>初始化数据</h1><p>我们来初始化一些数据：<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">double</span> rates[<span class="number">5</span>] = &#123;<span class="number">88.99</span>, <span class="number">100.12</span>, <span class="number">59.45</span>, <span class="number">183.11</span>, <span class="number">340.5</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="built_in">double</span> locked[<span class="number">4</span>] = &#123;<span class="number">0.08</span>, <span class="number">0.075</span>, <span class="number">0.0725</span>, <span class="number">0.07</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="built_in">double</span> *pc = rates;</span><br><span class="line"><span class="built_in">double</span> *pnc = rates;</span><br></pre></td></tr></table></figure></p><p>rates数组是可读可写的，locked只能读，第三、四句将rates的首地址赋值给pc、pnc指针(注意，此处使用了const，而pnc没有)。</p><h1 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h1><p><strong>第一次</strong><br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pc[0]</span> = <span class="number">0.0</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p><p>操作无效，这非常合理，因为使用了<code>const</code>。</p><p><strong>第二次</strong><br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">rates[5]</span> = <span class="number">0.0</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p><p>操作有效，证明了<code>数组rate的物理地址赋值给pc依然没有改变rates的性质</code>。这看来也非常合理。</p><p><strong>第三次</strong><br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pnc</span> = locked<span class="comment">;</span></span><br></pre></td></tr></table></figure></p><p>操作无效。可能你还没有发现究竟发生了什么事情？我一一罗列出来(为了方便，const表示使用了const的，no-const相反)：</p><ol><li>const空指针能被const数组赋值，也能被no-const数组赋值</li><li>no-const空指针不能被const数组赋值，但依然可以被no-const数组赋值</li><li>无论是const还是no-const空指针，被赋值后不会改变原来数组的可写性</li></ol><h1 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h1><p>const好比是一个标识符，它能表示某个变量是只读的。<strong>注意只是标识某个变量，不是物理地址</strong>。</p><p>所以<code>const double *pc = rates;</code>中，<code>pc</code>被标识为只读，故调用<code>pc</code>这指针变量的一切表达式都会视数组为只读，如<code>pc[0] = 0.0;</code>。</p><p>而<code>rates</code>没有使用<code>const</code>初始化，故调用<code>rates</code>这指针变量的一切表达式都会视数组为可读可写，如<code>rates[5] = 0.0;</code>。</p><p>但是no-const空指针不能被const数组赋值是什么操作呢？其实是编译器在保护const数组。如果随便将物理地址重新赋值给一个新的指针就能改变数组的可写性，那么初始化声明中const就被架空了。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;编写过ES6的我对const用得也不多，看了一些关于const的特殊用法之后，觉得我对const有了新的理解。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="语言学习" scheme="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="原创" scheme="/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+      <category term="C语言" scheme="/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言为什么不能解引用未初始化的指针——实践归纳</title>
+    <link href="/2018/04/14/C%E8%AF%AD%E8%A8%80%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E8%A7%A3%E5%BC%95%E7%94%A8%E6%9C%AA%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E6%8C%87%E9%92%88%E2%80%94%E2%80%94%E5%AE%9E%E8%B7%B5%E5%BD%92%E7%BA%B3/"/>
+    <id>/2018/04/14/C语言为什么不能解引用未初始化的指针——实践归纳/</id>
+    <published>2018-04-13T16:35:17.000Z</published>
+    <updated>2018-04-13T17:05:15.466Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>解引用是返回内存地址中保存的值。为什么不能直接返回未初始化的指针呢？在我第一次看书的时候，十分困惑，于是手动设计了一些代码测试了一下，在此作总结。<br><a id="more"></a></p></blockquote><p><em>windows 10</em></p><h1 id="问题在哪"><a href="#问题在哪" class="headerlink" title="问题在哪"></a>问题在哪</h1><p>为了阐述这篇文章的重要性。首先，编译后尝试运行下列程序：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> *ptr = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//*ptr = 0;</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, ptr);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>系统返回了<code>0</code>，证明程序是正常工作的。</p><p>于是我们稍微修改一下代码：<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="built_in">int</span> main(void)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> *<span class="built_in">ptr</span><span class="comment">;</span></span><br><span class="line">*<span class="built_in">ptr</span> = <span class="number">0</span><span class="comment">;</span></span><br><span class="line">printf(<span class="string">"%d"</span>, <span class="built_in">ptr</span>)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>编译后运行。嗯？<code>xxx.exe 已停止工作</code>！</p><p>对比前后代码，其实逻辑都是一样的。只是ptr处的值使用了<code>*ptr=0</code>来赋予。</p><h1 id="归纳解析"><a href="#归纳解析" class="headerlink" title="归纳解析"></a>归纳解析</h1><p>引用《C primer plus》的一段话：</p><blockquote><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">int</span> * pt; <span class="comment">// 未初始化指针</span></span><br><span class="line">&gt; *pt = <span class="number">5</span>;  <span class="comment">// 严重的错误</span></span><br></pre></td></tr></table></figure></blockquote><blockquote><p>为何不行？第2行的意思是把5储存在pt指向的位置。但是pt未被初始化，其值是一个随机值，所以不知道5将存储在何处。这可能不会出什么错，也可能会擦写数据或代码，或者导致程序崩溃。切记：创建一个指针时，系统只分配了存储指针本身的内存，并未肥胖存储数据的内存。因此，在使用指针之前，必须先用已分配的地址初始化它。</p></blockquote><p>刚声明<code>pt</code>指针的时候，指针并没有指向任何的地址。</p><p>但是对比我自己设计的两个小程序，我个人目前是这样认为的：<code>int *ptr = 0;</code>是初始化声明，由于是一条语句完成，编译器分析得出<code>0</code>为初始值，则为<code>ptr</code>指针分配数据存储的内存，并且将具体的物理地址返回给<code>ptr</code>。但是如果分两条语句去写<code>int *ptr;*ptr = 0;</code>，指针声明的时候，编译器分析得出此处没有初始值，则不分配数据内存。而遇到第二条语句的时候，编译器解读为<strong>将0赋值给ptr指针所指的数据地址</strong>仅此而已，它的具体操作是将数据覆盖，但是没有分配内存。这就解析了为何同一个变量被多次赋值，其物理地址都不发生变化。其根本原因是编译器只更换数据，没有申请内存空间。</p><p>那么，设计代码<code>*ptr = 0</code>中，0究竟赋值到什么地方去了？《C primer plus》表示母鸡噢。</p><h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>实际上内存的申请是有专用的函数<code>malloc()</code>，每次声明一个指针之前要想想要不要手动申请内存空间。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;解引用是返回内存地址中保存的值。为什么不能直接返回未初始化的指针呢？在我第一次看书的时候，十分困惑，于是手动设计了一些代码测试了一下，在此作总结。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="语言学习" scheme="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="C语言" scheme="/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言之函数原型声明——详解</title>
+    <link href="/2018/04/11/C%E8%AF%AD%E8%A8%80%E4%B9%8B%E5%87%BD%E6%95%B0%E5%8E%9F%E5%9E%8B%E5%A3%B0%E6%98%8E%E2%80%94%E2%80%94%E8%AF%A6%E8%A7%A3/"/>
+    <id>/2018/04/11/C语言之函数原型声明——详解/</id>
+    <published>2018-04-11T10:44:39.000Z</published>
+    <updated>2018-04-11T11:17:38.263Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>以前写javascript的时候解析器会有变量声明提前这一功能，但是C语言不会提前，相反我们编写的代码中需要函数原型声明。何谓函数原型声明呢？我在这篇文章中会详细讨论。总之，函数原型声明实现起来简单，但是非常重要。<br><a id="more"></a></p></blockquote><p>javascript的变量声明提前是指函数中的所有变量会在函数执行之前放在函数的参数链上，如果没写过js，可以理解为变量声明自动被放在函数的开头，这样之后的表达式访问自然就没有问题了。</p><p>但是C语言不会，它要求被调用的函数和变量需要在表达式之前，所以我们的代码中不能把函数和变量声明放在任意地方。于是就有<strong>函数原型声明</strong>一说。</p><p>无论写什么语言，相信我们都已经养成了先声明变量再调用变量的习惯。但是函数就不一定了。在写高级语言的时候，我们习惯把程序主体函数(main)放在前边，被调用的函数放在底部。这样能够给与工程很明确的结构。</p><p>既然C语言需要将被调用的函数放在调用函数前面，那么整体代码肯定是头重脚轻的。</p><p>我们来看看正确的做法：<em>摘录一个书本的例子《C Primer Plus》p127</em><br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// pound.c -- 定义一个带参数的函数</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pound</span><span class="params">(<span class="keyword">int</span> n)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> times = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">char</span> ch = <span class="string">'!'</span>;</span><br><span class="line"><span class="keyword">float</span> f = <span class="number">6.0f</span>;</span><br><span class="line"></span><br><span class="line">pound(times);</span><br><span class="line">pound(ch);</span><br><span class="line">pound(f);</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pound</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">while</span> (n-- &gt; <span class="number">0</span>)</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"#"</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>编译后运行，结果是<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#####</span><br><span class="line">#################################</span><br><span class="line">######</span><br></pre></td></tr></table></figure></p><p>在这里，函数原型声明是<code>void pound(int n);</code>，非常简单，对吧？仅仅一条简单的语句就能避免头重脚轻的状况。</p><p><strong>但是我们要注意格式！</strong></p><p>下面我们来讨论这条语句是怎么工作的：</p><p>在ANSI C之前，C使用的是<strong>函数声明</strong>，而不是函数原型。<strong>函数声明只声明了函数名和返回值</strong>，没有指明参数类型。为了向下兼容，C现在仍然允许这样的形式<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pound</span><span class="params">()</span></span>; <span class="comment">/* ANSI C之前的函数声明 */</span></span><br></pre></td></tr></table></figure></p><p>我们不妨用上面的语句试一试，会得出什么结果？<br><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#####</span><br><span class="line">#################################</span><br></pre></td></tr></table></figure></p><p>对比上面的输出结果，第三行的返回明显没有了，为什么呢？（md的空行打不出来，郁闷）</p><p><em>摘录自《C Primer Plus》p128</em></p><blockquote><p>第一次函数调用，pound(times)没有问题，因为times是int类型。第二次函数调用，pound(ch)也没问题，因为即使缺少函数原型，C也会把char和short类型自动升级为int类型。第三次函数调用,pound(f)会失败，因为缺少函数原型，float会被自动升级为double，这没什么用。虽然程序仍然能运行，但是输出的内容不正确。在函数调用中显式强制类型转换，可以修复这个问题：<br><code>pound((int)f); // 把f强制类型转换为正确的类型</code><br>注意，如果f的值太大，超过了int类型表示的范围，这样做也不行。</p></blockquote><p>如果实际参数和函数的形式参数类型不一致，编译器会自动将实际参数类型“升级”。“升级”是按照<code>int</code>、<code>float</code>、<code>double</code>等从左到右递增顺序，结合上面书本解析，得出的结论是<strong>函数原型声明中带有对形式参数类型的声明，能够在函数被调用之前显式改变实参类型，避免了隐式类型转换的混乱，以及输出结果的不正确</strong>。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;以前写javascript的时候解析器会有变量声明提前这一功能，但是C语言不会提前，相反我们编写的代码中需要函数原型声明。何谓函数原型声明呢？我在这篇文章中会详细讨论。总之，函数原型声明实现起来简单，但是非常重要。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="语言学习" scheme="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="C语言" scheme="/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言数据类型上溢下溢——实验</title>
+    <link href="/2018/04/10/C%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B8%8A%E6%BA%A2%E4%B8%8B%E6%BA%A2%E2%80%94%E2%80%94%E5%AE%9E%E9%AA%8C/"/>
+    <id>/2018/04/10/C语言数据类型上溢下溢——实验/</id>
+    <published>2018-04-10T12:04:00.000Z</published>
+    <updated>2018-04-10T12:32:04.321Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>通过试验（即编写带有此类问题的程序）观察系统如何处理整数上溢、浮点数上溢和浮点数下溢的情况。<br><a id="more"></a></p></blockquote><p><em>windows 10</em></p><p>编写程序：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> <span class="keyword">int</span> i=<span class="number">2147483647</span>;</span><br><span class="line"> <span class="keyword">float</span> a=<span class="number">3.4e38</span>*<span class="number">100.0f</span>;</span><br><span class="line"> <span class="keyword">float</span> b=<span class="number">-0.1234e-10</span>/<span class="number">10.0f</span>;</span><br><span class="line"></span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>,i,i+<span class="number">1</span>,i+<span class="number">2</span>);</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"%f\n"</span>,a);</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"%f\n"</span>,b);</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>得出结果：<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2147483647</span> <span class="number">-2147483648</span> <span class="number">-2147483647</span></span><br><span class="line"><span class="number">1.</span>#INF00</span><br><span class="line"><span class="number">-0.000000</span></span><br></pre></td></tr></table></figure></p><p>结果分析：</p><ol><li>从整数的三个结果来看，<code>2147483647</code>是32位int整数所能表示最大的正整数，在此之上加一，数值会在允许的数值范围内循环递增。</li><li>float浮点数的存储方式相对复杂，从结果上看a的运算已经超出编译器所能提供位数的范围，统一变成了<code>1.#INF00</code>，即无穷大。</li><li>浮点数的下溢，统一变成<code>-0.00000</code></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;通过试验（即编写带有此类问题的程序）观察系统如何处理整数上溢、浮点数上溢和浮点数下溢的情况。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="语言学习" scheme="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="C语言" scheme="/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言浮点数舍入错误</title>
+    <link href="/2018/04/10/C%E8%AF%AD%E8%A8%80%E6%B5%AE%E7%82%B9%E6%95%B0%E8%88%8D%E5%85%A5%E9%94%99%E8%AF%AF/"/>
+    <id>/2018/04/10/C语言浮点数舍入错误/</id>
+    <published>2018-04-10T10:42:58.000Z</published>
+    <updated>2018-04-10T10:59:32.654Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>浮点数舍入错误已经是个很经典的问题了，恰好在书上看到我认为合理的解释，适当记录一下。<br><a id="more"></a></p></blockquote><p><strong>浮点数舍入错误</strong></p><p><em>详细可查阅《C Primer Plus (第六版) 中文版》 p59 </em></p><p>给定一个数，加上那个1，再减去原来给定的数，结果是多少？你认为一定是1.但是，下面的浮点数给出了不同的答案。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* floaterr.c --演示舍入错误 */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">float</span> a,b;</span><br><span class="line"></span><br><span class="line">  b = <span class="number">2.0e20</span> + <span class="number">1.0</span>;</span><br><span class="line">  a = b - <span class="number">2.0e20</span>;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"%f \n"</span>, a);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>该程序输出如下：<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0.000000</span>          ←Linux系统下的老式gcc</span><br><span class="line"><span class="number">-13584010575872.000000</span>  ←Trubo C <span class="number">1.5</span></span><br><span class="line"><span class="number">4008175468544.000000</span>    ←XCode <span class="number">4.5</span>、Visual Studio <span class="number">2012</span>、当前版本的gcc</span><br></pre></td></tr></table></figure></p><p>得出这些奇怪答案的原因是，计算机缺少足够的小数位来完成正确的运算。2.0e20是2后面有20个0.如果把该数加1，那么发生变化的是第21位。要正确运算，程序至少要存储21位数字。而float类型的数字通常只能存储按指数比例缩小或放大6或7位有效数字。在这种情况下，计算结果一定是错误的。另一方面，如果把2.0e20改成2.0e4，计算结果就没问题。因为2.0e4加1只需改变第5位上的数字，float类型的精度足够进行这样的计算。</p><blockquote><p>小结：<br>舍入错误的根本原因可以归纳为是系统没有分配足够的空间来存储浮点数，以至于在存储过程中被逼舍掉一部分有效数值，计算结果自然是错误的。解决方案是为计算选用恰当的数据类型：一是要保证位数足够，二是在一的基础上尽可能节省内存。</p><p>(测试以上代码，如果你得出0.000000，那么你的编译器很可能是用32位表示一个浮点数。)</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;浮点数舍入错误已经是个很经典的问题了，恰好在书上看到我认为合理的解释，适当记录一下。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="语言学习" scheme="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="C语言" scheme="/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo -d提交出错解决方案</title>
+    <link href="/2018/04/10/hexo-d%E6%8F%90%E4%BA%A4%E5%87%BA%E9%94%99%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>/2018/04/10/hexo-d提交出错解决方案/</id>
+    <published>2018-04-10T07:16:59.000Z</published>
+    <updated>2018-04-10T07:23:36.467Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>hexo不用一段时间就会出各种各样新奇的问题，特别是时间紧张的这段时间出幺蛾子，真让我抓狂。记录一下。<br><a id="more"></a></p></blockquote><p>如往常一样，执行<code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code>，发现到了<code>hexo d</code>这一步出了错误。</p><p>先贴上报错代码：<br><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">fatal: HttpRequestException encountered.</span><br><span class="line">   ▒▒▒▒▒▒▒▒ʱ▒▒▒▒</span><br><span class="line">bash: /dev/tty: No such device or address</span><br><span class="line"><span class="keyword">error: </span>failed to execute prompt script (exit code 1)</span><br><span class="line">fatal: could not read Username for 'https://github.com': No error</span><br><span class="line">FATAL Something's wrong. Maybe you can find the solution here: http://hexo.io/do                                                                                                     cs/troubleshooting.html</span><br><span class="line"><span class="keyword">Error: </span>fatal: HttpRequestException encountered.</span><br><span class="line">   ��������ʱ����</span><br><span class="line">bash: /dev/tty: No such device or address</span><br><span class="line"><span class="keyword">error: </span>failed to execute prompt script (exit code 1)</span><br><span class="line">fatal: could not read Username for 'https://github.com': No error</span><br><span class="line"></span><br><span class="line">    at ChildProcess.&lt;anonymous&gt; (h:\blog\node_modules\_hexo-util@0.6.1@hexo-util                                                                                                     \lib\spawn.js:37:17)</span><br><span class="line">    at emitTwo (events.js:125:13)</span><br><span class="line">    at ChildProcess.emit (events.js:213:7)</span><br><span class="line">    at ChildProcess.cp.emit (h:\blog\node_modules\_cross-spawn@4.0.2@cross-spawn                                                                                                     \lib\enoent.js:40:29)</span><br><span class="line">    at maybeClose (internal/child_process.js:927:16)</span><br><span class="line">    at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)</span><br></pre></td></tr></table></figure></p><p>解决方案是：<em>修改配置文件：根目录下的_config.yml，修改deploy节点</em>。</p><p>原来的配置为<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line"></span><br><span class="line">   <span class="attribute">type</span>: git</span><br><span class="line"></span><br><span class="line">   <span class="attribute">repo</span>: <span class="attribute">https</span>:<span class="comment">//github.com/&#123;yourname&#125;/&#123;yourname&#125;.github.io.git</span></span><br><span class="line"></span><br><span class="line">   <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure></p><p>修改为如下：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">deploy</span>:</span><br><span class="line"></span><br><span class="line">   <span class="attribute">type</span>: git</span><br><span class="line"></span><br><span class="line">   <span class="attribute">repo</span>: <span class="attribute">https</span>:<span class="comment">//&#123;yourname&#125;:&#123;yourpassword&#125;@github.com/&#123;yourname&#125;/&#123;yourname&#125;.github.io.git</span></span><br><span class="line"></span><br><span class="line">   <span class="attribute">branch</span>: master</span><br></pre></td></tr></table></figure></p><p>完成！</p><p>传送门：</p><ol><li><a href="https://www.zhihu.com/question/38219432" target="_blank" rel="noopener">有关使用 Hexo 和 GitHub 搭建博客，出现 hexo -d 报错如何解决？</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;hexo不用一段时间就会出各种各样新奇的问题，特别是时间紧张的这段时间出幺蛾子，真让我抓狂。记录一下。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="博客建设" scheme="/categories/%E5%8D%9A%E5%AE%A2%E5%BB%BA%E8%AE%BE/"/>
+    
+    
+      <category term="hexo" scheme="/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言中%s和%c的区别</title>
+    <link href="/2018/04/10/C%E8%AF%AD%E8%A8%80%E4%B8%AD-s%E5%92%8C-c%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <id>/2018/04/10/C语言中-s和-c的区别/</id>
+    <published>2018-04-10T04:29:28.000Z</published>
+    <updated>2018-04-10T06:48:50.461Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>写习惯了Javascript，发现C语言下除了%s还有%c。一开始不了解%c的功能，在编写一些初级C程序会频繁报错。下面我记录一下关于%c的作用。<br><a id="more"></a></p></blockquote><h1 id="c"><a href="#c" class="headerlink" title="%c"></a>%c</h1><p>%c格式对应的是单个字符。</p><p>所以在输入多个字符的时候，它只会读取第一个字符，之后的字符是无法读入完成任务的，那么也就是说，只进行一次读取工作的C函数表达方式。</p><p>参考下列例子：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> c;</span><br><span class="line">  c = <span class="string">'c'</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"The character is %c"</span>, c);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h1 id="s"><a href="#s" class="headerlink" title="%s"></a>%s</h1><p>%S格式对应的是字符串。</p><p>S通常表示复数，也是多个的意思，那么在字符中表示字符串。</p><p>参考下列例子：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">  <span class="keyword">char</span> s[<span class="number">12</span>] = <span class="string">"string"</span>;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"The whole string is %s"</span>, s);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>传送门：</p><ol><li><a href="https://www.cnblogs.com/guanghe/p/6053404.html" target="_blank" rel="noopener">C语言字符串处理</a></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;写习惯了Javascript，发现C语言下除了%s还有%c。一开始不了解%c的功能，在编写一些初级C程序会频繁报错。下面我记录一下关于%c的作用。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="语言学习" scheme="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="C语言" scheme="/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>关于Linux日常运维</title>
+    <link href="/2018/02/02/%E5%85%B3%E4%BA%8ELinux%E6%97%A5%E5%B8%B8%E8%BF%90%E7%BB%B4/"/>
+    <id>/2018/02/02/关于Linux日常运维/</id>
+    <published>2018-02-02T12:40:51.000Z</published>
+    <updated>2018-04-10T03:45:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>对于Linux管理员来说，安装和配置好一个应用系统只是完成了万里长征的第一步，此后无休止地进行健康检测、性能优化、数据备份与恢复以及处理日常问题等才是噩梦的开始。<br><a id="more"></a></p></blockquote><p><em>摘录自《Linux操作系统基础教程（第二版）——王良明》 第十章》</em></p><h1 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h1><p>进程的状态有<strong>就绪、运行、暂停、不可中断等待、可中断等待和僵尸状态</strong>。</p><p>僵尸进程是杀不死的，消灭僵尸进程的两个方法是<strong>重启计算机</strong>或者<strong>杀死其父进程</strong>。</p><table><thead><tr><th style="text-align:left">序号</th><th style="text-align:left">命令</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left">Ps命令</td><td style="text-align:left">查看系统的进程（UID：进程ID号，PPID：父进程ID号，UID：启动该进程的用户ID，CMD：执行的程序，NI：优先级）</td></tr><tr><td style="text-align:left">2</td><td style="text-align:left">ps axjf</td><td style="text-align:left">显示进程树</td></tr><tr><td style="text-align:left">3</td><td style="text-align:left">ps -elf</td><td style="text-align:left">显示进程的优先级</td></tr><tr><td style="text-align:left">4</td><td style="text-align:left">top</td><td style="text-align:left">查看系统中的任务和资源消耗情况</td></tr><tr><td style="text-align:left">5</td><td style="text-align:left">pstree</td><td style="text-align:left">以树状结构显示进程</td></tr><tr><td style="text-align:left">6</td><td style="text-align:left">nice -n -15 ls -R /</td><td style="text-align:left">以优先级-15运行程序ls -R /</td></tr><tr><td style="text-align:left">7</td><td style="text-align:left">renice</td><td style="text-align:left">调整进程的优先级，普通用户只能调整为大于自己的进程的优先级</td></tr><tr><td style="text-align:left">8</td><td style="text-align:left">renice 5 12022</td><td style="text-align:left">把12022号进程的优先级调整为5</td></tr><tr><td style="text-align:left">9</td><td style="text-align:left">renice +4 -u daemon root</td><td style="text-align:left">把属于用户daemon和root的所有进程的优先级调整到4</td></tr><tr><td style="text-align:left">10</td><td style="text-align:left">renice -5 -g class1</td><td style="text-align:left">把属于组class1的所有进程的优先值调低5级，等于提高了5个优先级</td></tr><tr><td style="text-align:left">11</td><td style="text-align:left">renice -1 987 -u zsan -p 32</td><td style="text-align:left">把987和32号进程以及属于用户zsan的全部进程的优先级调到1</td></tr><tr><td style="text-align:left">12</td><td style="text-align:left">kill -&lt;信号&gt; &lt;目标&gt;</td><td style="text-align:left">给进程发送信号，当&lt;目标&gt;大于0时表示具体的进程号，等于0时表示与当前进程同组的所有进程，等于-1时表示所有大于1的进程，-n时表示属于组号n的全部进程（n&gt;1）。普通用户发送的信号有限制</td></tr><tr><td style="text-align:left">13</td><td style="text-align:left">kill -l</td><td style="text-align:left">列出全部的有效信号</td></tr><tr><td style="text-align:left">14</td><td style="text-align:left">kill -9 1235</td><td style="text-align:left">向1235号进程发KILL信号，强行杀死它</td></tr><tr><td style="text-align:left">15</td><td style="text-align:left">kill -HUP 0</td><td style="text-align:left">向与当前进程同组的所有进程发送挂起信号</td></tr><tr><td style="text-align:left">16</td><td style="text-align:left">kill -3 -1000</td><td style="text-align:left">向属于组1000的全部进程发送信号3</td></tr></tbody></table><h1 id="系统资源管理"><a href="#系统资源管理" class="headerlink" title="系统资源管理"></a>系统资源管理</h1><p>计算机系统的四大资源包括<strong>CPU资源、内存资源、文件系统资源和I/O设备资源</strong>。</p><p>编写过程序的人应该很清楚——<strong>内存资源的消耗量和程序代码的实行速度往往成正比</strong>，即为了节约资源，往往以牺牲代码执行速度为代价。</p><h2 id="查看CPU使用情况"><a href="#查看CPU使用情况" class="headerlink" title="查看CPU使用情况"></a>查看CPU使用情况</h2><table><thead><tr><th style="text-align:left">序号</th><th style="text-align:left">命令</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left">uptime</td><td style="text-align:left">查看CPU运行的时间和平均负荷</td></tr><tr><td style="text-align:left">2</td><td style="text-align:left">more /proc/cpuinfo</td><td style="text-align:left">查看CPU的参数指标</td></tr><tr><td style="text-align:left">3</td><td style="text-align:left">sar -u ALL 10 5</td><td style="text-align:left">以10s为周期，连续统计5次所有CPU的使用情况</td></tr><tr><td style="text-align:left">4</td><td style="text-align:left">top</td><td style="text-align:left">查看系统中的任务和资源消耗情况（详细看后面说明）</td></tr></tbody></table><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="http://ohkgqh4gv.bkt.clouddn.com/%E6%B7%B1%E5%BA%A6%E6%88%AA%E5%9B%BE_deepin-terminal_20180202212900.png" alt="命令top的显示结果" title>                </div>                <div class="image-caption">命令top的显示结果</div>            </figure><p>top命令实时显示各种资源的使用情况，按Q键可以退出。该图显示了7个方面的信息，从上往下依次如下：</p><ol><li>当前时间和系统运行时间，图上显示已经运行了1小时34分钟。</li><li><code>Loader average:0.72,1.00,1.09</code>，表示的前5、10、15min就绪队列的平均长度。</li><li>有219个进程，1个运行，165个在睡眠，停止进程数为0，僵尸进程数为0</li><li>CPU使用情况：普通用户进程消耗14.8% us，内核模式消耗3.3%，低优先级用户进程消耗0.0%，CPU空闲率为81.9%。</li><li>内存（Mem）使用情况：总内存大小为8092724KB，已经使用了2170384KB，剩余3567188KB，2355152KB用于硬盘的物理缓冲（Buffer）和硬盘的文件系统缓冲（Cache）。</li><li>交换区（Swap）使用情况：交换区总大小4194300KB，目前全是空闲的。</li><li>显示所有进程，默认是按CPU使用率由大到小排序。PR——Priority（优先级）、NI——Nice、VIRT——虚拟内存大小、RES——物理内存大小、SHR——共享内存大小、S——进程状态。</li></ol><h2 id="查看虚拟内存使用情况"><a href="#查看虚拟内存使用情况" class="headerlink" title="查看虚拟内存使用情况"></a>查看虚拟内存使用情况</h2><table><thead><tr><th style="text-align:left">序号</th><th style="text-align:left">命令</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left">free</td><td style="text-align:left">查询内存使用的简要信息</td></tr><tr><td style="text-align:left">2</td><td style="text-align:left">more /proc/meminfo</td><td style="text-align:left">查看内存的参数指标</td></tr><tr><td style="text-align:left">3</td><td style="text-align:left">vmstat 20 8</td><td style="text-align:left">以20s为周期，连续统计8次内存的动态使用情况</td></tr><tr><td style="text-align:left">4</td><td style="text-align:left">sar -rR 30 60</td><td style="text-align:left">以30s为周期，连续统计60次内存使用情况</td></tr></tbody></table><h2 id="查看分区的使用情况"><a href="#查看分区的使用情况" class="headerlink" title="查看分区的使用情况"></a>查看分区的使用情况</h2><table><thead><tr><th style="text-align:left">序号</th><th style="text-align:left">命令</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left">fdisk -l</td><td style="text-align:left">查看计算机中所有硬盘和USB盘的分区</td></tr><tr><td style="text-align:left">2</td><td style="text-align:left">df -T</td><td style="text-align:left">查看已经挂载分区的使用情况</td></tr><tr><td style="text-align:left">3</td><td style="text-align:left">du -sh/etc</td><td style="text-align:left">统计“/etc”占用磁盘的大小</td></tr><tr><td style="text-align:left">4</td><td style="text-align:left">iostat -d -x sda1 60 10</td><td style="text-align:left">以60s为周期，连续统计10次分区“/dev/sda1”的使用情况</td></tr><tr><td style="text-align:left">5</td><td style="text-align:left">iostat -p sda 30 6</td><td style="text-align:left">以30s为周期，连续统计6次硬盘sda上所有分区的使用情况</td></tr><tr><td style="text-align:left">6</td><td style="text-align:left">sar -rR 30 60</td><td style="text-align:left">以30s为周期，连续统计60次内存使用情况</td></tr></tbody></table><h2 id="查看网络使用情况"><a href="#查看网络使用情况" class="headerlink" title="查看网络使用情况"></a>查看网络使用情况</h2><table><thead><tr><th style="text-align:left">序号</th><th style="text-align:left">命令</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left">ping 192.168.10.100</td><td style="text-align:left">检查与计算机192.168.10.100之间的网络是否畅通</td></tr><tr><td style="text-align:left">2</td><td style="text-align:left">traceroute <a href="http://www.veryopen.org" target="_blank" rel="noopener">www.veryopen.org</a></td><td style="text-align:left">跟踪到达<a href="http://www.veryopen.org的网络路径" target="_blank" rel="noopener">www.veryopen.org的网络路径</a></td></tr><tr><td style="text-align:left">3</td><td style="text-align:left">route</td><td style="text-align:left">显示本机路由表</td></tr><tr><td style="text-align:left">4</td><td style="text-align:left">ifconfig</td><td style="text-align:left">显示本机所有网卡的配置参数</td></tr><tr><td style="text-align:left">5</td><td style="text-align:left">ethtool eth0</td><td style="text-align:left">查看eth0网卡设置</td></tr><tr><td style="text-align:left">6</td><td style="text-align:left">netstat -tlnp</td><td style="text-align:left">查看被监听的TCP端口</td></tr><tr><td style="text-align:left">7</td><td style="text-align:left">netstat -unlp</td><td style="text-align:left">查看被监听的UDP端口</td></tr><tr><td style="text-align:left">8</td><td style="text-align:left">sar -n DEV 30 100</td><td style="text-align:left">统计全部网卡的流量（以30s为周期统计100次）</td></tr><tr><td style="text-align:left">9</td><td style="text-align:left">sar -n EDEV 50 70</td><td style="text-align:left">统计全部网卡的出错流量（以50s为周期统计70次）</td></tr></tbody></table><h1 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h1><p>Linux系统中，定时任务分为两类，第一类是<strong>周期性任务（执行多次）</strong>，另一类是<strong>一次性任务（执行一次）</strong>。</p><h2 id="周期性定时任务"><a href="#周期性定时任务" class="headerlink" title="周期性定时任务"></a>周期性定时任务</h2><p>采用命令<code>crontab -e</code>进入编辑定时任务界面，每一行代表一个定时任务。格式是：</p><p><code>分钟 小时 日期 月份 星期 调度的作业（命令）</code></p><table><thead><tr><th style="text-align:left">序号</th><th style="text-align:left">定时任务</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left">10 4 <em> </em> * /bin/databasebackup.bash</td><td style="text-align:left">每一天的4:10执行/bin/databasebackup.bash</td></tr><tr><td style="text-align:left">2</td><td style="text-align:left">0 4 <em>/2 </em> * /usr/sbin/slapcat</td><td style="text-align:left">每隔一天的4点钟执行命令</td></tr><tr><td style="text-align:left">3</td><td style="text-align:left">0 22 * 5,8,11 1-5 wall “It’s 10pm”</td><td style="text-align:left">5月、8月和11月的工作日晚上10点向所有的登录用户发消息</td></tr><tr><td style="text-align:left">4</td><td style="text-align:left">5 4 <em> </em> tue /bin/echo “Sunday”</td><td style="text-align:left">每个周二的4:05执行命令</td></tr><tr><td style="text-align:left">5</td><td style="text-align:left">0 23,1-7/2,8 <em> </em> * /usr/sbin/ntpdate</td><td style="text-align:left">每天晚上11点到第二天早上7点之间每隔两小时以及早上8点执行时间同步命令</td></tr></tbody></table><h2 id="一次性定时任务"><a href="#一次性定时任务" class="headerlink" title="一次性定时任务"></a>一次性定时任务</h2><p>采用命令<code>at</code>和<code>batch</code>可以安排一次性任务，<code>at</code>是定时任务，<code>batch</code>是条件任务，即满足某种条件（例如平均负荷很低）时执行命令。一次性任务中的命令一执行完毕（不管成功与否），对应的任务就自动消失。</p><table><thead><tr><th style="text-align:left">序号</th><th style="text-align:left">定时任务</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left">at [-f file] time</td><td style="text-align:left">在time时点执行file文件中的命令，如果没有指定file文件，那么从标准输入设备读取命令</td></tr><tr><td style="text-align:left">2</td><td style="text-align:left">at 22:00 &lt;&lt;&lt;”shutdown -h now”</td><td style="text-align:left">今晚晚上10点关闭系统，如果现在已经过了10点，那么次日晚上10点关机</td></tr><tr><td style="text-align:left">3</td><td style="text-align:left">at now+10 minutes &lt;&lt;&lt;”wall notice.txt”</td><td style="text-align:left">再过10min广播文件notice.txt的内容</td></tr><tr><td style="text-align:left">4</td><td style="text-align:left">at -l</td><td style="text-align:left">列出全部的一次性定时任务</td></tr><tr><td style="text-align:left">5</td><td style="text-align:left">at -r 6</td><td style="text-align:left">删除6号定时任务</td></tr><tr><td style="text-align:left">6</td><td style="text-align:left">…</td><td style="text-align:left">详细看p124</td></tr></tbody></table>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;对于Linux管理员来说，安装和配置好一个应用系统只是完成了万里长征的第一步，此后无休止地进行健康检测、性能优化、数据备份与恢复以及处理日常问题等才是噩梦的开始。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="工具" scheme="/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Linux" scheme="/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>OpenSSH远程控制服务器</title>
+    <link href="/2018/02/01/OpenSSH%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    <id>/2018/02/01/OpenSSH远程控制服务器/</id>
+    <published>2018-02-01T12:39:03.000Z</published>
+    <updated>2018-04-10T03:45:06.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>以前连接Linux都是用蠢方法（点阿里云的远程连接按钮），尝试OpenSSH之后，把玩服务器又是另一个故事了。<br><a id="more"></a></p></blockquote><p><em>server: Ubuntu 14.04 ;Local Os: deepin 15.4.1</em></p><h1 id="SSH服务器的配置"><a href="#SSH服务器的配置" class="headerlink" title="SSH服务器的配置"></a>SSH服务器的配置</h1><p>OpenSSH在服务器的配置非常简单。</p><p>对于红帽阵营，使用下面的命令安装<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum <span class="keyword">install</span> openssh-<span class="keyword">server</span></span><br></pre></td></tr></table></figure></p><p>对于Ubuntu阵营，采用下面的命令安装<br><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-<span class="keyword">get</span> install openssh-<span class="keyword">server</span></span><br></pre></td></tr></table></figure></p><p>我使用的是阿里云服务器，里面的SSH一开始就是开启的。</p><p>一般使用默认配置即可，你也可以修改<code>/etc/ssh/sshd.config</code>配置OpenSSH服务器。</p><p>为了加快登录速度，可以增加配置项<code>UseDNS no</code>，即关闭登录时反向解析IP。</p><p>SSH默认端口为22，为了安全性，你可以将端口修改为<code>Port7209</code>。</p><p>一旦配置项被修改了，需要重启服务：<br><figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">/etc/init.d/ssh</span> <span class="keyword">reload</span>    <span class="comment"># Ubuntu</span></span><br><span class="line">systemctl <span class="keyword">reload</span> sshd.service   <span class="comment"># 红帽7.0</span></span><br></pre></td></tr></table></figure></p><p>此时可以使用命令<code>netstat -tnlp</code>查看全部被监听的TCP端口，如：<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">vinson@</span>vinson-PC:~$ netstat -tnlp</span><br><span class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">22</span>              <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:*               LISTEN      -</span><br><span class="line">tcp6       <span class="number">0</span>      <span class="number">0</span> :::<span class="number">22</span>                   :::*                    LISTEN      -</span><br></pre></td></tr></table></figure></p><h1 id="SSH客户端"><a href="#SSH客户端" class="headerlink" title="SSH客户端"></a>SSH客户端</h1><p>Linux系统直接用SSH命令即可。</p><p>安装客户端：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-<span class="builtin-name">get</span> install openssh-client</span><br></pre></td></tr></table></figure></p><p>同样，deepin上自带，无需安装。</p><p>在终端输入以下命令即可远程连接（亲测）：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -<span class="selector-tag">p</span> <span class="number">7209</span> root@xxx<span class="selector-class">.xxx</span><span class="selector-class">.xxx</span>.xxx</span><br></pre></td></tr></table></figure></p><p>此时需要密码，按步骤操作即可。</p><p>如果遇到提示<code>The authenticity of host &#39;hostname&#39; can&#39;t be established</code>，可以按照<a href="https://segmentfault.com/q/1010000006670515" target="_blank" rel="noopener">这里</a>操作。</p><p>Windows登录工具有putty.exe、SecureCRT、SSH Secure Shell Clien，都是字符界面登录工具。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;以前连接Linux都是用蠢方法（点阿里云的远程连接按钮），尝试OpenSSH之后，把玩服务器又是另一个故事了。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="工具" scheme="/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Linux" scheme="/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vi/vim介绍</title>
+    <link href="/2018/02/01/vi-vim%E4%BB%8B%E7%BB%8D/"/>
+    <id>/2018/02/01/vi-vim介绍/</id>
+    <published>2018-02-01T09:03:52.000Z</published>
+    <updated>2018-04-10T03:45:16.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>vim用得少，一般都是用gedit小改文本。记录一下vi/vim使用方法。<br><a id="more"></a></p></blockquote><h1 id="vim介绍"><a href="#vim介绍" class="headerlink" title="vim介绍"></a>vim介绍</h1><blockquote><p>vim由荷兰的布莱姆-米勒开发，遵循GPL开源协议，其中还有一些条款建议使用者向荷兰ICCF捐款，以帮助乌干达的艾滋病患者，尤其是那些儿童艾滋病患者。后来布莱姆-米勒加盟Google公司。——《Linux操作系统基础教程》</p></blockquote><p>vim的功能非常强大，几乎能够编辑当前所有文件，可以不用鼠标，只用命令。</p><p>直接输入<code>vim</code>，可以查看版本号、作者姓名等信息。</p><p>输入<code>:q</code>可以突出vim编辑界面。</p><h1 id="vim的三种模式"><a href="#vim的三种模式" class="headerlink" title="vim的三种模式"></a>vim的三种模式</h1><p>vim的三种模式是指<strong>插入模式、命令模式、底行模式</strong>。</p><h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><p>命令模式可以理解为插入模式和底行模式的中介。</p><p>打开vim就会直接进入命令模式。</p><p>在插入模式下按下<code>Esc</code>，可以返回命令模式。</p><p>清空底行模式的字符就会自动返回命令模式。</p><p>下面是命令模式下光标移动的快捷键：</p><table><thead><tr><th style="text-align:left">序号</th><th style="text-align:left">命令</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left">h,j,k,l</td><td style="text-align:left">上、下、左、右移动光标。当然采用光标键也可以，但建议不采用光标键</td></tr><tr><td style="text-align:left">2</td><td style="text-align:left">Ctrl+F</td><td style="text-align:left">上翻页</td></tr><tr><td style="text-align:left">3</td><td style="text-align:left">Ctrl+B</td><td style="text-align:left">下翻页</td></tr><tr><td style="text-align:left">4</td><td style="text-align:left">%</td><td style="text-align:left">跳到匹配的括号处，如光标目前在“{”处，按%后跳到对应的“}”处</td></tr><tr><td style="text-align:left">5</td><td style="text-align:left">^</td><td style="text-align:left">跳到行首</td></tr><tr><td style="text-align:left">6</td><td style="text-align:left">$</td><td style="text-align:left">跳到行尾</td></tr><tr><td style="text-align:left">7</td><td style="text-align:left">gg</td><td style="text-align:left">跳到文件第一行</td></tr><tr><td style="text-align:left">8</td><td style="text-align:left">[n]G</td><td style="text-align:left">跳到第n行或者文件末尾（省略[n]时）</td></tr><tr><td style="text-align:left">9</td><td style="text-align:left">‘’</td><td style="text-align:left">(连续两个单引号)跳到上一个位置</td></tr><tr><td style="text-align:left">10</td><td style="text-align:left">m&lt;标签&gt;</td><td style="text-align:left">在光标所在行定义一个标签，标签那只能是一个字母，如ma定义的标签a</td></tr><tr><td style="text-align:left">11</td><td style="text-align:left">‘&lt;标签&gt;</td><td style="text-align:left">光标跳到&lt;标签&gt;处。如’b跳到之前已经定义的标签b处</td></tr></tbody></table><p>替换和查找：</p><table><thead><tr><th style="text-align:left">序号</th><th style="text-align:left">命令</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left">/wlm</td><td style="text-align:left">往前查找wlm，伺候按N继续查找下一个（如果文件中包含多个wlm)，如果找到文件末尾还继续按N，则又从头开始找</td></tr><tr><td style="text-align:left">2</td><td style="text-align:left">?key12</td><td style="text-align:left">往后查找key12，按N继续差早下一个（如果文件中包含多个key12)</td></tr><tr><td style="text-align:left">3</td><td style="text-align:left">:g/old1/s//new3/g</td><td style="text-align:left">文件中所有的old1替换成new3</td></tr><tr><td style="text-align:left">4</td><td style="text-align:left">:g/old/s//news/gc</td><td style="text-align:left">类似上面第三条命令，但替换前先确认</td></tr><tr><td style="text-align:left">5</td><td style="text-align:left">:10,40g/abc/s//1234/g</td><td style="text-align:left">10~40行之间的abc替换成1234</td></tr></tbody></table><h2 id="插入模式"><a href="#插入模式" class="headerlink" title="插入模式"></a>插入模式</h2><p>在命令模式下输入<code>a</code>，<code>A</code>，<code>i</code>，<code>I</code>，<code>o</code>，<code>O</code>中的任意一个字符就会进入插入模式。</p><table><thead><tr><th style="text-align:left">序号</th><th style="text-align:left">命令</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left">i</td><td style="text-align:left">在当前位置（光标所在的位置）前插入</td></tr><tr><td style="text-align:left">2</td><td style="text-align:left">I</td><td style="text-align:left">在光标所在的行首插入</td></tr><tr><td style="text-align:left">3</td><td style="text-align:left">a</td><td style="text-align:left">在当前位置（光标所在的位置）后插入</td></tr><tr><td style="text-align:left">4</td><td style="text-align:left">A</td><td style="text-align:left">在光标所在的行尾插入</td></tr><tr><td style="text-align:left">5</td><td style="text-align:left">o</td><td style="text-align:left">在当前行下方插入一空行。同时进入插入模式</td></tr><tr><td style="text-align:left">6</td><td style="text-align:left">O</td><td style="text-align:left">在当前行上方插入一空行，同时进入插入模式</td></tr><tr><td style="text-align:left">7</td><td style="text-align:left">C</td><td style="text-align:left">先删除到行尾的全部字符，然后进入插入模式</td></tr></tbody></table><h2 id="底行模式"><a href="#底行模式" class="headerlink" title="底行模式"></a>底行模式</h2><p>底行模式是用来输入命令的。在命令模式下按<code>:</code>（冒号）键进入底行模式。</p><p>常用命令有：</p><table><thead><tr><th style="text-align:left">序号</th><th style="text-align:left">命令</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left">w</td><td style="text-align:left">存盘</td></tr><tr><td style="text-align:left">2</td><td style="text-align:left">x</td><td style="text-align:left">存盘并退出vim</td></tr><tr><td style="text-align:left">3</td><td style="text-align:left">q</td><td style="text-align:left">不存盘退出</td></tr><tr><td style="text-align:left">4</td><td style="text-align:left">wq</td><td style="text-align:left">存盘并退出vim</td></tr><tr><td style="text-align:left">5</td><td style="text-align:left">q!</td><td style="text-align:left">强制退出</td></tr><tr><td style="text-align:left">6</td><td style="text-align:left">w newfile.txt</td><td style="text-align:left">另存为newfile.txt</td></tr></tbody></table><p><em>省略部分命令，详细见《Linux操作系统基础教程（第二版）》</em></p><h1 id="vim配置文件"><a href="#vim配置文件" class="headerlink" title="vim配置文件"></a>vim配置文件</h1><p>如果存在<code>~/.vimrc</code>文件，vim在启动的时候都会先执行这个文件中的命令。</p><p>例如我的<code>~/.vimrc</code>的内容如下：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">set</span> autoindent</span><br><span class="line">syntax enable</span><br><span class="line"><span class="builtin-name">set</span> nu</span><br><span class="line"><span class="builtin-name">set</span> nowrap</span><br><span class="line"><span class="builtin-name">set</span> <span class="attribute">ts</span>=4</span><br><span class="line"><span class="builtin-name">set</span> hlsearch</span><br><span class="line"><span class="builtin-name">set</span> ruler</span><br><span class="line"><span class="builtin-name">set</span> showcmd</span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;vim用得少，一般都是用gedit小改文本。记录一下vi/vim使用方法。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="工具" scheme="/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Linux" scheme="/tags/Linux/"/>
+    
+  </entry>
+  
+</feed>

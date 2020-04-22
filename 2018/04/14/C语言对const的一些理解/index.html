@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>C语言对const的一些理解 | Vinson-sheep | Vinson Sheep is on his time zone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+    <meta name="keywords" content="原创,C语言">
+    <meta name="description" content="编写过ES6的我对const用得也不多，看了一些关于const的特殊用法之后，觉得我对const有了新的理解。">
+<meta name="keywords" content="原创,C语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言对const的一些理解">
+<meta property="og:url" content="/2018/04/14/C语言对const的一些理解/index.html">
+<meta property="og:site_name" content="Vinson-sheep">
+<meta property="og:description" content="编写过ES6的我对const用得也不多，看了一些关于const的特殊用法之后，觉得我对const有了新的理解。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-13T17:45:00.384Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C语言对const的一些理解">
+<meta name="twitter:description" content="编写过ES6的我对const用得也不多，看了一些关于const的特殊用法之后，觉得我对const有了新的理解。">
+    
+        <link rel="alternate" type="application/atom+xml" title="Vinson-sheep" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Vinson-sheep</h5>
+          <a href="mailto:775014077@qq.com" title="775014077@qq.com" class="mail">775014077@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Article
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tag
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/algorithum/"  >
+                <i class="icon icon-lg icon-puzzle-piece"></i>
+                Algorithum
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/gallery"  >
+                <i class="icon icon-lg icon-paint-brush"></i>
+                Gallery
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/短篇小说/"  >
+                <i class="icon icon-lg icon-pencil"></i>
+                Novel
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Vinson-sheep/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">C语言对const的一些理解</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">C语言对const的一些理解</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-13T17:08:00.000Z" itemprop="datePublished" class="page-time">
+  2018-04-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/语言学习/">语言学习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#初始化数据"><span class="post-toc-number">1.</span> <span class="post-toc-text">初始化数据</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#开始测试"><span class="post-toc-number">2.</span> <span class="post-toc-text">开始测试</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#结果分析"><span class="post-toc-number">3.</span> <span class="post-toc-text">结果分析</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-C语言对const的一些理解"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">C语言对const的一些理解</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-14 01:08:00" datetime="2018-04-13T17:08:00.000Z"  itemprop="datePublished">2018-04-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/语言学习/">语言学习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>编写过ES6的我对const用得也不多，看了一些关于const的特殊用法之后，觉得我对const有了新的理解。<br><a id="more"></a></p>
+</blockquote>
+<p><em>windows 10</em></p>
+<h1 id="初始化数据"><a href="#初始化数据" class="headerlink" title="初始化数据"></a>初始化数据</h1><p>我们来初始化一些数据：<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">double</span> rates[<span class="number">5</span>] = &#123;<span class="number">88.99</span>, <span class="number">100.12</span>, <span class="number">59.45</span>, <span class="number">183.11</span>, <span class="number">340.5</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="built_in">double</span> locked[<span class="number">4</span>] = &#123;<span class="number">0.08</span>, <span class="number">0.075</span>, <span class="number">0.0725</span>, <span class="number">0.07</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="built_in">double</span> *pc = rates;</span><br><span class="line"><span class="built_in">double</span> *pnc = rates;</span><br></pre></td></tr></table></figure></p>
+<p>rates数组是可读可写的，locked只能读，第三、四句将rates的首地址赋值给pc、pnc指针(注意，此处使用了const，而pnc没有)。</p>
+<h1 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h1><p><strong>第一次</strong><br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pc[0]</span> = <span class="number">0.0</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>操作无效，这非常合理，因为使用了<code>const</code>。</p>
+<p><strong>第二次</strong><br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">rates[5]</span> = <span class="number">0.0</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>操作有效，证明了<code>数组rate的物理地址赋值给pc依然没有改变rates的性质</code>。这看来也非常合理。</p>
+<p><strong>第三次</strong><br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pnc</span> = locked<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>操作无效。可能你还没有发现究竟发生了什么事情？我一一罗列出来(为了方便，const表示使用了const的，no-const相反)：</p>
+<ol>
+<li>const空指针能被const数组赋值，也能被no-const数组赋值</li>
+<li>no-const空指针不能被const数组赋值，但依然可以被no-const数组赋值</li>
+<li>无论是const还是no-const空指针，被赋值后不会改变原来数组的可写性</li>
+</ol>
+<h1 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h1><p>const好比是一个标识符，它能表示某个变量是只读的。<strong>注意只是标识某个变量，不是物理地址</strong>。</p>
+<p>所以<code>const double *pc = rates;</code>中，<code>pc</code>被标识为只读，故调用<code>pc</code>这指针变量的一切表达式都会视数组为只读，如<code>pc[0] = 0.0;</code>。</p>
+<p>而<code>rates</code>没有使用<code>const</code>初始化，故调用<code>rates</code>这指针变量的一切表达式都会视数组为可读可写，如<code>rates[5] = 0.0;</code>。</p>
+<p>但是no-const空指针不能被const数组赋值是什么操作呢？其实是编译器在保护const数组。如果随便将物理地址重新赋值给一个新的指针就能改变数组的可写性，那么初始化声明中const就被架空了。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-04-13T17:45:00.384Z" itemprop="dateUpdated">2018-04-14 01:45:00</time>
+</span><br>
+
+
+        
+        如果文章写得好，就打赏支持一下吧
+        
+    </div>
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="Vinson-sheep">
+            Vinson-sheep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C语言/">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/原创/">原创</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2018/04/14/C语言对const的一些理解/&title=《C语言对const的一些理解》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2018/04/14/C语言对const的一些理解/&title=《C语言对const的一些理解》 — Vinson-sheep&source=
+编写过ES6的我对const用得也不多，看了一些关于const的特殊用法之后，觉得我对const有了新的理解。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2018/04/14/C语言对const的一些理解/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《C语言对const的一些理解》 — Vinson-sheep&url=/2018/04/14/C语言对const的一些理解/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2018/04/14/C语言对const的一些理解/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/04/20/C语言之按位运算符/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">C语言之按位运算符</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/14/C语言为什么不能解引用未初始化的指针——实践归纳/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">C语言为什么不能解引用未初始化的指针——实践归纳</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        爱你哟~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Vinson-sheep &copy; 2016 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17065873号-1</a><br>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2018/04/14/C语言对const的一些理解/&title=《C语言对const的一些理解》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2018/04/14/C语言对const的一些理解/&title=《C语言对const的一些理解》 — Vinson-sheep&source=
+编写过ES6的我对const用得也不多，看了一些关于const的特殊用法之后，觉得我对const有了新的理解。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2018/04/14/C语言对const的一些理解/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《C语言对const的一些理解》 — Vinson-sheep&url=/2018/04/14/C语言对const的一些理解/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2018/04/14/C语言对const的一些理解/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACPklEQVR42u3awY6DMAxFUf7/pxlpVpU6hPucdFScmxWihXCo5Dp2jgOP83e8Hr+e4Xe4uup8G8cnhgwZMh7LOIfjnXF1hjw6mYV8/4/ZZciQsQGDBNnxZCRAk9cxvvPleRkyZMgIQ+f8a5IhQ4aMVdPwkErYJJTLkCFjZwZfXqaBlS9uSVq5YC0uQ4aMBzJqjYH/Of54f0OGDBlfzzhLo7aIJS2H4vPIkCGjNWNm80StecDTO76glSFDxj6M2mTknjPLWv6aZMiQ0ZUxn7SloXYc4ostChkyZLRmkIvTFC3dQFab6+Z/Q4YMGY0YaTmel+HSYx6Ob3aLyJAhoykjLf2TxG6mrEaKgPEiVoYMGY9l8AIZT93SJLL2mi7vL0OGjHaMdFPFfHGNh+ngUxkyZLRm8LblOHWbaSeky2AZMmTISNO1WkuyVphD/Q0ZMmQ0ZQQr3UWtynSjWHA3GTJkNGXwoDZTdKt9J3gFMmTIaMrgjUaOJNPz4B70NGTIkNGUwctnPOzOFNcWLKplyJDRlFErlqVJJLkbTyhvfgcZMmQ0ZZDwV2thFkv8taWsDBkymjLS0luaOPJr02dDv4wMGTIezpjfZrGqbFcL5TJkyNiBMT9ZrUk5ZpOEsjhkyJDxWAZP49ISf5p61pbHMmTI2IfBy3C1gDj/b3CTDsqQIUNGqWGwNokMWpgyZMjYmDHTnuQBN95mIUOGjG0YaZirbWPls5PXJ0OGjH0YtcYATx95+OZb0Ja1MGXIkPHtjB90VLJQfDy4FAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

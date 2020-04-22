@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>webpack和express开发部署 | Vinson-sheep | Vinson Sheep is on his time zone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+    <meta name="keywords" content="原创,express,webpack">
+    <meta name="description" content="花了好多天时间研究webpack，但是网上的webpack的教程大多数都很老了，大概是因为webpack3和其他版本配置文件写法不一样。webpack是一个非常机智的打包机，能够将html文件引用的图像、js、css文件等打包成你需要的文件，避免了客户端对文件的大量请求，提高性能。此外，webpack结合express、vue等，能够提供一套相对完善的开发模式。">
+<meta name="keywords" content="原创,express,webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack和express开发部署">
+<meta property="og:url" content="/2018/01/19/webpack和express开发部署/index.html">
+<meta property="og:site_name" content="Vinson-sheep">
+<meta property="og:description" content="花了好多天时间研究webpack，但是网上的webpack的教程大多数都很老了，大概是因为webpack3和其他版本配置文件写法不一样。webpack是一个非常机智的打包机，能够将html文件引用的图像、js、css文件等打包成你需要的文件，避免了客户端对文件的大量请求，提高性能。此外，webpack结合express、vue等，能够提供一套相对完善的开发模式。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ohkgqh4gv.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180123222700.png">
+<meta property="og:updated_time" content="2018-04-10T03:45:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack和express开发部署">
+<meta name="twitter:description" content="花了好多天时间研究webpack，但是网上的webpack的教程大多数都很老了，大概是因为webpack3和其他版本配置文件写法不一样。webpack是一个非常机智的打包机，能够将html文件引用的图像、js、css文件等打包成你需要的文件，避免了客户端对文件的大量请求，提高性能。此外，webpack结合express、vue等，能够提供一套相对完善的开发模式。">
+<meta name="twitter:image" content="http://ohkgqh4gv.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180123222700.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Vinson-sheep" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Vinson-sheep</h5>
+          <a href="mailto:775014077@qq.com" title="775014077@qq.com" class="mail">775014077@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Article
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tag
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/algorithum/"  >
+                <i class="icon icon-lg icon-puzzle-piece"></i>
+                Algorithum
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/gallery"  >
+                <i class="icon icon-lg icon-paint-brush"></i>
+                Gallery
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/短篇小说/"  >
+                <i class="icon icon-lg icon-pencil"></i>
+                Novel
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Vinson-sheep/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">webpack和express开发部署</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">webpack和express开发部署</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-01-19T04:47:57.000Z" itemprop="datePublished" class="page-time">
+  2018-01-19
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-express的部署"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. express的部署</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-重构项目目录"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. 重构项目目录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-webpack的部署"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. webpack的部署</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-基本组件包的安装"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">1. 基本组件包的安装</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-编写代码-演示用"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">2. 编写代码(演示用)</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-webpack配置"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">3.webpack配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#css-js文件的热更新"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">css/js文件的热更新</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#html的热更新和模块化"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">html的热更新和模块化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#express的热更新配置"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">express的热更新配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#手动读取内存文件"><span class="post-toc-number">3.3.4.</span> <span class="post-toc-text">手动读取内存文件</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-supervisor的配置"><span class="post-toc-number">4.</span> <span class="post-toc-text">4. supervisor的配置</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-webpack和express开发部署"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">webpack和express开发部署</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-01-19 12:47:57" datetime="2018-01-19T04:47:57.000Z"  itemprop="datePublished">2018-01-19</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>花了好多天时间研究webpack，但是网上的webpack的教程大多数都很老了，大概是因为webpack3和其他版本配置文件写法不一样。webpack是一个非常机智的打包机，能够将html文件引用的图像、js、css文件等打包成你需要的文件，避免了客户端对文件的大量请求，提高性能。此外，webpack结合express、vue等，能够提供一套相对完善的开发模式。<br><a id="more"></a></p>
+</blockquote>
+<p><em>webpack 3.10.0</em></p>
+<p>这篇博客是针对webpack+express的多页面开发。很多人以为webpack是用于SPA（单页面应用）开发，事实上多页面也是webpack的功能之一，只是对webpack的配置会更加复杂些。如果懂多页面开发配置，那单页面不so easy?</p>
+<p>本文章假设你已经对webpack和express有一定的熟悉程度，另外推荐几篇文章：</p>
+<ol>
+<li><a href="https://www.jianshu.com/p/42e11515c10f#" target="_blank" rel="noopener">入门Webpack，看这篇就够了</a></li>
+<li><a href="https://www.cnblogs.com/zycbloger/p/6444030.html" target="_blank" rel="noopener">webpack+express多页站点开发</a></li>
+<li><a href="http://www.css88.com/doc/webpack/" target="_blank" rel="noopener">webpack 中文文档(v3.5.5)</a></li>
+<li><a href="http://www.webxiaoma.com/blogs/2017/10/28/webpack-hot-middleware" target="_blank" rel="noopener">webpack-hot-middleware 插件的使用</a></li>
+</ol>
+<p>配合着github源码食用更佳<a href="https://github.com/Vinson-sheep/Webpack-MPA-example" target="_blank" rel="noopener">https://github.com/Vinson-sheep/Webpack-MPA-example</a></p>
+<p>github的源代码中包含必要的备注，可以方便理解各种配置的作用。</p>
+<p><strong>大概步骤可以分为：</strong></p>
+<ol>
+<li>express的部署</li>
+<li>重构项目目录</li>
+<li>webpack的部署</li>
+<li>supervisor的部署</li>
+</ol>
+<h2 id="1-express的部署"><a href="#1-express的部署" class="headerlink" title="1. express的部署"></a>1. express的部署</h2><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 应用生成器</span></span><br><span class="line"><span class="symbol">$</span> cnpm install express-generator -g</span><br><span class="line"><span class="comment">// 在适当地方执行，会生成应用目录</span></span><br><span class="line"><span class="symbol">$</span> express Webpack_MPA</span><br><span class="line"><span class="comment">// 进入应用目录</span></span><br><span class="line"><span class="symbol">$</span> cd Webpack_MPA</span><br><span class="line"><span class="comment">// 安装各种依赖</span></span><br><span class="line"><span class="symbol">$</span> cnpm install</span><br><span class="line"><span class="comment">// Linux或者MacOS</span></span><br><span class="line"><span class="symbol">$</span> DEBUG=myapp npm start</span><br><span class="line"><span class="comment">// 打开http://localhost:3000/</span></span><br><span class="line"><span class="comment">// 测试安装是否成功</span></span><br></pre></td></tr></table></figure>
+<p><a href="http://www.expressjs.com.cn/starter/generator.html" target="_blank" rel="noopener">express官方文档</a></p>
+<h2 id="2-重构项目目录"><a href="#2-重构项目目录" class="headerlink" title="2. 重构项目目录"></a>2. 重构项目目录</h2><p>保持共有文件的内容不变，重构项目目录：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ohkgqh4gv.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180123222700.png" alt="项目结构" title>
+                </div>
+                <div class="image-caption">项目结构</div>
+            </figure>
+<p><code>bin</code>是express生成器的启动文件价，<code>/bin/www</code>是启动文件。<code>routes</code>是路由文件价。<code>src</code>是网站资源文件夹，修改的代码都在这个文件夹里面。<code>static</code>是webpack输出文件夹，同时是express的静态文件存放处。<code>views</code>存放webpack输出的视图文件，如.html。<code>app.js</code>是项目的入口文件，但实际启动的是<code>bin/www</code>。<code>webpack.config.js</code>是webpack的配置文件。</p>
+<h2 id="3-webpack的部署"><a href="#3-webpack的部署" class="headerlink" title="3. webpack的部署"></a>3. webpack的部署</h2><p>webpack的部署，其实就是<code>webpack.config.js</code>的配置。</p>
+<h3 id="1-基本组件包的安装"><a href="#1-基本组件包的安装" class="headerlink" title="1. 基本组件包的安装"></a>1. 基本组件包的安装</h3><ol>
+<li>本地安装<code>webpack</code>,<code>webpack-dev-server</code>,<code>webpack-dev-middleware</code>、<code>webpack-hot-middleware</code></li>
+<li>本地安装加载器loader。可能用到的加载器包有：<code>style-loader</code>、<code>css-loader</code>、<code>css</code>、<code>less</code>、<code>less-loader</code>、<code>scss-loader</code>、<code>html-loader</code>、<code>file-loader</code>、<code>url-loader</code>、<code>raw-loader</code>、<code>babel-core</code>、<code>babel-loader</code>、<code>babel-plugin-transform-runtime</code>、<code>babel-preset-env</code>、<code>css-hot-loader</code>、<code>babel-runtime</code></li>
+<li>安装插件plugin：<code>extract-text-webpack-plugin</code>、<code>html-webpack-plugin</code></li>
+<li>另外还有一些其他的资源包：<code>cross-dev</code></li>
+</ol>
+<h3 id="2-编写代码-演示用"><a href="#2-编写代码-演示用" class="headerlink" title="2. 编写代码(演示用)"></a>2. 编写代码(演示用)</h3><p>编写一些用来演示的html、css、js文件，存放在<code>src</code>中。详细看<a href="https://github.com/Vinson-sheep/Webpack-MPA-example。" target="_blank" rel="noopener">https://github.com/Vinson-sheep/Webpack-MPA-example。</a></p>
+<h3 id="3-webpack配置"><a href="#3-webpack配置" class="headerlink" title="3.webpack配置"></a>3.webpack配置</h3><p>关于<code>webpack.config.js</code>的配置，我建议大家去看文章头部所推荐的文章，相信看完之后你们一定能够对<code>webpack.config.js</code>的基本写法有一定认识。在此我只解释源码中功能实现的关键语句：</p>
+<h4 id="css-js文件的热更新"><a href="#css-js文件的热更新" class="headerlink" title="css/js文件的热更新"></a>css/js文件的热更新</h4><p>webpack能够通过入口文件，如<code>src/js/entry/index1_entry.js</code>，对其他的文件的依赖来进行打包。如果项目中除去express而使用webpack插件<code>webpack-dev-server</code>，修改入口文件所依赖的文件直接能够在<code>localhost:8080</code>得到实时反应，而不需要手动刷新浏览器窗口。</p>
+<p>值得一提的是，使用了<code>extract-text-webpack-plugin</code>进行打包的css/less文件，不会被镶嵌在js文件中，而是独立打包输出成一个css文件，这是这个插件的功能。通过这种方式打包的css文件，所依赖的css/less不能够热更新。为了解决这个问题，需要引入<code>css-hot-loader</code>。webpack配置文件需要相应修改：<br><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 不使用css-hot-loader</span><br><span class="line"><span class="keyword">test: </span>/\.(css|less)$/,</span><br><span class="line">use: ExtractTextPlugin.extract(&#123;</span><br><span class="line">    fallback: 'style-loader',</span><br><span class="line">    use: ['css-loader', 'less-loader']</span><br><span class="line">&#125;)</span><br><span class="line">// 使用css-hot-loader</span><br><span class="line"><span class="keyword">test: </span>/\.(css|less)$/,</span><br><span class="line">use: ['css-hot-loader'].concat(ExtractTextPlugin.extract(&#123;</span><br><span class="line">    fallback: 'style-loader',</span><br><span class="line">    use: ['css-loader', 'less-loader']</span><br><span class="line">&#125;))</span><br></pre></td></tr></table></figure></p>
+<h4 id="html的热更新和模块化"><a href="#html的热更新和模块化" class="headerlink" title="html的热更新和模块化"></a>html的热更新和模块化</h4><p>html的热更新：由于webpack的热更新需要有对文件的依赖，所以html文件需要被入口文件所引用：<br><figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index2_entry.js</span></span><br><span class="line"><span class="selector-tag">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span>) &#123;</span><br><span class="line">    <span class="selector-tag">require</span>(<span class="string">'../../template/index2.html'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同时引入<code>html-loader</code><br><figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// webpack.config.js</span><br><span class="line"><span class="keyword">test: </span>/\.html$/,</span><br><span class="line">use: &#123;</span><br><span class="line">    loader: "html-loader",</span><br><span class="line">    options: &#123;</span><br><span class="line">        attrs: [':src']</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>html的模块化：css文件能够通过<code>import url(xxx.css)</code>引入css文件，实现模块化。那么html呢？大家都知道，html中并不能直接引用html文件，所以html自身是不能分模块的。这里有一种简单的方法，那就是<strong>js镶嵌</strong>。</p>
+<p><code>index1_entry</code>入口文件中有一段代码：<br><figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="name">function</span>()&#123;</span><br><span class="line">    var tpl = require(<span class="symbol">'../../template/components/template.html</span>')<span class="comment">;</span></span><br><span class="line">    var app = document.getElementById(<span class="symbol">'tpl</span>')<span class="comment">;</span></span><br><span class="line">    app.innerHTML = tpl<span class="comment">;</span></span><br><span class="line">&#125;)()<span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>这一段代码的作用是通过闭包方式实现对html模板内容的获取，并放入到主html文件的指定内容中。代码简单易懂，不做解释。</p>
+<p>对于某些人来说，这种方法是十分丑陋而不优雅。但是通过闭包的方式，既没有污染全局变量，又能够简单实现html模块化，而且<code>template.html</code>的修改也支持热更新，不亦乐乎？</p>
+<h4 id="express的热更新配置"><a href="#express的热更新配置" class="headerlink" title="express的热更新配置"></a>express的热更新配置</h4><p>express和webpack结合，需要有两个中间件：<code>webpack-dev-middleware</code>和<code>webpack-hot-middleware</code>。</p>
+<p><code>webpack-dev-middleware</code>能够实时监控依赖的文件并重新打包，但是<strong>打包的文件并不会存入磁盘，而是保存在内存里</strong>，这一点很重要。你会发现<code>npm start</code>后并没有生成文件，但是<code>localhost:3000</code>依然能够读取相应文件，这是因为文件被储存在内存中。</p>
+<p><code>webpack-hot-middleware</code>能够让你的浏览器自动更新。一般修改源css文件，浏览器能够在不刷新页面的情况下改变样式，如果失败，则刷新页面。</p>
+<p>关于这两个中间件的详细内容，我推荐一下文章：</p>
+<ol>
+<li><a href="http://www.webxiaoma.com/blogs/2017/10/28/webpack-hot-middleware" target="_blank" rel="noopener">webpack-hot-middleware 插件的使用</a></li>
+</ol>
+<h4 id="手动读取内存文件"><a href="#手动读取内存文件" class="headerlink" title="手动读取内存文件"></a>手动读取内存文件</h4><p>获取静态文件能够优先读取内存中的数据，但是node自带的fs.readFile并不能够，当然sendFile也不行。因为文件的读取有两个操作：先在本地磁盘访问文件，再从文件中获取数据。访问文件是必须操作，如果文件不存在于磁盘，则程序报错。既然绕不开读取磁盘的操作，那我们应该用什么方法读取内存文件呢？</p>
+<p>webpack提供<code>webpackCompiled.outputFileSystem</code>方法。</p>
+<p><code>app.js</code>完整的代码应该是这样的：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span>) &#123;    <span class="comment">// development config</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> webpack = <span class="keyword">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line">    <span class="keyword">var</span> webpackDevMiddleware = <span class="keyword">require</span>(<span class="string">'webpack-dev-middleware'</span>);</span><br><span class="line">    <span class="keyword">var</span> webpackHotMiddleware = <span class="keyword">require</span>(<span class="string">'webpack-hot-middleware'</span>);</span><br><span class="line">    <span class="comment">// 获取webpack配置文件</span></span><br><span class="line">    <span class="keyword">var</span> webpackConfig = <span class="keyword">require</span>(<span class="string">'./webpack.config.js'</span>);</span><br><span class="line">    <span class="comment">// 调用配置文件内容</span></span><br><span class="line">    <span class="keyword">var</span> webpackCompiled = webpack(webpackConfig);</span><br><span class="line">    <span class="comment">// 此处devMiddleware的定义非常重要</span></span><br><span class="line">    <span class="comment">// 它类似于一个中间件，修饰了webpackCompiled</span></span><br><span class="line">    <span class="comment">// 只有通过这步的定义才能够使用webpackCompiled.outputFileSystem.readFile函数</span></span><br><span class="line">    <span class="comment">// 详细可以看路由文件</span></span><br><span class="line">    <span class="keyword">var</span> devMiddleware = webpackDevMiddleware(webpackCompiled, &#123;</span><br><span class="line">        publicPath: webpackConfig.output.publicPath,</span><br><span class="line">        quiet: <span class="keyword">true</span> <span class="comment">//向控制台显示任何内容</span></span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 热更新配置</span></span><br><span class="line">    <span class="keyword">var</span> hotMiddleware = webpackHotMiddleware(webpackCompiled,&#123;</span><br><span class="line">        log: <span class="keyword">false</span>,</span><br><span class="line">        heartbeat: <span class="number">2000</span></span><br><span class="line">    &#125;);</span><br><span class="line">    app.<span class="keyword">use</span>(<span class="title">devMiddleware</span>);</span><br><span class="line">    app.<span class="keyword">use</span>(<span class="title">hotMiddleware</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> filename = path.join(__dirname, <span class="string">'../views'</span>, <span class="string">'index1.html'</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">require</span>(<span class="string">'./routes/index'</span>)(app);</span><br><span class="line">    webpackCompiled.outputFileSystem.readFile(filename, <span class="function"><span class="keyword">function</span><span class="params">(err, result)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            <span class="comment">// something error</span></span><br><span class="line">            <span class="keyword">return</span> next(err);</span><br><span class="line">        &#125;</span><br><span class="line">        res.set(<span class="string">'content-type'</span>, <span class="string">'text/html'</span>);</span><br><span class="line">        res.send(result);</span><br><span class="line">        res.end();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>但是这一堆代码放在app.js一个文件中不太方便，考虑着把一部分代码放在路由文件。然而这里是个大坑！！！</p>
+<p>如果在路由文件<code>page1_route.js</code>中简单写入：<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> webpack = <span class="keyword">require</span>(<span class="string">'webpack'</span>);</span><br><span class="line"><span class="keyword">var</span> webpackConfig = <span class="keyword">require</span>(<span class="string">'../webpack.config.js'</span>);</span><br><span class="line"><span class="keyword">var</span> webpackCompiled = webpack(webpackConfig);</span><br><span class="line">webpackCompiled.outputFileSystem.readFile(filename, <span class="function"><span class="keyword">function</span><span class="params">(err, <span class="keyword">result</span>)</span> <span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">    if (err) &#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">        // something error</span></span></span><br><span class="line"><span class="function"><span class="comment">        return next(err);</span></span></span><br><span class="line"><span class="function"><span class="comment">    &#125;</span></span></span><br><span class="line"><span class="function">    <span class="title">res</span>.<span class="title">set</span><span class="params">(<span class="string">'content-type'</span>, <span class="string">'text/html'</span>)</span>;</span></span><br><span class="line">    res.send(<span class="keyword">result</span>);</span><br><span class="line">    res.end();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>执行<code>npm start</code>，会报错<code>outputFileSystem.readFile is not a function.</code>。通过增删代码多番折腾之后，发现以下代码能够对<code>webpackCompiled</code>进行修饰。<br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">var</span> <span class="string">devMiddleware</span> <span class="string">=</span> <span class="string">webpackDevMiddleware(webpackCompiled,</span> <span class="string">&#123;</span></span><br><span class="line">    <span class="attr">publicPath:</span> <span class="string">webpackConfig.output.publicPath,</span></span><br><span class="line">    <span class="attr">quiet:</span> <span class="literal">true</span> <span class="string">//向控制台显示任何内容</span></span><br><span class="line"><span class="string">&#125;);</span></span><br></pre></td></tr></table></figure></p>
+<p>如果不添加上面代码，<code>console.log(webpackCompiled)</code>的结果是不一样的，后者会多了一些东西。见鬼了。。。。</p>
+<p>那么我们添加以上代码之后再<code>npm start</code>。依然报错！</p>
+<p>怎么回事呢？尝试输出在app.js和page1_route.js分别输出<code>filename</code>，表现一致。这表示文件访问的路径没有问题，但是函数依然不能访问当相应内存中的文件。</p>
+<p>同样是很艰辛的试验，只得出了可能的原因是：webpack.config.js配置与执行这段代码所在的文件之间的相对路径问题。</p>
+<p>在这里有一张不优雅而且有副作用的做法：<br><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// app.js</span></span><br><span class="line"><span class="keyword">global</span>.webpackCompiled = webpackCompiled;</span><br><span class="line"><span class="comment">// page1_route.js</span></span><br><span class="line"><span class="keyword">global</span>.webpackCompiled.outputFileSystem.readFile(filename, <span class="function"><span class="keyword">function</span><span class="params">(err, <span class="keyword">result</span>)</span> <span class="comment">&#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">    if (err) &#123;</span></span></span><br><span class="line"><span class="function"><span class="comment">        // something error</span></span></span><br><span class="line"><span class="function"><span class="comment">        return next(err);</span></span></span><br><span class="line"><span class="function"><span class="comment">    &#125;</span></span></span><br><span class="line"><span class="function">    <span class="title">res</span>.<span class="title">set</span><span class="params">(<span class="string">'content-type'</span>, <span class="string">'text/html'</span>)</span>;</span></span><br><span class="line">    res.send(<span class="keyword">result</span>);</span><br><span class="line">    res.end();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>以上代码将app.js的webpackCompiled绑定在全局变量global的属性中，这时候在其他文件就能够直接读取<code>global.webpackCompiled</code>获取这个对象。再调用这个对象的<code>outputFileSystem</code>方法读取内存文件，就能够在浏览器中呈现内存文件了。</p>
+<p>这样做的副作用是：污染了全局global。如果你不放心，那将<code>global.webpackCompiled</code>的属性值<code>webpackCompiled</code>改为更加复杂的名称，避免被其他人访问或者更改。</p>
+<h2 id="4-supervisor的配置"><a href="#4-supervisor的配置" class="headerlink" title="4. supervisor的配置"></a>4. supervisor的配置</h2><p>在编写app.js入口文件时，我们会怎么做呢？先编写一段代码，然后打开终端，输入<code>npm start</code>，看看有没有错误，再关掉。为了能够解放对终端的操作，supervisor实现对文件修改的监控和自动重启服务的功能。</p>
+<p>全局安装supervisor<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm <span class="keyword">install</span> supervisor -g</span><br></pre></td></tr></table></figure></p>
+<p>打开<code>package.json</code>，添加以下脚本：<br><figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"start"</span>: <span class="string">"cross-env NODE_ENV=dev supervisor -w routes,app.js ./bin/www"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><code>cross-env NODE_ENV=dev</code>是设置环境变量，与node中<code>process.env.NODE_ENV</code>值保持一致。这里是指设置环境变量为开发环境，<code>process.env.NODE_ENV</code>的值相应变成<code>dev</code>。</p>
+<p><code>-w</code>是监控文件或文件夹，如果有变动则重启服务。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-04-10T03:45:14.000Z" itemprop="dateUpdated">2018-04-10 11:45:14</time>
+</span><br>
+
+
+        
+        如果文章写得好，就打赏支持一下吧
+        
+    </div>
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="Vinson-sheep">
+            Vinson-sheep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/express/">express</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/原创/">原创</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2018/01/19/webpack和express开发部署/&title=《webpack和express开发部署》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2018/01/19/webpack和express开发部署/&title=《webpack和express开发部署》 — Vinson-sheep&source=
+花了好多天时间研究webpack，但是网上的webpack的教程大多数都很老了，大概是因为webpack3和其他版本配置文件写法不一样。webpack是..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2018/01/19/webpack和express开发部署/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《webpack和express开发部署》 — Vinson-sheep&url=/2018/01/19/webpack和express开发部署/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2018/01/19/webpack和express开发部署/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/01/24/PM2使用入门指南（转）/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">PM2使用入门指南（转）</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/01/17/webstorm支持nodejs/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">webstorm支持nodejs</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        爱你哟~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Vinson-sheep &copy; 2016 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17065873号-1</a><br>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2018/01/19/webpack和express开发部署/&title=《webpack和express开发部署》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2018/01/19/webpack和express开发部署/&title=《webpack和express开发部署》 — Vinson-sheep&source=
+花了好多天时间研究webpack，但是网上的webpack的教程大多数都很老了，大概是因为webpack3和其他版本配置文件写法不一样。webpack是..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2018/01/19/webpack和express开发部署/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《webpack和express开发部署》 — Vinson-sheep&url=/2018/01/19/webpack和express开发部署/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2018/01/19/webpack和express开发部署/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAB0ElEQVR42u3ay47CMAwF0P7/TzPSbKHRtd2GIp2skKDpCQvLjxxHvF7/6+zz+3r/dr3nxQsXF3fMfS3X2dbrb6869oedcXFxN3KTrc+2WB8v3z8Kdri4uA/jro+xPljyFC4u7i9y14lOL63BxcV9Mrfa4OglRsn+l9VquLi4A+68nTH/vLW/i4uLO5hK5EFnvfO65Vp4Oy4u7hZuMiZZvyBpjuTBMQpzuLi4G7l5SKq+slrYFGo1XFzc27jJFaskGE0GM+U/CxcX9zZur4BJrl9Uy6Tof8XFxd3CzR9Oeph5gdRLenBxcb/FTQYe1TZoHqSa41VcXNxLuTmlmtxUi5zo97i4uFu4Obo3LJmPV8udGFxc3Eu5vYZpfodqUj6d9nJwcXFv4FZbEpOmSbVR8sGAi4u7hZskMdX2RzVxKSdJuLi4N3PzxmW1XKk2QaKncHFxN3InU5f7CqfTQIaLi7uF2wtS66ZGr/iJhii4uLg3cyfBpToorQ50R3RcXNwxtxe81seoBsG87YKLi7uT27sm1Xv9MVm4uLgP4yYXJnpjkkKgxMXFfTA3CU/VHaLGKy4u7kZub2iaJy6TJKlZq+Hi4g6417ZB57/BxcX9KvcPua8GHIvZKJUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

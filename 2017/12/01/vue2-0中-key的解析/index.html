@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>vue2.0中:key的解析 | Vinson-sheep | Vinson Sheep is on his time zone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+    <meta name="keywords" content="vuejs">
+    <meta name="description" content="可能不止我一个，在看vue文档的时候，面对着v-for循环那一版块中的:key而头晕目眩。因为无论加还是不加:key，渲染出来的结果都是相同的，平常联系很难看出差别。参考了一些比较靠谱的文章，才弄懂了:key的用法。本质上，:key是用来提升渲染效率的。">
+<meta name="keywords" content="vuejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue2.0中:key的解析">
+<meta property="og:url" content="/2017/12/01/vue2-0中-key的解析/index.html">
+<meta property="og:site_name" content="Vinson-sheep">
+<meta property="og:description" content="可能不止我一个，在看vue文档的时候，面对着v-for循环那一版块中的:key而头晕目眩。因为无论加还是不加:key，渲染出来的结果都是相同的，平常联系很难看出差别。参考了一些比较靠谱的文章，才弄懂了:key的用法。本质上，:key是用来提升渲染效率的。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ohkgqh4gv.bkt.clouddn.com/1170024-20171018191016162-1229549117.png">
+<meta property="og:image" content="http://ohkgqh4gv.bkt.clouddn.com/1170024-20171018191056146-436654927.png">
+<meta property="og:image" content="http://ohkgqh4gv.bkt.clouddn.com/1170024-20171018191119318-368188268.png">
+<meta property="og:image" content="http://ohkgqh4gv.bkt.clouddn.com/1170024-20171018191142334-13876328.png">
+<meta property="og:updated_time" content="2018-04-10T03:45:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue2.0中:key的解析">
+<meta name="twitter:description" content="可能不止我一个，在看vue文档的时候，面对着v-for循环那一版块中的:key而头晕目眩。因为无论加还是不加:key，渲染出来的结果都是相同的，平常联系很难看出差别。参考了一些比较靠谱的文章，才弄懂了:key的用法。本质上，:key是用来提升渲染效率的。">
+<meta name="twitter:image" content="http://ohkgqh4gv.bkt.clouddn.com/1170024-20171018191016162-1229549117.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Vinson-sheep" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Vinson-sheep</h5>
+          <a href="mailto:775014077@qq.com" title="775014077@qq.com" class="mail">775014077@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Article
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tag
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/algorithum/"  >
+                <i class="icon icon-lg icon-puzzle-piece"></i>
+                Algorithum
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/gallery"  >
+                <i class="icon icon-lg icon-paint-brush"></i>
+                Gallery
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/短篇小说/"  >
+                <i class="icon icon-lg icon-pencil"></i>
+                Novel
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Vinson-sheep/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">vue2.0中:key的解析</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">vue2.0中:key的解析</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-12-01T12:20:39.000Z" itemprop="datePublished" class="page-time">
+  2017-12-01
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+<article id="post-vue2-0中-key的解析"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">vue2.0中:key的解析</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-12-01 20:20:39" datetime="2017-12-01T12:20:39.000Z"  itemprop="datePublished">2017-12-01</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>可能不止我一个，在看vue文档的时候，面对着v-for循环那一版块中的:key而头晕目眩。因为无论加还是不加:key，渲染出来的结果都是相同的，平常联系很难看出差别。参考了一些比较靠谱的文章，才弄懂了:key的用法。本质上，:key是用来提升渲染效率的。<br><a id="more"></a></p>
+</blockquote>
+<p><strong>文档大部分引用文末文章内容</strong></p>
+<p>其实不只是vue，react中执行列表渲染时也要求给每个组件添加<code>key</code>这个属性。</p>
+<p>引用一下vue官方文档对<code>:key</code>的解释：</p>
+<blockquote>
+<p>key 的特殊属性主要用在 Vue 的虚拟 DOM 算法，在新旧 nodes 对比时辨识 VNodes。如果不使用 key，Vue 会使用一种最大限度减少动态元素并且尽可能的尝试修复/再利用相同类型元素的算法。使用 key，它会基于 key 的变化重新排列元素顺序，并且会移除 key 不存在的元素。<br>————vue中文文档</p>
+</blockquote>
+<p>对于这一段话，大家可能不是很懂。</p>
+<p>要解释key的作用，不得不先介绍一下虚拟的DOM的Diff算法了。</p>
+<p>我们知道，vue和react都实现了一套虚拟DOM，使我们可以不直接操作DOM元素，只操作数据便可以重新渲染页面。而隐藏在背后的原理便是其搞笑的Diff算法。</p>
+<p>vue和react的虚拟DOM的Diff算法大致相同，而核心是基于两个简单假设：</p>
+<ol>
+<li><strong>两个相同的组件产生类似的DOM结构，不同的组件产生不同的DOM结构。</strong></li>
+<li><strong>同一层级的一组节点，他们可以通过唯一的id进行区分。</strong></li>
+</ol>
+<p>基于以上两点假设，使得，使得虚拟DOM的Diff算法从复杂度O(n^3)降到O(n)。</p>
+<p>这里我们借用<a href="https://link.zhihu.com/?target=https%3A//calendar.perfplanet.com/2013/diff/" target="_blank" rel="noopener"></a>中的一张图来简单说明一下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ohkgqh4gv.bkt.clouddn.com/1170024-20171018191016162-1229549117.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>当页面的数据发生改变时，Diff算法只会比较同一层级的节点：</p>
+<ul>
+<li><strong>如果节点的类型不同，直接干掉前面的节点，再创建并插入新的节点，不会再比较这个节点以后的子节点了。</strong></li>
+<li><strong>如果节点类型相同，则会重新设置该节点的属性，从而实现节点的更新。</strong></li>
+</ul>
+<p>当某一层有很多相同的节点，也就是列表节点时，Diff算法的更新过程默认情况下也是遵循以上原则。</p>
+<p>比如一下这个情况：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ohkgqh4gv.bkt.clouddn.com/1170024-20171018191056146-436654927.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>我们希望在B和C之间加一个F，Diff算法默认执行起来是这样的：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ohkgqh4gv.bkt.clouddn.com/1170024-20171018191119318-368188268.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>即把C更新成F，D更新成C，E更新成D，最后插入E，是不是很没有效率？</p>
+<p>所以我们<strong>需要使用key来给每个节点做一个唯一标识，Diff算法就可以正确地识别此节点，找到正确的位置区插入新的节点。</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://ohkgqh4gv.bkt.clouddn.com/1170024-20171018191142334-13876328.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>所以一句话，<strong>key的作用主要是为了高效的更新虚拟DOM</strong>。另外vue中在使用相同标签名元素的过渡切换时，也会使用到key属性，其目的也是为了让vue可以区分它们，</p>
+<p>否则vue只会替换其内部属性而不会触发过渡效果。</p>
+<p><strong>传送门：</strong></p>
+<p><a href="https://cn.vuejs.org/v2/api/#key" target="_blank" rel="noopener">vue.js中文文档——:key</a><br><a href="https://www.cnblogs.com/zhumingzhenhao/p/7688336.html" target="_blank" rel="noopener">Vue2.0 v-for 中 :key 到底有什么用？</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-04-10T03:45:16.000Z" itemprop="dateUpdated">2018-04-10 11:45:16</time>
+</span><br>
+
+
+        
+        如果文章写得好，就打赏支持一下吧
+        
+    </div>
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="Vinson-sheep">
+            Vinson-sheep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vuejs/">vuejs</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2017/12/01/vue2-0中-key的解析/&title=《vue2.0中:key的解析》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2017/12/01/vue2-0中-key的解析/&title=《vue2.0中:key的解析》 — Vinson-sheep&source=
+可能不止我一个，在看vue文档的时候，面对着v-for循环那一版块中的:key而头晕目眩。因为无论加还是不加:key，渲染出来的结果都是相同的，平常联系..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2017/12/01/vue2-0中-key的解析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue2.0中:key的解析》 — Vinson-sheep&url=/2017/12/01/vue2-0中-key的解析/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2017/12/01/vue2-0中-key的解析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/12/03/javascript各种长宽属性一览/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">javascript各种长宽属性一览</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/12/01/vue调试器vue-devtools安装/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">vue调试器vue-devtools安装</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        爱你哟~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Vinson-sheep &copy; 2016 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17065873号-1</a><br>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2017/12/01/vue2-0中-key的解析/&title=《vue2.0中:key的解析》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2017/12/01/vue2-0中-key的解析/&title=《vue2.0中:key的解析》 — Vinson-sheep&source=
+可能不止我一个，在看vue文档的时候，面对着v-for循环那一版块中的:key而头晕目眩。因为无论加还是不加:key，渲染出来的结果都是相同的，平常联系..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2017/12/01/vue2-0中-key的解析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vue2.0中:key的解析》 — Vinson-sheep&url=/2017/12/01/vue2-0中-key的解析/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2017/12/01/vue2-0中-key的解析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABxUlEQVR42u3ay2rDQBAEQP//TyvXQJDo3hdyqD0ZR5ZKOQzbM/v5xOv6s+6+//3X5J6fHQsXF3eaez2unJVfc/c5enlcXNyD3OdC017zTBm7Py4u7rdw80J29wK4uLj/g5tHnWQzhIuL+2ZuW4aeQXlLZWNWw8XFneC2zc0dn7f0d3FxcYe4V7mSRybN1sGn4+LiHuHOtDzarU+7Mbq9EhcXdzP3eQiaR5T5hmnyr8HFxT3DzbcpY42M/KBGEZNwcXEPcpNbtEWnHcBEBlxc3M3c5DHtQat8XJoPTnBxcc9zE1YdUaaPX9RZDRcXdzN3JrS0DdO8bYqLi3uG2w5B85HJquFrPdXBxcVdxH2OKHlQaYev7avi4uKe5OYjjbwwtQc082YKLi7uG7iritRYq7QuZLi4uNu4eQhpR7PtoY2okOHi4m7jtmlprMERNTuSLQ4uLu427lWumSNZY43aogri4uIu4rYFpX2ZvDiOvTAuLu4+bh5IZo5ojG2M6uqLi4u7lPscPJKiM1bOBiMQLi7u67ljo5S2ROLi4r6Zmz9ybaHExcU9z50afMaj2Zk4hIuLe5Lbxo+x7Uv+2wWRCRcXd5z7A+2E2Fdv0PiOAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>C语言为什么不能解引用未初始化的指针——实践归纳 | Vinson-sheep | Vinson Sheep is on his time zone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+    <meta name="keywords" content="C语言">
+    <meta name="description" content="解引用是返回内存地址中保存的值。为什么不能直接返回未初始化的指针呢？在我第一次看书的时候，十分困惑，于是手动设计了一些代码测试了一下，在此作总结。">
+<meta name="keywords" content="C语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言为什么不能解引用未初始化的指针——实践归纳">
+<meta property="og:url" content="/2018/04/14/C语言为什么不能解引用未初始化的指针——实践归纳/index.html">
+<meta property="og:site_name" content="Vinson-sheep">
+<meta property="og:description" content="解引用是返回内存地址中保存的值。为什么不能直接返回未初始化的指针呢？在我第一次看书的时候，十分困惑，于是手动设计了一些代码测试了一下，在此作总结。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-13T17:05:15.466Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C语言为什么不能解引用未初始化的指针——实践归纳">
+<meta name="twitter:description" content="解引用是返回内存地址中保存的值。为什么不能直接返回未初始化的指针呢？在我第一次看书的时候，十分困惑，于是手动设计了一些代码测试了一下，在此作总结。">
+    
+        <link rel="alternate" type="application/atom+xml" title="Vinson-sheep" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Vinson-sheep</h5>
+          <a href="mailto:775014077@qq.com" title="775014077@qq.com" class="mail">775014077@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Article
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tag
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/algorithum/"  >
+                <i class="icon icon-lg icon-puzzle-piece"></i>
+                Algorithum
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/gallery"  >
+                <i class="icon icon-lg icon-paint-brush"></i>
+                Gallery
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/短篇小说/"  >
+                <i class="icon icon-lg icon-pencil"></i>
+                Novel
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Vinson-sheep/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">C语言为什么不能解引用未初始化的指针——实践归纳</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">C语言为什么不能解引用未初始化的指针——实践归纳</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-13T16:35:17.000Z" itemprop="datePublished" class="page-time">
+  2018-04-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/语言学习/">语言学习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题在哪"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题在哪</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#归纳解析"><span class="post-toc-number">2.</span> <span class="post-toc-text">归纳解析</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解决方案"><span class="post-toc-number">3.</span> <span class="post-toc-text">解决方案</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-C语言为什么不能解引用未初始化的指针——实践归纳"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">C语言为什么不能解引用未初始化的指针——实践归纳</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-14 00:35:17" datetime="2018-04-13T16:35:17.000Z"  itemprop="datePublished">2018-04-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/语言学习/">语言学习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>解引用是返回内存地址中保存的值。为什么不能直接返回未初始化的指针呢？在我第一次看书的时候，十分困惑，于是手动设计了一些代码测试了一下，在此作总结。<br><a id="more"></a></p>
+</blockquote>
+<p><em>windows 10</em></p>
+<h1 id="问题在哪"><a href="#问题在哪" class="headerlink" title="问题在哪"></a>问题在哪</h1><p>为了阐述这篇文章的重要性。首先，编译后尝试运行下列程序：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> *ptr = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//	*ptr = 0;</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>, ptr);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>系统返回了<code>0</code>，证明程序是正常工作的。</p>
+<p>于是我们稍微修改一下代码：<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="built_in">int</span> main(void)</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">int</span> *<span class="built_in">ptr</span><span class="comment">;</span></span><br><span class="line">	*<span class="built_in">ptr</span> = <span class="number">0</span><span class="comment">;</span></span><br><span class="line">	printf(<span class="string">"%d"</span>, <span class="built_in">ptr</span>)<span class="comment">;</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span><span class="comment">;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编译后运行。嗯？<code>xxx.exe 已停止工作</code>！</p>
+<p>对比前后代码，其实逻辑都是一样的。只是ptr处的值使用了<code>*ptr=0</code>来赋予。</p>
+<h1 id="归纳解析"><a href="#归纳解析" class="headerlink" title="归纳解析"></a>归纳解析</h1><p>引用《C primer plus》的一段话：</p>
+<blockquote>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">int</span> * pt; <span class="comment">// 未初始化指针</span></span><br><span class="line">&gt; *pt = <span class="number">5</span>;  <span class="comment">// 严重的错误</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>为何不行？第2行的意思是把5储存在pt指向的位置。但是pt未被初始化，其值是一个随机值，所以不知道5将存储在何处。这可能不会出什么错，也可能会擦写数据或代码，或者导致程序崩溃。切记：创建一个指针时，系统只分配了存储指针本身的内存，并未肥胖存储数据的内存。因此，在使用指针之前，必须先用已分配的地址初始化它。</p>
+</blockquote>
+<p>刚声明<code>pt</code>指针的时候，指针并没有指向任何的地址。</p>
+<p>但是对比我自己设计的两个小程序，我个人目前是这样认为的：<code>int *ptr = 0;</code>是初始化声明，由于是一条语句完成，编译器分析得出<code>0</code>为初始值，则为<code>ptr</code>指针分配数据存储的内存，并且将具体的物理地址返回给<code>ptr</code>。但是如果分两条语句去写<code>int *ptr;*ptr = 0;</code>，指针声明的时候，编译器分析得出此处没有初始值，则不分配数据内存。而遇到第二条语句的时候，编译器解读为<strong>将0赋值给ptr指针所指的数据地址</strong>仅此而已，它的具体操作是将数据覆盖，但是没有分配内存。这就解析了为何同一个变量被多次赋值，其物理地址都不发生变化。其根本原因是编译器只更换数据，没有申请内存空间。</p>
+<p>那么，设计代码<code>*ptr = 0</code>中，0究竟赋值到什么地方去了？《C primer plus》表示母鸡噢。</p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>实际上内存的申请是有专用的函数<code>malloc()</code>，每次声明一个指针之前要想想要不要手动申请内存空间。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-04-13T17:05:15.466Z" itemprop="dateUpdated">2018-04-14 01:05:15</time>
+</span><br>
+
+
+        
+        如果文章写得好，就打赏支持一下吧
+        
+    </div>
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="Vinson-sheep">
+            Vinson-sheep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C语言/">C语言</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2018/04/14/C语言为什么不能解引用未初始化的指针——实践归纳/&title=《C语言为什么不能解引用未初始化的指针——实践归纳》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2018/04/14/C语言为什么不能解引用未初始化的指针——实践归纳/&title=《C语言为什么不能解引用未初始化的指针——实践归纳》 — Vinson-sheep&source=
+解引用是返回内存地址中保存的值。为什么不能直接返回未初始化的指针呢？在我第一次看书的时候，十分困惑，于是手动设计了一些代码测试了一下，在此作总结。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2018/04/14/C语言为什么不能解引用未初始化的指针——实践归纳/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《C语言为什么不能解引用未初始化的指针——实践归纳》 — Vinson-sheep&url=/2018/04/14/C语言为什么不能解引用未初始化的指针——实践归纳/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2018/04/14/C语言为什么不能解引用未初始化的指针——实践归纳/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/04/14/C语言对const的一些理解/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">C语言对const的一些理解</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/11/C语言之函数原型声明——详解/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">C语言之函数原型声明——详解</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        爱你哟~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Vinson-sheep &copy; 2016 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17065873号-1</a><br>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2018/04/14/C语言为什么不能解引用未初始化的指针——实践归纳/&title=《C语言为什么不能解引用未初始化的指针——实践归纳》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2018/04/14/C语言为什么不能解引用未初始化的指针——实践归纳/&title=《C语言为什么不能解引用未初始化的指针——实践归纳》 — Vinson-sheep&source=
+解引用是返回内存地址中保存的值。为什么不能直接返回未初始化的指针呢？在我第一次看书的时候，十分困惑，于是手动设计了一些代码测试了一下，在此作总结。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2018/04/14/C语言为什么不能解引用未初始化的指针——实践归纳/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《C语言为什么不能解引用未初始化的指针——实践归纳》 — Vinson-sheep&url=/2018/04/14/C语言为什么不能解引用未初始化的指针——实践归纳/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2018/04/14/C语言为什么不能解引用未初始化的指针——实践归纳/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuklEQVR42u3aQW7jQAwEwPz/09nrLgI53eRM4gVKJ0O2pKk5iDTJj4/4+Pxy/H3+6y+fvv16t6drk98fO/Dw8PDWS39i5LAb2/e0nqdr8fDw8G7znh7Z8pJFvEbOAtLjeTw8PLy35OXhJMckG4eHh4f3f/Ha8JBvSlKMwMPDw3sHXlKM2BdnkyQ7X8PhWgseHh5ezMvLrO/z+Up/Dw8PD2/dVc+PvKGVFHxPrQ0PDw/vBm82FpAsZRZU8o0rEms8PDy8a7y8dLtPx2eNtHzri38DeHh4eCUvb/knD5glypsNKiIeHh4e3o/w2lDRtrXyxlsyslAHBjw8PLwRL28s5WEjGcnKxw5WZQg8PDy8C7zZiz5fRFKi3aT137TW8PDw8K7xZq/+WTiZFTvyzfrnDnh4eHg/wts0wPJAkpct2jP1/wA8PDy8ScUgeunPBq2Sq/bNsOICPDw8vEO8WXt+80LPx61mbTA8PDy827zZQtuG1qb9vxlZwMPDwzvLK0qio1JCm1K3yXcxOoCHh4d3gdemvKeGCeo4lrfE8PDw8C7wTqXRs1JFe/71Sr7ZCDw8PLyjvORFvAkDs2cVFejXK8TDw8P7QV5eCGiLs/sCxKqYi4eHh3eIl79q77HbMa9o+AAPDw/vKC9/WbeJb17C2JeMvylD4OHh4R3l5QXcIs6U377mtVuGh4eHd5vXAtpEuWVsGmmPBVw8PDy8o7x2WbMkOG9rReNTmyEtPDw8vDXvszza1v5sKKFucb2Oe3h4eHhHee1I04adh4rX4ScvAePh4eHd481GnWYP2z8lT83x8PDwbvM2/aP8TNurOpC44+Hh4f0qr02U2zvn4wJJwQIPDw/vHXibpleSQG+KF493w8PDw7vG2ze9kt+3T2lJqzIuHh4e3nz2aRg8Nlfl23FgUAAPDw9vzvsDeEpBBfzpZkIAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

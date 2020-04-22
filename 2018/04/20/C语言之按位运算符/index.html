@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>C语言之按位运算符 | Vinson-sheep | Vinson Sheep is on his time zone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+    <meta name="keywords" content="C语言">
+    <meta name="description" content="实话说，写了一年多的代码了，从来没有想过要对数据进行按位运算。接触之后发现这跟《数据逻辑》的部分知识结构相吻合，比如与门、或门、非门等。相信学计算机的大家们早已烂透在心底了。我这里做一个记录，方便以后写C的时候查询。">
+<meta name="keywords" content="C语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言之按位运算符">
+<meta property="og:url" content="/2018/04/20/C语言之按位运算符/index.html">
+<meta property="og:site_name" content="Vinson-sheep">
+<meta property="og:description" content="实话说，写了一年多的代码了，从来没有想过要对数据进行按位运算。接触之后发现这跟《数据逻辑》的部分知识结构相吻合，比如与门、或门、非门等。相信学计算机的大家们早已烂透在心底了。我这里做一个记录，方便以后写C的时候查询。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-20T14:31:11.255Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C语言之按位运算符">
+<meta name="twitter:description" content="实话说，写了一年多的代码了，从来没有想过要对数据进行按位运算。接触之后发现这跟《数据逻辑》的部分知识结构相吻合，比如与门、或门、非门等。相信学计算机的大家们早已烂透在心底了。我这里做一个记录，方便以后写C的时候查询。">
+    
+        <link rel="alternate" type="application/atom+xml" title="Vinson-sheep" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Vinson-sheep</h5>
+          <a href="mailto:775014077@qq.com" title="775014077@qq.com" class="mail">775014077@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Article
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tag
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/algorithum/"  >
+                <i class="icon icon-lg icon-puzzle-piece"></i>
+                Algorithum
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/gallery"  >
+                <i class="icon icon-lg icon-paint-brush"></i>
+                Gallery
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/短篇小说/"  >
+                <i class="icon icon-lg icon-pencil"></i>
+                Novel
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Vinson-sheep/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">C语言之按位运算符</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">C语言之按位运算符</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-20T12:53:52.000Z" itemprop="datePublished" class="page-time">
+  2018-04-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/语言学习/">语言学习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#位运算符"><span class="post-toc-number">1.</span> <span class="post-toc-text">位运算符</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#按位逻辑运算符"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">按位逻辑运算符</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#二进制反码或按位取反："><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">二进制反码或按位取反：~</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#按位与：-amp"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">按位与：&amp;</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#按位或："><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">按位或：|</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#按位异或："><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">按位异或：^</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#移位运算符"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">移位运算符</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#左移：-lt-lt"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">左移：&lt;&lt;</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#右移：-gt-gt"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">右移：&gt;&gt;</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#位字段"><span class="post-toc-number">2.</span> <span class="post-toc-text">位字段</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-C语言之按位运算符"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">C语言之按位运算符</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-20 20:53:52" datetime="2018-04-20T12:53:52.000Z"  itemprop="datePublished">2018-04-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/语言学习/">语言学习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>实话说，写了一年多的代码了，从来没有想过要对数据进行按位运算。接触之后发现这跟《数据逻辑》的部分知识结构相吻合，比如与门、或门、非门等。相信学计算机的大家们早已烂透在心底了。我这里做一个记录，方便以后写C的时候查询。<br><a id="more"></a></p>
+</blockquote>
+<p>在C语言中，可以单独操控变量中的位。</p>
+<p>处理一个值中的位的两个C工具：<strong>位运算符</strong>和<strong>位字段</strong></p>
+<h1 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h1><h2 id="按位逻辑运算符"><a href="#按位逻辑运算符" class="headerlink" title="按位逻辑运算符"></a>按位逻辑运算符</h2><h3 id="二进制反码或按位取反："><a href="#二进制反码或按位取反：" class="headerlink" title="二进制反码或按位取反：~"></a>二进制反码或按位取反：~</h3><p>一元运算符~把1变为0，把0变为1。例子如下：<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~(<span class="number">10011010</span>) <span class="comment">// 表达式</span></span><br><span class="line">(<span class="number">01100101</span>)  <span class="comment">// 结果值</span></span><br><span class="line"></span><br><span class="line">val = ~val;</span><br></pre></td></tr></table></figure></p>
+<h3 id="按位与：-amp"><a href="#按位与：-amp" class="headerlink" title="按位与：&amp;"></a>按位与：&amp;</h3><p>二元运算符&amp;通过逐位比较两个运算对象，生成一个新值。对于每个位，只有两个运算对象中相应的位都为1时，结果才为1。例子如下：<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10010011</span>)&amp;(<span class="number">00111101</span>) <span class="comment">// 表达式</span></span><br><span class="line">(<span class="number">00010001</span>)  <span class="comment">// 结果值</span></span><br><span class="line"></span><br><span class="line">val &amp;= <span class="number">0377</span>;</span><br><span class="line">val = val &amp; <span class="number">0377</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="按位或："><a href="#按位或：" class="headerlink" title="按位或：|"></a>按位或：|</h3><p>二元运算符，通过逐位比较两个运算对象，生成一个新值。对于每个位，如果两个运算对象中相应的位为1，结果就为1.<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10010011</span>)|(<span class="number">00111101</span>) <span class="comment">// 表达式</span></span><br><span class="line">(<span class="number">10111111</span>)  <span class="comment">// 结果值</span></span><br><span class="line"></span><br><span class="line">val |= <span class="number">0377</span>;</span><br><span class="line">val = val | <span class="number">0377</span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="按位异或："><a href="#按位异或：" class="headerlink" title="按位异或：^"></a>按位异或：^</h3><p>二位运算符……逐位比较两个运算对象。对于每个位，如果两个运算对象中相应的位一个为1（但不是两个为1），结果为1。<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10010011</span>)^(<span class="number">00111101</span>) <span class="comment">// 表达式</span></span><br><span class="line">(<span class="number">10101110</span>)  <span class="comment">// 结果值</span></span><br><span class="line"></span><br><span class="line">val ^= <span class="number">0377</span>;</span><br><span class="line">val = val ^ <span class="number">0377</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="移位运算符"><a href="#移位运算符" class="headerlink" title="移位运算符"></a>移位运算符</h2><p>下面介绍C的移位运算符。移位运算符向左或右移动位。</p>
+<h3 id="左移：-lt-lt"><a href="#左移：-lt-lt" class="headerlink" title="左移：&lt;&lt;"></a>左移：&lt;&lt;</h3><p>左侧运算对象移出左末端位的值丢失，用0填充空出的位置。<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10001010</span>)  &lt;&lt; <span class="number">2</span>  <span class="comment">// 表达式</span></span><br><span class="line">(<span class="number">00101000</span>)        <span class="comment">// 结果值</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="右移：-gt-gt"><a href="#右移：-gt-gt" class="headerlink" title="右移：&gt;&gt;"></a>右移：&gt;&gt;</h3><p>对于无符号类型，用0填充空出的位置。<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10001010</span>) &gt;&gt; <span class="number">2</span>   <span class="comment">// 表达式，无符号值</span></span><br><span class="line">(<span class="number">00100010</span>)        <span class="comment">// 所有系统都得到该结果值</span></span><br></pre></td></tr></table></figure></p>
+<p>对于有符号类型，其结果取决于机器。<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10001010</span>) &gt;&gt; <span class="number">2</span>   <span class="comment">// 表达式，有符号值</span></span><br><span class="line">(<span class="number">00100010</span>)        <span class="comment">// 在某些系统中的结果值</span></span><br><span class="line">(<span class="number">10001010</span>) &gt;&gt; <span class="number">2</span>   <span class="comment">// 表达式，有符号值</span></span><br><span class="line">(<span class="number">11100010</span>)        <span class="comment">// 在另一些系统上的结果值</span></span><br></pre></td></tr></table></figure></p>
+<h1 id="位字段"><a href="#位字段" class="headerlink" title="位字段"></a>位字段</h1><p>操控位的第二种方法是<strong>位字段</strong>。</p>
+<p>下面的声明建立一个4个1位的字段：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> autfd : <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> bldfc : <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> undln : <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> itals : <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这时候就能通过下列语句赋值：<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">prnt.itals</span> = <span class="number">0</span><span class="comment">;</span></span><br><span class="line"><span class="attr">prnt.undln</span> = <span class="number">1</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p>
+<p>注意需要赋的值不能超过位数所能表示的最大数值，不然会占用下一个unsigned int类型的存储位置。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-04-20T14:31:11.255Z" itemprop="dateUpdated">2018-04-20 22:31:11</time>
+</span><br>
+
+
+        
+        如果文章写得好，就打赏支持一下吧
+        
+    </div>
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="Vinson-sheep">
+            Vinson-sheep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C语言/">C语言</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2018/04/20/C语言之按位运算符/&title=《C语言之按位运算符》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2018/04/20/C语言之按位运算符/&title=《C语言之按位运算符》 — Vinson-sheep&source=
+实话说，写了一年多的代码了，从来没有想过要对数据进行按位运算。接触之后发现这跟《数据逻辑》的部分知识结构相吻合，比如与门、或门、非门等。相信学计算机的大..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2018/04/20/C语言之按位运算符/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《C语言之按位运算符》 — Vinson-sheep&url=/2018/04/20/C语言之按位运算符/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2018/04/20/C语言之按位运算符/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/05/27/英语重音和升降调规则总结/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">英语重音和升降调规则总结</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/14/C语言对const的一些理解/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">C语言对const的一些理解</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        爱你哟~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Vinson-sheep &copy; 2016 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17065873号-1</a><br>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2018/04/20/C语言之按位运算符/&title=《C语言之按位运算符》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2018/04/20/C语言之按位运算符/&title=《C语言之按位运算符》 — Vinson-sheep&source=
+实话说，写了一年多的代码了，从来没有想过要对数据进行按位运算。接触之后发现这跟《数据逻辑》的部分知识结构相吻合，比如与门、或门、非门等。相信学计算机的大..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2018/04/20/C语言之按位运算符/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《C语言之按位运算符》 — Vinson-sheep&url=/2018/04/20/C语言之按位运算符/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2018/04/20/C语言之按位运算符/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABtklEQVR42u3aO67jMBAEQN3/0t50E8vdpDgQHoqRYUBkMRlwPtcVr89/69v/9+vbnteJhYuLu81NjrnnJte7/7a4Ki4u7iD3PtC0h7VhsQh2uLi4r+TmIS95GOHi4v4N7v23ORQXF/f93CQ8tbWLPHE6kqvh4uJucNeOf/b3kfouLi7uEvdTruRxkxdS69NxcXFHuHlAWWu37DdZcXFx38nNk5aEmDdp6iYrLi7uYW7b/GifO1tpEi4u7mFuO4LZNlnbxuqPci0uLu4Id7+4mRdA1y6Ji4s7z82DS1KwWEuE6rcYLi7uCPdHgTLeNG+HrJVacHFx57lPPWIOhj9cXNxBbjJgsTNO0QbKrxJcXNwRbjty8VTAalOsK1m4uLiPctdY+8nMVn0XFxd3hNs+OJISSdtK2Zojw8XFPcBtt1gb52oXLi7uPPdTrrXGSfL0WSyY4uLiHuC2ASVJeNriadFkxcXFHeS2AxPPDlXUgQwXF3eQuz9OURQ9NwIoLi7um7l5kbQdv/hxPVxc3Bdzc1C7T5T84OLijnDzImmOXguOuLi4b+C2zc6diyUh74G2Ci4u7jr3H/xK4jHjQX59AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>meta中http-equiv属性详解 | Vinson-sheep | Vinson Sheep is on his time zone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+    <meta name="keywords" content="转载,html">
+    <meta name="description" content="最近在研究大网站如何优雅地使用bootstrap，翻开源码一看，各种meta足以让我头晕眼花。趁这个机会，攻克这个知识点吧。">
+<meta name="keywords" content="转载,html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="meta中http-equiv属性详解">
+<meta property="og:url" content="/2017/11/17/meta中http-equiv属性详解/index.html">
+<meta property="og:site_name" content="Vinson-sheep">
+<meta property="og:description" content="最近在研究大网站如何优雅地使用bootstrap，翻开源码一看，各种meta足以让我头晕眼花。趁这个机会，攻克这个知识点吧。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-10T03:45:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="meta中http-equiv属性详解">
+<meta name="twitter:description" content="最近在研究大网站如何优雅地使用bootstrap，翻开源码一看，各种meta足以让我头晕眼花。趁这个机会，攻克这个知识点吧。">
+    
+        <link rel="alternate" type="application/atom+xml" title="Vinson-sheep" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Vinson-sheep</h5>
+          <a href="mailto:775014077@qq.com" title="775014077@qq.com" class="mail">775014077@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Article
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tag
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/algorithum/"  >
+                <i class="icon icon-lg icon-puzzle-piece"></i>
+                Algorithum
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/gallery"  >
+                <i class="icon icon-lg icon-paint-brush"></i>
+                Gallery
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/短篇小说/"  >
+                <i class="icon icon-lg icon-pencil"></i>
+                Novel
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Vinson-sheep/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">meta中http-equiv属性详解</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">meta中http-equiv属性详解</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-11-16T16:10:27.000Z" itemprop="datePublished" class="page-time">
+  2017-11-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-Expires-期限"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. Expires(期限)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Pragma-cache模式"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. Pragma(cache模式)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-Refresh-刷新"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. Refresh(刷新)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-Set-Cookie-cookie设定"><span class="post-toc-number">4.</span> <span class="post-toc-text">4. Set-Cookie(cookie设定)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-Window-target-显示窗口的设定"><span class="post-toc-number">5.</span> <span class="post-toc-text">5. Window-target(显示窗口的设定)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#6-content-Type-显示字符集的设定"><span class="post-toc-number">6.</span> <span class="post-toc-text">6. content-Type(显示字符集的设定)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#7-Pics-label-网页等级评定"><span class="post-toc-number">7.</span> <span class="post-toc-text">7. Pics-label(网页等级评定)</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#8-Page-Enter、Page-Exit"><span class="post-toc-number">8.</span> <span class="post-toc-text">8. Page_Enter、Page_Exit</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#9-清除缓存（再访问这个网站要重新下载！）"><span class="post-toc-number">9.</span> <span class="post-toc-text">9. 清除缓存（再访问这个网站要重新下载！）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#10-设定网页的到期时间"><span class="post-toc-number">10.</span> <span class="post-toc-text">10. 设定网页的到期时间</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#11-关键字-给搜索引擎用的"><span class="post-toc-number">11.</span> <span class="post-toc-text">11. 关键字,给搜索引擎用的</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#12-页面描述"><span class="post-toc-number">12.</span> <span class="post-toc-text">12. 页面描述</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-meta中http-equiv属性详解"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">meta中http-equiv属性详解</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017-11-17 00:10:27" datetime="2017-11-16T16:10:27.000Z"  itemprop="datePublished">2017-11-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端/">前端</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>最近在研究大网站如何优雅地使用bootstrap，翻开源码一看，各种meta足以让我头晕眼花。趁这个机会，攻克这个知识点吧。<br><a id="more"></a></p>
+</blockquote>
+<p><em>这里讲的东西，其实相当一部分我还是不太理解的，还是做个笔记吧</em></p>
+<p>http-equiv顾名思义，相当于http的文件头作用，它可以向浏览器传回一些有用的信息，以帮助正确和精确地显示网页内容，与之对应的属性值为content，content中的内容其实就是各个参数的变量值。</p>
+<blockquote>
+<p>meat标签的http-equiv属性语法格式是：＜meta http-equiv=”参数” content=”参数变量值”＞ ；其中http-equiv属性主要有以下几种参数：</p>
+</blockquote>
+<h2 id="1-Expires-期限"><a href="#1-Expires-期限" class="headerlink" title="1. Expires(期限)"></a>1. Expires(期限)</h2><p>说明：可以用于设定网页的到期时间。一旦网页过期，必须到服务器上重新传输。</p>
+<p>用法：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">＜meta <span class="attribute">http-equiv</span>=<span class="string">"expires"</span> <span class="attribute">content</span>=<span class="string">"Wed, 20 Jun 2007 22:33:00 GMT"</span>＞</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-Pragma-cache模式"><a href="#2-Pragma-cache模式" class="headerlink" title="2. Pragma(cache模式)"></a>2. Pragma(cache模式)</h2><p>说明：是用于设定禁止浏览器从本地机的缓存中调阅页面内容，设定后一旦离开网页就无法从Cache中再调出</p>
+<p>用法：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">＜meta <span class="attribute">http-equiv</span>=<span class="string">"Pragma"</span> <span class="attribute">content</span>=<span class="string">"no-cache"</span>＞</span><br></pre></td></tr></table></figure></p>
+<h2 id="3-Refresh-刷新"><a href="#3-Refresh-刷新" class="headerlink" title="3. Refresh(刷新)"></a>3. Refresh(刷新)</h2><p>说明：自动刷新并指向新页面。</p>
+<p>用法：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">＜meta <span class="attribute">http-equiv</span>=<span class="string">"Refresh"</span> <span class="attribute">content</span>=<span class="string">"2；URL=http://www.net.cn/"</span>＞</span><br></pre></td></tr></table></figure></p>
+<p>注意：其中的2是指停留2秒钟后自动刷新到URL网址。</p>
+<h2 id="4-Set-Cookie-cookie设定"><a href="#4-Set-Cookie-cookie设定" class="headerlink" title="4. Set-Cookie(cookie设定)"></a>4. Set-Cookie(cookie设定)</h2><p>说明：如果网页过期，那么存盘的cookie将被删除。</p>
+<p>用法：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">＜meta <span class="attribute">http-equiv</span>=<span class="string">"Set-Cookie"</span> <span class="attribute">content</span>=<span class="string">"cookievalue=xxx;expires=Wednesday, 20-Jun-2007 22:33:00 GMT； path=/"</span>＞</span><br></pre></td></tr></table></figure></p>
+<p>注意：必须使用GMT的时间格式。</p>
+<h2 id="5-Window-target-显示窗口的设定"><a href="#5-Window-target-显示窗口的设定" class="headerlink" title="5. Window-target(显示窗口的设定)"></a>5. Window-target(显示窗口的设定)</h2><p>说明：强制页面在当前窗口以独立页面显示。</p>
+<p>用法：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta <span class="attribute">http-equiv</span>=<span class="string">"Window-target"</span> <span class="attribute">content</span>=<span class="string">"_top"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>注意：用来防止别人在框架里调用自己的页面。</p>
+<h2 id="6-content-Type-显示字符集的设定"><a href="#6-content-Type-显示字符集的设定" class="headerlink" title="6. content-Type(显示字符集的设定)"></a>6. content-Type(显示字符集的设定)</h2><p>说明：设定页面使用的字符集。</p>
+<p>用法：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">＜meta <span class="attribute">http-equiv</span>=<span class="string">"content-Type"</span> <span class="attribute">content</span>=<span class="string">"text/html; charset=gb2312"</span>＞</span><br></pre></td></tr></table></figure></p>
+<h2 id="7-Pics-label-网页等级评定"><a href="#7-Pics-label-网页等级评定" class="headerlink" title="7. Pics-label(网页等级评定)"></a>7. Pics-label(网页等级评定)</h2><p>说明：在IE的internet选项中有一项内容设置，可以防止浏览一些受限制的网站，而网站的限制级别就是通过meta属性来设置的。</p>
+<p>用法：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta <span class="attribute">http-equiv</span>=<span class="string">"Pics-label"</span> <span class="attribute">contect</span>=<span class="string">""</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="8-Page-Enter、Page-Exit"><a href="#8-Page-Enter、Page-Exit" class="headerlink" title="8. Page_Enter、Page_Exit"></a>8. Page_Enter、Page_Exit</h2><p>设定进入页面时的特殊效果<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta <span class="attribute">http-equiv</span>=<span class="string">"Page-Enter"</span>    <span class="attribute">contect</span>=<span class="string">"revealTrans(duration=1.0,transtion=    12)"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>设定离开页面时的特殊效果<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta <span class="attribute">http-equiv</span>=<span class="string">"Page-Exit"</span>    <span class="attribute">contect</span>=<span class="string">"revealTrans(duration=1.0,transtion=    12)"</span>&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Duration的值为网页动态过渡的时间，单位为秒。<br>Transition是过渡方式，它的值为0到23，分别对应24种过渡方式。如下表：  </p>
+<p>0    盒状收缩    1    盒状放射<br>2    圆形收缩    3    圆形放射<br>4    由下往上    5    由上往下<br>6    从左至右    7    从右至左<br>8    垂直百叶窗    9    水平百叶窗<br>10    水平格状百叶窗    11垂直格状百叶窗<br>12    随意溶解    13从左右两端向中间展开<br>14从中间向左右两端展开    15从上下两端向中间展开<br>16从中间向上下两端展开    17    从右上角向左下角展开<br>18    从右下角向左上角展开    19    从左上角向右下角展开<br>20    从左下角向右上角展开    21    水平线状展开<br>22    垂直线状展开    23    随机产生一种过渡方式  </p>
+<h2 id="9-清除缓存（再访问这个网站要重新下载！）"><a href="#9-清除缓存（再访问这个网站要重新下载！）" class="headerlink" title="9. 清除缓存（再访问这个网站要重新下载！）"></a>9. 清除缓存（再访问这个网站要重新下载！）</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta <span class="attribute">http-equiv</span>=<span class="string">"cache-control"</span> <span class="attribute">content</span>=<span class="string">"no-cache"</span>&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="10-设定网页的到期时间"><a href="#10-设定网页的到期时间" class="headerlink" title="10. 设定网页的到期时间"></a>10. 设定网页的到期时间</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta <span class="attribute">http-equiv</span>=<span class="string">"expires"</span> <span class="attribute">content</span>=<span class="string">"0"</span>&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="11-关键字-给搜索引擎用的"><a href="#11-关键字-给搜索引擎用的" class="headerlink" title="11. 关键字,给搜索引擎用的"></a>11. 关键字,给搜索引擎用的</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta <span class="attribute">http-equiv</span>=<span class="string">"keywords"</span> <span class="attribute">content</span>=<span class="string">"keyword1,keyword2,keyword3"</span>&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="12-页面描述"><a href="#12-页面描述" class="headerlink" title="12. 页面描述"></a>12. 页面描述</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta <span class="attribute">http-equiv</span>=<span class="string">"description"</span> <span class="attribute">content</span>=<span class="string">"This is my page"</span>&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>传送门：</strong></p>
+<p><a href="http://kinglyhum.iteye.com/blog/827807" target="_blank" rel="noopener">Meta http-equiv属性详解(转)</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-04-10T03:45:14.000Z" itemprop="dateUpdated">2018-04-10 11:45:14</time>
+</span><br>
+
+
+        
+        如果文章写得好，就打赏支持一下吧
+        
+    </div>
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="Vinson-sheep">
+            Vinson-sheep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/转载/">转载</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2017/11/17/meta中http-equiv属性详解/&title=《meta中http-equiv属性详解》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2017/11/17/meta中http-equiv属性详解/&title=《meta中http-equiv属性详解》 — Vinson-sheep&source=
+最近在研究大网站如何优雅地使用bootstrap，翻开源码一看，各种meta足以让我头晕眼花。趁这个机会，攻克这个知识点吧。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2017/11/17/meta中http-equiv属性详解/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《meta中http-equiv属性详解》 — Vinson-sheep&url=/2017/11/17/meta中http-equiv属性详解/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2017/11/17/meta中http-equiv属性详解/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2017/11/17/meta中X-UA-Compatible字段/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">meta中X-UA-Compatible字段</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2017/11/14/Ubuntu修改文件权限/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Ubuntu修改文件权限</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        爱你哟~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Vinson-sheep &copy; 2016 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17065873号-1</a><br>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2017/11/17/meta中http-equiv属性详解/&title=《meta中http-equiv属性详解》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2017/11/17/meta中http-equiv属性详解/&title=《meta中http-equiv属性详解》 — Vinson-sheep&source=
+最近在研究大网站如何优雅地使用bootstrap，翻开源码一看，各种meta足以让我头晕眼花。趁这个机会，攻克这个知识点吧。" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2017/11/17/meta中http-equiv属性详解/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《meta中http-equiv属性详解》 — Vinson-sheep&url=/2017/11/17/meta中http-equiv属性详解/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2017/11/17/meta中http-equiv属性详解/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAAByElEQVR42u3aS27DMAwFwNz/0u42QBr7kTIFFx2tgsSxRhuCH71e8Tre1vs3509+rs8nXxMLFxd3mZts8G3Lbxsn7zn//uuOuLi4G7nniCSEVcNfHhZxcXH/CrcaqnBxcf8Dt5yaxO/HxcV9DjcJT0kS0zvSSK2Gi4u7wM3LmLnPI/1dXFzcFvcorrx5ut4k/eVfuLi4W7h5QMmTniTRWdkXFxd3mlu9JJEEtfUC5iKE4eLiDnN7l67yKxeFxCUvk3BxcYe5SUlTGHIUW6XVMgkXF3cPt5BYBOXN3GgWFxd3J/c8eM21SvNjX+RiuLi4A9yVy1JJGXOerPSKLlxc3Glutc1R/bUXFi9apbi4uMPc6kg1eXWv+Om1ZnBxcee4vcZlrw16Qy6Gi4u7kZuHmLw5Uh2ZRE0TXFzc7dz8ddUhSi/MXQQyXFzcYe7KqOOGeiveFxcXd5p7FFevVZo0X6JRLi4u7hZuNaDkQara8lg5Ni4u7gQ3D15J3zK/qNEMZLi4uBu5K5e0km2WUhZcXNzHc1dGKTeMWHBxcR/PvascKhc/uLi4W7jVEHNe6lRHMkk5hIuLu5NbrTh6jc7keLeNVXBxcfvcH4zg2Fdg7MsNAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
