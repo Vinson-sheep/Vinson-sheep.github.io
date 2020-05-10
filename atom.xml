@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-04-22T15:12:21.800Z</updated>
+  <updated>2020-05-10T07:31:47.533Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>n皇后问题</title>
+    <link href="/2020/05/10/n%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98/"/>
+    <id>/2020/05/10/n皇后问题/</id>
+    <published>2020-05-10T03:43:21.000Z</published>
+    <updated>2020-05-10T07:31:47.533Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>n皇后问题是指在n*n的国际象棋棋盘上放置n个皇后，使得n个皇后两两均不在同一行、同一列、同一条对角线上，求合法的方案数。<br><a id="more"></a></p></blockquote><p>根本方法是利用<code>全排列</code>和<code>筛选</code>。</p><h2 id="暴力法"><a href="#暴力法" class="headerlink" title="暴力法"></a>暴力法</h2><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;math.h&gt;</span><br><span class="line"><span class="built_in">int</span> count=<span class="number">0</span>, n;</span><br><span class="line"><span class="built_in">int</span> P[MAX], Hash[MAX]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="built_in">void</span> generateP(index)&#123;</span><br><span class="line">    <span class="keyword">if</span>(index==n+<span class="number">1</span>)&#123;  <span class="comment">// 递归边界</span></span><br><span class="line">        <span class="built_in">int</span> i,j, flag=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)&#123;  <span class="comment">// 筛选</span></span><br><span class="line">            <span class="keyword">for</span> (j=i+<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(abs(i-j)==abs(P[i]-P[j])) flag=<span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag==<span class="number">1</span>) count++;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 递归</span></span><br><span class="line">    <span class="built_in">int</span> i;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(Hash[i]==<span class="number">0</span>)&#123;</span><br><span class="line">            P[index]=i;</span><br><span class="line">            Hash[i]==<span class="number">1</span>;</span><br><span class="line">            generateP(index+<span class="number">1</span>);</span><br><span class="line">            Hash[i]==<span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h2><p>略</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;n皇后问题是指在n*n的国际象棋棋盘上放置n个皇后，使得n个皇后两两均不在同一行、同一列、同一条对角线上，求合法的方案数。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="algorithum" scheme="/categories/algorithum/"/>
+    
+    
+      <category term="算法" scheme="/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>英文短文朗读规则</title>
@@ -443,29 +466,6 @@
     
       &lt;blockquote&gt;
 &lt;p&gt;以前连接Linux都是用蠢方法（点阿里云的远程连接按钮），尝试OpenSSH之后，把玩服务器又是另一个故事了。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="工具" scheme="/categories/%E5%B7%A5%E5%85%B7/"/>
-    
-    
-      <category term="Linux" scheme="/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vi/vim介绍</title>
-    <link href="/2018/02/01/vi-vim%E4%BB%8B%E7%BB%8D/"/>
-    <id>/2018/02/01/vi-vim介绍/</id>
-    <published>2018-02-01T09:03:52.000Z</published>
-    <updated>2018-04-10T03:45:16.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>vim用得少，一般都是用gedit小改文本。记录一下vi/vim使用方法。<br><a id="more"></a></p></blockquote><h1 id="vim介绍"><a href="#vim介绍" class="headerlink" title="vim介绍"></a>vim介绍</h1><blockquote><p>vim由荷兰的布莱姆-米勒开发，遵循GPL开源协议，其中还有一些条款建议使用者向荷兰ICCF捐款，以帮助乌干达的艾滋病患者，尤其是那些儿童艾滋病患者。后来布莱姆-米勒加盟Google公司。——《Linux操作系统基础教程》</p></blockquote><p>vim的功能非常强大，几乎能够编辑当前所有文件，可以不用鼠标，只用命令。</p><p>直接输入<code>vim</code>，可以查看版本号、作者姓名等信息。</p><p>输入<code>:q</code>可以突出vim编辑界面。</p><h1 id="vim的三种模式"><a href="#vim的三种模式" class="headerlink" title="vim的三种模式"></a>vim的三种模式</h1><p>vim的三种模式是指<strong>插入模式、命令模式、底行模式</strong>。</p><h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><p>命令模式可以理解为插入模式和底行模式的中介。</p><p>打开vim就会直接进入命令模式。</p><p>在插入模式下按下<code>Esc</code>，可以返回命令模式。</p><p>清空底行模式的字符就会自动返回命令模式。</p><p>下面是命令模式下光标移动的快捷键：</p><table><thead><tr><th style="text-align:left">序号</th><th style="text-align:left">命令</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left">h,j,k,l</td><td style="text-align:left">上、下、左、右移动光标。当然采用光标键也可以，但建议不采用光标键</td></tr><tr><td style="text-align:left">2</td><td style="text-align:left">Ctrl+F</td><td style="text-align:left">上翻页</td></tr><tr><td style="text-align:left">3</td><td style="text-align:left">Ctrl+B</td><td style="text-align:left">下翻页</td></tr><tr><td style="text-align:left">4</td><td style="text-align:left">%</td><td style="text-align:left">跳到匹配的括号处，如光标目前在“{”处，按%后跳到对应的“}”处</td></tr><tr><td style="text-align:left">5</td><td style="text-align:left">^</td><td style="text-align:left">跳到行首</td></tr><tr><td style="text-align:left">6</td><td style="text-align:left">$</td><td style="text-align:left">跳到行尾</td></tr><tr><td style="text-align:left">7</td><td style="text-align:left">gg</td><td style="text-align:left">跳到文件第一行</td></tr><tr><td style="text-align:left">8</td><td style="text-align:left">[n]G</td><td style="text-align:left">跳到第n行或者文件末尾（省略[n]时）</td></tr><tr><td style="text-align:left">9</td><td style="text-align:left">‘’</td><td style="text-align:left">(连续两个单引号)跳到上一个位置</td></tr><tr><td style="text-align:left">10</td><td style="text-align:left">m&lt;标签&gt;</td><td style="text-align:left">在光标所在行定义一个标签，标签那只能是一个字母，如ma定义的标签a</td></tr><tr><td style="text-align:left">11</td><td style="text-align:left">‘&lt;标签&gt;</td><td style="text-align:left">光标跳到&lt;标签&gt;处。如’b跳到之前已经定义的标签b处</td></tr></tbody></table><p>替换和查找：</p><table><thead><tr><th style="text-align:left">序号</th><th style="text-align:left">命令</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left">/wlm</td><td style="text-align:left">往前查找wlm，伺候按N继续查找下一个（如果文件中包含多个wlm)，如果找到文件末尾还继续按N，则又从头开始找</td></tr><tr><td style="text-align:left">2</td><td style="text-align:left">?key12</td><td style="text-align:left">往后查找key12，按N继续差早下一个（如果文件中包含多个key12)</td></tr><tr><td style="text-align:left">3</td><td style="text-align:left">:g/old1/s//new3/g</td><td style="text-align:left">文件中所有的old1替换成new3</td></tr><tr><td style="text-align:left">4</td><td style="text-align:left">:g/old/s//news/gc</td><td style="text-align:left">类似上面第三条命令，但替换前先确认</td></tr><tr><td style="text-align:left">5</td><td style="text-align:left">:10,40g/abc/s//1234/g</td><td style="text-align:left">10~40行之间的abc替换成1234</td></tr></tbody></table><h2 id="插入模式"><a href="#插入模式" class="headerlink" title="插入模式"></a>插入模式</h2><p>在命令模式下输入<code>a</code>，<code>A</code>，<code>i</code>，<code>I</code>，<code>o</code>，<code>O</code>中的任意一个字符就会进入插入模式。</p><table><thead><tr><th style="text-align:left">序号</th><th style="text-align:left">命令</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left">i</td><td style="text-align:left">在当前位置（光标所在的位置）前插入</td></tr><tr><td style="text-align:left">2</td><td style="text-align:left">I</td><td style="text-align:left">在光标所在的行首插入</td></tr><tr><td style="text-align:left">3</td><td style="text-align:left">a</td><td style="text-align:left">在当前位置（光标所在的位置）后插入</td></tr><tr><td style="text-align:left">4</td><td style="text-align:left">A</td><td style="text-align:left">在光标所在的行尾插入</td></tr><tr><td style="text-align:left">5</td><td style="text-align:left">o</td><td style="text-align:left">在当前行下方插入一空行。同时进入插入模式</td></tr><tr><td style="text-align:left">6</td><td style="text-align:left">O</td><td style="text-align:left">在当前行上方插入一空行，同时进入插入模式</td></tr><tr><td style="text-align:left">7</td><td style="text-align:left">C</td><td style="text-align:left">先删除到行尾的全部字符，然后进入插入模式</td></tr></tbody></table><h2 id="底行模式"><a href="#底行模式" class="headerlink" title="底行模式"></a>底行模式</h2><p>底行模式是用来输入命令的。在命令模式下按<code>:</code>（冒号）键进入底行模式。</p><p>常用命令有：</p><table><thead><tr><th style="text-align:left">序号</th><th style="text-align:left">命令</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left">w</td><td style="text-align:left">存盘</td></tr><tr><td style="text-align:left">2</td><td style="text-align:left">x</td><td style="text-align:left">存盘并退出vim</td></tr><tr><td style="text-align:left">3</td><td style="text-align:left">q</td><td style="text-align:left">不存盘退出</td></tr><tr><td style="text-align:left">4</td><td style="text-align:left">wq</td><td style="text-align:left">存盘并退出vim</td></tr><tr><td style="text-align:left">5</td><td style="text-align:left">q!</td><td style="text-align:left">强制退出</td></tr><tr><td style="text-align:left">6</td><td style="text-align:left">w newfile.txt</td><td style="text-align:left">另存为newfile.txt</td></tr></tbody></table><p><em>省略部分命令，详细见《Linux操作系统基础教程（第二版）》</em></p><h1 id="vim配置文件"><a href="#vim配置文件" class="headerlink" title="vim配置文件"></a>vim配置文件</h1><p>如果存在<code>~/.vimrc</code>文件，vim在启动的时候都会先执行这个文件中的命令。</p><p>例如我的<code>~/.vimrc</code>的内容如下：<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">set</span> autoindent</span><br><span class="line">syntax enable</span><br><span class="line"><span class="builtin-name">set</span> nu</span><br><span class="line"><span class="builtin-name">set</span> nowrap</span><br><span class="line"><span class="builtin-name">set</span> <span class="attribute">ts</span>=4</span><br><span class="line"><span class="builtin-name">set</span> hlsearch</span><br><span class="line"><span class="builtin-name">set</span> ruler</span><br><span class="line"><span class="builtin-name">set</span> showcmd</span><br></pre></td></tr></table></figure></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;vim用得少，一般都是用gedit小改文本。记录一下vi/vim使用方法。&lt;br&gt;
     
     </summary>
     
