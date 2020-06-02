@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>python私有属性和私有方法 | Vinson-sheep | Vinson Sheep is on his time zone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+    <meta name="keywords" content="Python">
+    <meta name="description" content="记录python私有属性和私有方法的实现，并且讨论两者的实现方式">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python私有属性和私有方法">
+<meta property="og:url" content="/2020/06/02/python私有属性和私有方法/index.html">
+<meta property="og:site_name" content="Vinson-sheep">
+<meta property="og:description" content="记录python私有属性和私有方法的实现，并且讨论两者的实现方式">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="/img/img/20200602.png">
+<meta property="og:updated_time" content="2020-06-02T08:03:36.572Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python私有属性和私有方法">
+<meta name="twitter:description" content="记录python私有属性和私有方法的实现，并且讨论两者的实现方式">
+<meta name="twitter:image" content="/img/img/20200602.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Vinson-sheep" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Vinson-sheep</h5>
+          <a href="mailto:775014077@qq.com" title="775014077@qq.com" class="mail">775014077@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Article
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tag
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/algorithum/"  >
+                <i class="icon icon-lg icon-puzzle-piece"></i>
+                Algorithum
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/gallery"  >
+                <i class="icon icon-lg icon-paint-brush"></i>
+                Gallery
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/短篇小说/"  >
+                <i class="icon icon-lg icon-pencil"></i>
+                Novel
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Vinson-sheep/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">python私有属性和私有方法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">python私有属性和私有方法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-06-02T14:30:58.000Z" itemprop="datePublished" class="page-time">
+  2020-06-02
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/语言学习/">语言学习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#应用场景及定义方式"><span class="post-toc-number">1.</span> <span class="post-toc-text">应用场景及定义方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#应用场景"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">应用场景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义方式"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">定义方式</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#伪私有属性和私有方法（科普）"><span class="post-toc-number">2.</span> <span class="post-toc-text">伪私有属性和私有方法（科普）</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-python私有属性和私有方法"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">python私有属性和私有方法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-06-02 22:30:58" datetime="2020-06-02T14:30:58.000Z"  itemprop="datePublished">2020-06-02</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/语言学习/">语言学习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>记录python私有属性和私有方法的实现，并且讨论两者的实现方式<br><a id="more"></a></p>
+</blockquote>
+<h2 id="应用场景及定义方式"><a href="#应用场景及定义方式" class="headerlink" title="应用场景及定义方式"></a>应用场景及定义方式</h2><h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li>在实际开发中，对象 的 某些属性或方法 可能只希望 在对象的内部被使用，而 不希望在外部被访问到</li>
+<li><strong>私有属性</strong> 就是 对象 不希望公开的 属性</li>
+<li><strong>私有方法</strong> 就是 对象 不希望公开的 方法</li>
+</ul>
+<h3 id="定义方式"><a href="#定义方式" class="headerlink" title="定义方式"></a>定义方式</h3><ul>
+<li>在 定义属性或方法时，在 属性名或者方法名前 <strong>增加 两个下划线</strong>，定义的就是 私有 属性或方法</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/img/20200602.png" alt="类图" title>
+                </div>
+                <div class="image-caption">类图</div>
+            </figure>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Women</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(<span class="keyword">self</span>, name)</span></span><span class="symbol">:</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">self</span>.name = name</span><br><span class="line">        <span class="comment"># 不要问女生的年龄</span></span><br><span class="line">        <span class="keyword">self</span>.__age = <span class="number">18</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__secret</span><span class="params">(<span class="keyword">self</span>)</span></span><span class="symbol">:</span></span><br><span class="line">        print(<span class="string">"我的年龄是 %d"</span> % <span class="keyword">self</span>.__age)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">xiaofang = Women(<span class="string">"小芳"</span>)</span><br><span class="line"><span class="comment"># 私有属性，外部不能直接访问</span></span><br><span class="line"><span class="comment"># print(xiaofang.__age)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 私有方法，外部不能直接调用</span></span><br><span class="line"><span class="comment"># xiaofang.__secret()</span></span><br></pre></td></tr></table></figure>
+<h2 id="伪私有属性和私有方法（科普）"><a href="#伪私有属性和私有方法（科普）" class="headerlink" title="伪私有属性和私有方法（科普）"></a>伪私有属性和私有方法（科普）</h2><blockquote>
+<p>提示：在日常开发中，<strong>不要使用这种方式，访问对象的 私有属性 或 私有方法</strong></p>
+</blockquote>
+<p><code>Python</code> 中，并没有 真正意义 的 私有</p>
+<ul>
+<li>在给 属性、方法 命名时，实际是对 名称 做了一些特殊处理，使得外界无法访问到</li>
+<li>处理方式：在 名称 前面加上 _类名 =&gt; _类名__名</li>
+</ul>
+<figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># 私有属性，外部不能直接访问到</span></span><br><span class="line"><span class="keyword">print</span>(xiaofang._Women__age)</span><br><span class="line"></span><br><span class="line"><span class="meta"># 私有方法，外部不能直接调用</span></span><br><span class="line">xiaofang._Women__secret()</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-06-02T08:03:36.572Z" itemprop="dateUpdated">2020-06-02 16:03:36</time>
+</span><br>
+
+
+        
+        如果文章写得好，就打赏支持一下吧
+        
+    </div>
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="Vinson-sheep">
+            Vinson-sheep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/">Python</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2020/06/02/python私有属性和私有方法/&title=《python私有属性和私有方法》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2020/06/02/python私有属性和私有方法/&title=《python私有属性和私有方法》 — Vinson-sheep&source=
+记录python私有属性和私有方法的实现，并且讨论两者的实现方式" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2020/06/02/python私有属性和私有方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《python私有属性和私有方法》 — Vinson-sheep&url=/2020/06/02/python私有属性和私有方法/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2020/06/02/python私有属性和私有方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2020/06/02/python类属性和类方法/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">python类属性和类方法</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/05/30/python高级数据类型常用操作/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">python高级数据类型常用操作</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        爱你哟~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Vinson-sheep &copy; 2016 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17065873号-1</a><br>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2020/06/02/python私有属性和私有方法/&title=《python私有属性和私有方法》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2020/06/02/python私有属性和私有方法/&title=《python私有属性和私有方法》 — Vinson-sheep&source=
+记录python私有属性和私有方法的实现，并且讨论两者的实现方式" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2020/06/02/python私有属性和私有方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《python私有属性和私有方法》 — Vinson-sheep&url=/2020/06/02/python私有属性和私有方法/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2020/06/02/python私有属性和私有方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLUlEQVR42u3aQW7jMAwF0Nz/0hlgVrOYyJ+kg9bS0ypwbFdPBRhS1OsVj/ffkX9eX/l3fPr29Y2BgYHxWMZ7Odb3rCdXfUP+1H+oGBgYBzCSILu+kgfZZNL53DAwMDDW9ySA6jsxMDAw5owkLF6kccvCFQMDA2NSxFb3u5JEM09Ab6vFMTAwHsj4RmPgrs8/3N/AwMD4BYx3cUyWoNpyKMwKAwNja0begMyL3t4S3HAnBgbG1oxqYZm8dI5J3lD+n2BgYDyWMQl2k5UrrHE1A8XAwNiIMTmq1Ts0Vg3Z0ZwxMDAOYEyaAb125iR8Y2BgnMzIX5oge4ct8oQVAwPjHEavoG3u5xVJ+UJgYGDszWimYsH2WbUxUA3f5d4pBgbGYxl5sVrdjEu+rTYDLpYGAwPjAEYeaqstyeSpXgJaPi2CgYHxQEZvyyy5ngfZZA4Xc8PAwDiG0WtD5uVrr1WAgYGBkadf1T+TH6rI2wAflx4DA2NrRrXInDQSqu3MaisUAwNjV0a1WE1Sw94pjzz1vDhsgYGBcQAj3zjLU7cJJroTAwNja0beDZyUrIXic5BEYmBg7Mp4F0e+Sfe9Zy9+NzAwMLZj9ILdZBvurjYABgbGaYzJdv88BcwD7ujXAwMDYwtGtaDNJ7EOpnc1ITAwMDDmB7l6YbrwFAYGBkYcOquHJyZPYWBgnMbIi9gqrHrkq3loAwMDY2tG76BDb4ttHdzzZsMN/Q0MDIxnMP4ALWcd862DW2IAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
