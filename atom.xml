@@ -38,13 +38,13 @@
   </entry>
   
   <entry>
-    <title>pycharm模块安葬</title>
+    <title>pycharm模块安装</title>
     <link href="/2020/06/07/pycharm%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85/"/>
     <id>/2020/06/07/pycharm模块安装/</id>
     <published>2020-06-07T11:10:58.000Z</published>
-    <updated>2020-06-07T11:14:48.835Z</updated>
+    <updated>2020-06-09T10:35:11.154Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>直接在linux终端中使用pip3安装pygame，能够在终端中使用import导入。然而在pycharm却没有发现相应模块，这里是使用pycharm进行开发时候正确的安装模块姿势。<br><a id="more"></a></p></blockquote><p><code>File</code>-&gt;<code>Settings</code>-&gt;<code>Project:untitled</code>-&gt;<code>Project interperter</code>-&gt;<code>+</code>-&gt;search &amp;&amp; install </p>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>直接在linux终端中使用pip3安装pygame，能够在终端中使用import导入。然而在pycharm却没有发现相应模块，这里是使用pycharm进行开发时候正确的安装模块姿势。<br><a id="more"></a></p></blockquote><p><code>File</code>-&gt;<code>Settings</code>-&gt;<code>Project:untitled</code>-&gt;<code>Project interperter</code>-&gt;<code>+</code>-&gt;search &amp;&amp; install</p>]]></content>
     
     <summary type="html">
     
