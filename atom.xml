@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-06-05T11:06:53.391Z</updated>
+  <updated>2020-06-09T10:13:22.817Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2020中山大学系统科学与工程学院（复试经验）</title>
+    <link href="/2020/06/09/2020%E4%B8%AD%E5%B1%B1%E5%A4%A7%E5%AD%A6%E7%B3%BB%E7%BB%9F%E7%A7%91%E5%AD%A6%E4%B8%8E%E5%B7%A5%E7%A8%8B%E5%AD%A6%E9%99%A2%EF%BC%88%E5%A4%8D%E8%AF%95%E7%BB%8F%E9%AA%8C%EF%BC%89/"/>
+    <id>/2020/06/09/2020中山大学系统科学与工程学院（复试经验）/</id>
+    <published>2020-06-09T07:32:31.000Z</published>
+    <updated>2020-06-09T10:13:22.817Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>2020年中山大学系统科学与工程学院（复试），计算机科学与技术（学硕），拟录取。<br><a id="more"></a></p></blockquote><h2 id="1-我"><a href="#1-我" class="headerlink" title="1. 我"></a>1. 我</h2><p>跨考生，本科化学。初试359，复试352.15，总分711.15，排名第二。</p><p>复试书目：</p><ul><li>《C Prime Plus》（第六版）（Stephen Prata）</li><li>《模拟考场 二级C》、《上机考试题库 二级C》</li><li>《离散数学》（第二版）（曲婉玲 耿素云 张立昂）</li><li>《计算机英语学生用书》（第三版）（姜同强 苗天顺）</li><li>《数学专业英语》（第三版）（吴烔圻）</li><li>《算法笔记》（胡凡 曾磊）</li><li>《算法笔记——上机训练实战指南》（胡凡 曾磊）</li><li>《软件工程导论》（第六版）（张海藩 牟永敏）</li><li>《数据库系统概论》（第五版）（王珊 萨师煊）</li><li>《数字电子技术》（第四版）（江晓安 周慧鑫 付少锋）</li><li>《408四大金刚》、《数学一三大猛兽》</li><li>《人工智能》（相关书籍）</li><li>《网络安全》（未完成）</li></ul><p>事实证明，复习的都不考</p><h2 id="2-考情分析"><a href="#2-考情分析" class="headerlink" title="2. 考情分析"></a>2. 考情分析</h2><p>2019年，中大数据院和系统院在CS上统一招生。数据院招生14个，系统院招生10个。</p><p>2020年，中大数据院和系统院分开招生。数据院招生12人，系统院只有15个名额，且全部用于调剂（很迷惑）。系统院的调剂会比数据院的正式复试晚很多很多，也就是说，系统院就是给你第二次机会了。</p><p>今年系统院复试线为280（非常低），从招收情况看，只要复试分数及格，点击就送。</p><p>CS进入复试的一共11人，刷了5人，证明不是胡来的。</p><h2 id="3-复试内容"><a href="#3-复试内容" class="headerlink" title="3. 复试内容"></a>3. 复试内容</h2><h3 id="3-1-自我介绍（中文）"><a href="#3-1-自我介绍（中文）" class="headerlink" title="3.1 自我介绍（中文）"></a>3.1 自我介绍（中文）</h3><p>这个环节是我没想到了，我那时候几乎蒙了。历年计算机面试都没有进行自我介绍，还好我之前在数据院面试的时候准备了一份（没有用上），内容不太适用于新学院。</p><p>老师会给你两分钟介绍，然后进行提问。</p><ul><li>Q1：你是往届生，考研的前一年主要是干什么？</li><li>Q2：大学期间有学过什么跟计算机相关的课程？</li><li>Q3：学过数据结构的吧？说说什么是哈希函数？</li></ul><h3 id="3-2-英语翻译"><a href="#3-2-英语翻译" class="headerlink" title="3.2 英语翻译"></a>3.2 英语翻译</h3><p>就是给出一篇短文，长度大概是半张A4纸，字很大。要求先朗读短文，比较简单。然后要求翻译前两句话，比较难，但是意思到位就行。我抽到了关于网络安全的文章，要求翻译的句子语法异常复杂，但是抽取句子关键字然后大概翻译一下就过关，老师也没有问什么。</p><h3 id="3-3-专业面试"><a href="#3-3-专业面试" class="headerlink" title="3.3 专业面试"></a>3.3 专业面试</h3><p>给出是个编号，一个编号对应一道题，让你抽两道题。</p><ul><li>Q1：C语言中有什么程序结构？（我第一次看成数据结构了，实际上很简单，但是我一开始没往那方面想）</li><li>Q2：什么是对称加密和非对称加密（网络安全，我偏偏就没有补这课）</li></ul><h3 id="3-4-拓展面试"><a href="#3-4-拓展面试" class="headerlink" title="3.4 拓展面试"></a>3.4 拓展面试</h3><p>还是抽题。</p><ul><li>Q：什么是机器学习？有哪些类型？（具体忘了，大概就是这么个意思）</li><li>追问：机器学习算法的有哪些？举几个例子。</li><li>追问：请论述机器学习和深度学习的关系（深度学习是实现方式之一）</li><li>追问：如果我把你分配到网络安全，你会怎么做？（问这问题是因为我一直强调AI的作用，送命题）</li></ul><h2 id="4-碎碎念"><a href="#4-碎碎念" class="headerlink" title="4. 碎碎念"></a>4. 碎碎念</h2><p>今年疫情使得复试情况特殊，但是这是系统院今年第一次自己组织复试，很可能下一年就照着这个模板进行线下复试。不管怎么样，自我介绍、线上机试等都是必须准备的。</p><p>系统院今年复试特别的难。数据院复试考的大部分都是基本知识，都是你应该会，只是比较偏门。系统院的复试范围跟数据院一致，却延伸了网络安全、人工智能、区块链（其他考生提供）等题目，对跨考生及其不利。跨考生要想成功，可能需要跳出中大的复试目录，比较累。</p><p>中大的复试特别墨迹。我先列出时间线给大家感受一下：</p><ul><li>2020.5.06，第一波高校开始复试；</li><li>2020.5.14，数据院发复试通知；</li><li>2020.5.19，数据院开始复试；</li><li>2020.5.20，调剂系统开启；</li><li>2020.5.24，数据院发复试结果；</li><li>2020.6.04，系统院发复试通知；</li><li>2020.6.09，系统院发复试结果</li></ul><p>注意到，<strong>第一波复试</strong>到<strong>数据院发结果</strong>这段时间大于两周，第一波复试到系统院发结果这段时间大于一个月，这意味着你考中大基本就没有外校调剂了。历年中大华工都是很迟复试的，所以慎入。</p><p>另外，<strong>数据院发复试结果</strong>到<strong>系统院发复试通知</strong>这段时间大于十天，这段时间足够一个在数据院被刷的CS考生在校外递交材料、调剂复试、出成绩可。也就是说，很多高分人才在等待中流失，最后在系统院报名的寥寥无几（3/15）。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;2020年中山大学系统科学与工程学院（复试），计算机科学与技术（学硕），拟录取。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="other" scheme="/categories/other/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>pycharm模块安葬</title>
+    <link href="/2020/06/07/pycharm%E6%A8%A1%E5%9D%97%E5%AE%89%E8%A3%85/"/>
+    <id>/2020/06/07/pycharm模块安装/</id>
+    <published>2020-06-07T11:10:58.000Z</published>
+    <updated>2020-06-07T11:14:48.835Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>直接在linux终端中使用pip3安装pygame，能够在终端中使用import导入。然而在pycharm却没有发现相应模块，这里是使用pycharm进行开发时候正确的安装模块姿势。<br><a id="more"></a></p></blockquote><p><code>File</code>-&gt;<code>Settings</code>-&gt;<code>Project:untitled</code>-&gt;<code>Project interperter</code>-&gt;<code>+</code>-&gt;search &amp;&amp; install </p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;直接在linux终端中使用pip3安装pygame，能够在终端中使用import导入。然而在pycharm却没有发现相应模块，这里是使用pycharm进行开发时候正确的安装模块姿势。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="工具" scheme="/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Python" scheme="/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title>python文件和目录操作</title>
@@ -426,54 +470,6 @@
     
     
       <category term="英语" scheme="/tags/%E8%8B%B1%E8%AF%AD/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C语言之按位运算符</title>
-    <link href="/2018/04/20/C%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%8C%89%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/"/>
-    <id>/2018/04/20/C语言之按位运算符/</id>
-    <published>2018-04-20T12:53:52.000Z</published>
-    <updated>2018-04-20T14:31:11.255Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>实话说，写了一年多的代码了，从来没有想过要对数据进行按位运算。接触之后发现这跟《数据逻辑》的部分知识结构相吻合，比如与门、或门、非门等。相信学计算机的大家们早已烂透在心底了。我这里做一个记录，方便以后写C的时候查询。<br><a id="more"></a></p></blockquote><p>在C语言中，可以单独操控变量中的位。</p><p>处理一个值中的位的两个C工具：<strong>位运算符</strong>和<strong>位字段</strong></p><h1 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h1><h2 id="按位逻辑运算符"><a href="#按位逻辑运算符" class="headerlink" title="按位逻辑运算符"></a>按位逻辑运算符</h2><h3 id="二进制反码或按位取反："><a href="#二进制反码或按位取反：" class="headerlink" title="二进制反码或按位取反：~"></a>二进制反码或按位取反：~</h3><p>一元运算符~把1变为0，把0变为1。例子如下：<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~(<span class="number">10011010</span>) <span class="comment">// 表达式</span></span><br><span class="line">(<span class="number">01100101</span>)  <span class="comment">// 结果值</span></span><br><span class="line"></span><br><span class="line">val = ~val;</span><br></pre></td></tr></table></figure></p><h3 id="按位与：-amp"><a href="#按位与：-amp" class="headerlink" title="按位与：&amp;"></a>按位与：&amp;</h3><p>二元运算符&amp;通过逐位比较两个运算对象，生成一个新值。对于每个位，只有两个运算对象中相应的位都为1时，结果才为1。例子如下：<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10010011</span>)&amp;(<span class="number">00111101</span>) <span class="comment">// 表达式</span></span><br><span class="line">(<span class="number">00010001</span>)  <span class="comment">// 结果值</span></span><br><span class="line"></span><br><span class="line">val &amp;= <span class="number">0377</span>;</span><br><span class="line">val = val &amp; <span class="number">0377</span>;</span><br></pre></td></tr></table></figure></p><h3 id="按位或："><a href="#按位或：" class="headerlink" title="按位或：|"></a>按位或：|</h3><p>二元运算符，通过逐位比较两个运算对象，生成一个新值。对于每个位，如果两个运算对象中相应的位为1，结果就为1.<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10010011</span>)|(<span class="number">00111101</span>) <span class="comment">// 表达式</span></span><br><span class="line">(<span class="number">10111111</span>)  <span class="comment">// 结果值</span></span><br><span class="line"></span><br><span class="line">val |= <span class="number">0377</span>;</span><br><span class="line">val = val | <span class="number">0377</span>;</span><br></pre></td></tr></table></figure></p><h3 id="按位异或："><a href="#按位异或：" class="headerlink" title="按位异或：^"></a>按位异或：^</h3><p>二位运算符……逐位比较两个运算对象。对于每个位，如果两个运算对象中相应的位一个为1（但不是两个为1），结果为1。<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10010011</span>)^(<span class="number">00111101</span>) <span class="comment">// 表达式</span></span><br><span class="line">(<span class="number">10101110</span>)  <span class="comment">// 结果值</span></span><br><span class="line"></span><br><span class="line">val ^= <span class="number">0377</span>;</span><br><span class="line">val = val ^ <span class="number">0377</span>;</span><br></pre></td></tr></table></figure></p><h2 id="移位运算符"><a href="#移位运算符" class="headerlink" title="移位运算符"></a>移位运算符</h2><p>下面介绍C的移位运算符。移位运算符向左或右移动位。</p><h3 id="左移：-lt-lt"><a href="#左移：-lt-lt" class="headerlink" title="左移：&lt;&lt;"></a>左移：&lt;&lt;</h3><p>左侧运算对象移出左末端位的值丢失，用0填充空出的位置。<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10001010</span>)  &lt;&lt; <span class="number">2</span>  <span class="comment">// 表达式</span></span><br><span class="line">(<span class="number">00101000</span>)        <span class="comment">// 结果值</span></span><br></pre></td></tr></table></figure></p><h3 id="右移：-gt-gt"><a href="#右移：-gt-gt" class="headerlink" title="右移：&gt;&gt;"></a>右移：&gt;&gt;</h3><p>对于无符号类型，用0填充空出的位置。<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10001010</span>) &gt;&gt; <span class="number">2</span>   <span class="comment">// 表达式，无符号值</span></span><br><span class="line">(<span class="number">00100010</span>)        <span class="comment">// 所有系统都得到该结果值</span></span><br></pre></td></tr></table></figure></p><p>对于有符号类型，其结果取决于机器。<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(<span class="number">10001010</span>) &gt;&gt; <span class="number">2</span>   <span class="comment">// 表达式，有符号值</span></span><br><span class="line">(<span class="number">00100010</span>)        <span class="comment">// 在某些系统中的结果值</span></span><br><span class="line">(<span class="number">10001010</span>) &gt;&gt; <span class="number">2</span>   <span class="comment">// 表达式，有符号值</span></span><br><span class="line">(<span class="number">11100010</span>)        <span class="comment">// 在另一些系统上的结果值</span></span><br></pre></td></tr></table></figure></p><h1 id="位字段"><a href="#位字段" class="headerlink" title="位字段"></a>位字段</h1><p>操控位的第二种方法是<strong>位字段</strong>。</p><p>下面的声明建立一个4个1位的字段：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> autfd : <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> bldfc : <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> undln : <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">int</span> itals : <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>这时候就能通过下列语句赋值：<br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">prnt.itals</span> = <span class="number">0</span><span class="comment">;</span></span><br><span class="line"><span class="attr">prnt.undln</span> = <span class="number">1</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p><p>注意需要赋的值不能超过位数所能表示的最大数值，不然会占用下一个unsigned int类型的存储位置。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;实话说，写了一年多的代码了，从来没有想过要对数据进行按位运算。接触之后发现这跟《数据逻辑》的部分知识结构相吻合，比如与门、或门、非门等。相信学计算机的大家们早已烂透在心底了。我这里做一个记录，方便以后写C的时候查询。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="语言学习" scheme="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="C语言" scheme="/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C语言对const的一些理解</title>
-    <link href="/2018/04/14/C%E8%AF%AD%E8%A8%80%E5%AF%B9const%E7%9A%84%E4%B8%80%E4%BA%9B%E7%90%86%E8%A7%A3/"/>
-    <id>/2018/04/14/C语言对const的一些理解/</id>
-    <published>2018-04-13T17:08:00.000Z</published>
-    <updated>2018-04-13T17:45:00.384Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>编写过ES6的我对const用得也不多，看了一些关于const的特殊用法之后，觉得我对const有了新的理解。<br><a id="more"></a></p></blockquote><p><em>windows 10</em></p><h1 id="初始化数据"><a href="#初始化数据" class="headerlink" title="初始化数据"></a>初始化数据</h1><p>我们来初始化一些数据：<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">double</span> rates[<span class="number">5</span>] = &#123;<span class="number">88.99</span>, <span class="number">100.12</span>, <span class="number">59.45</span>, <span class="number">183.11</span>, <span class="number">340.5</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="built_in">double</span> locked[<span class="number">4</span>] = &#123;<span class="number">0.08</span>, <span class="number">0.075</span>, <span class="number">0.0725</span>, <span class="number">0.07</span>&#125;;</span><br><span class="line"><span class="keyword">const</span> <span class="built_in">double</span> *pc = rates;</span><br><span class="line"><span class="built_in">double</span> *pnc = rates;</span><br></pre></td></tr></table></figure></p><p>rates数组是可读可写的，locked只能读，第三、四句将rates的首地址赋值给pc、pnc指针(注意，此处使用了const，而pnc没有)。</p><h1 id="开始测试"><a href="#开始测试" class="headerlink" title="开始测试"></a>开始测试</h1><p><strong>第一次</strong><br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pc[0]</span> = <span class="number">0.0</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p><p>操作无效，这非常合理，因为使用了<code>const</code>。</p><p><strong>第二次</strong><br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">rates[5]</span> = <span class="number">0.0</span><span class="comment">;</span></span><br></pre></td></tr></table></figure></p><p>操作有效，证明了<code>数组rate的物理地址赋值给pc依然没有改变rates的性质</code>。这看来也非常合理。</p><p><strong>第三次</strong><br><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">pnc</span> = locked<span class="comment">;</span></span><br></pre></td></tr></table></figure></p><p>操作无效。可能你还没有发现究竟发生了什么事情？我一一罗列出来(为了方便，const表示使用了const的，no-const相反)：</p><ol><li>const空指针能被const数组赋值，也能被no-const数组赋值</li><li>no-const空指针不能被const数组赋值，但依然可以被no-const数组赋值</li><li>无论是const还是no-const空指针，被赋值后不会改变原来数组的可写性</li></ol><h1 id="结果分析"><a href="#结果分析" class="headerlink" title="结果分析"></a>结果分析</h1><p>const好比是一个标识符，它能表示某个变量是只读的。<strong>注意只是标识某个变量，不是物理地址</strong>。</p><p>所以<code>const double *pc = rates;</code>中，<code>pc</code>被标识为只读，故调用<code>pc</code>这指针变量的一切表达式都会视数组为只读，如<code>pc[0] = 0.0;</code>。</p><p>而<code>rates</code>没有使用<code>const</code>初始化，故调用<code>rates</code>这指针变量的一切表达式都会视数组为可读可写，如<code>rates[5] = 0.0;</code>。</p><p>但是no-const空指针不能被const数组赋值是什么操作呢？其实是编译器在保护const数组。如果随便将物理地址重新赋值给一个新的指针就能改变数组的可写性，那么初始化声明中const就被架空了。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;编写过ES6的我对const用得也不多，看了一些关于const的特殊用法之后，觉得我对const有了新的理解。&lt;br&gt;
-    
-    </summary>
-    
-      <category term="语言学习" scheme="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"/>
-    
-    
-      <category term="原创" scheme="/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-      <category term="C语言" scheme="/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
