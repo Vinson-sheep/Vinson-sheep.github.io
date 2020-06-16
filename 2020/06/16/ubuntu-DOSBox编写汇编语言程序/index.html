@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>(ubuntu)DOSBox编写汇编语言程序 | Vinson-sheep | Vinson Sheep is on his time zone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+    <meta name="keywords" content="ubuntu,assembly language">
+    <meta name="description" content="最近在学习汇编语言，无奈win10并不能自带debug。虽然能够安装DOSBox，但是不兼容masm.exe、link.exe等等。此文章转载了一篇关于在ubuntu中部署DOSBox实现编译连接.asm文件的文章。">
+<meta name="keywords" content="ubuntu,assembly language">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(ubuntu)DOSBox编写汇编语言程序">
+<meta property="og:url" content="/2020/06/16/ubuntu-DOSBox编写汇编语言程序/index.html">
+<meta property="og:site_name" content="Vinson-sheep">
+<meta property="og:description" content="最近在学习汇编语言，无奈win10并不能自带debug。虽然能够安装DOSBox，但是不兼容masm.exe、link.exe等等。此文章转载了一篇关于在ubuntu中部署DOSBox实现编译连接.asm文件的文章。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="/img/img/20200616_1.png">
+<meta property="og:image" content="/img/img/20200616_2.png">
+<meta property="og:image" content="/img/img/20200616_3.png">
+<meta property="og:updated_time" content="2020-06-16T04:36:59.023Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(ubuntu)DOSBox编写汇编语言程序">
+<meta name="twitter:description" content="最近在学习汇编语言，无奈win10并不能自带debug。虽然能够安装DOSBox，但是不兼容masm.exe、link.exe等等。此文章转载了一篇关于在ubuntu中部署DOSBox实现编译连接.asm文件的文章。">
+<meta name="twitter:image" content="/img/img/20200616_1.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Vinson-sheep" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Vinson-sheep</h5>
+          <a href="mailto:775014077@qq.com" title="775014077@qq.com" class="mail">775014077@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Article
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tag
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/algorithum/"  >
+                <i class="icon icon-lg icon-puzzle-piece"></i>
+                Algorithum
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/gallery"  >
+                <i class="icon icon-lg icon-paint-brush"></i>
+                Gallery
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/短篇小说/"  >
+                <i class="icon icon-lg icon-pencil"></i>
+                Novel
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Vinson-sheep/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">(ubuntu)DOSBox编写汇编语言程序</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">(ubuntu)DOSBox编写汇编语言程序</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2020-06-16T04:21:20.000Z" itemprop="datePublished" class="page-time">
+  2020-06-16
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/语言学习/">语言学习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、安装dosbox"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、安装dosbox</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、操作步骤"><span class="post-toc-number">2.</span> <span class="post-toc-text">二、操作步骤</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1、选择一个目录，其中尽可能准备好以下文件"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1、选择一个目录，其中尽可能准备好以下文件</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2、打开dosbox后，运行hello-asm"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2、打开dosbox后，运行hello.asm</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-ubuntu-DOSBox编写汇编语言程序"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">(ubuntu)DOSBox编写汇编语言程序</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2020-06-16 12:21:20" datetime="2020-06-16T04:21:20.000Z"  itemprop="datePublished">2020-06-16</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/语言学习/">语言学习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>最近在学习汇编语言，无奈win10并不能自带debug。虽然能够安装DOSBox，但是不兼容masm.exe、link.exe等等。此文章转载了一篇关于在ubuntu中部署DOSBox实现编译连接.asm文件的文章。<br><a id="more"></a></p>
+</blockquote>
+<p><a href="https://blog.csdn.net/qq_41584385/article/details/101855795" target="_blank" rel="noopener">文章来源</a></p>
+<h2 id="一、安装dosbox"><a href="#一、安装dosbox" class="headerlink" title="一、安装dosbox"></a>一、安装dosbox</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install dosbox</span><br></pre></td></tr></table></figure>
+<p>安装成功之后可以通过命令行输入<br><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">dosbox</span></span><br></pre></td></tr></table></figure></p>
+<p>来开启，也可以在左下角“显示应用程序”中打开。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/img/20200616_1.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="二、操作步骤"><a href="#二、操作步骤" class="headerlink" title="二、操作步骤"></a>二、操作步骤</h2><h3 id="1、选择一个目录，其中尽可能准备好以下文件"><a href="#1、选择一个目录，其中尽可能准备好以下文件" class="headerlink" title="1、选择一个目录，其中尽可能准备好以下文件"></a>1、选择一个目录，其中尽可能准备好以下文件</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/img/20200616_2.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这些文件中，必须有<strong>MASM.EXE</strong>和<strong>LINK.EXE</strong>。</p>
+<p>调试需要，最好配上<strong>DEBUG.EXE</strong>。</p>
+<p>另外，<strong>hello.asm</strong>文件是提前用vim编辑器写好的，即输出hello world。</p>
+<p>附上这些文件的<a href="https://pan.baidu.com/s/1GwUaIruPeLQUoKVMq5_ROw#list/path=%2F" target="_blank" rel="noopener">下载链接</a>，提取码：<strong>ev2k</strong></p>
+<p>应该注意，默认的版本是不支持中文的，所以尽量避免输出中文，或者安装汉化版本。</p>
+<p>hello.asm内容如下：<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">.model</span>  small			<span class="comment">;小型存储模式</span></span><br><span class="line"><span class="meta">.stack</span>				<span class="comment">;定义堆栈段</span></span><br><span class="line"><span class="meta">.data</span>				<span class="comment">;定义数据段</span></span><br><span class="line">string		<span class="built_in">db</span>	   <span class="string">'Hello, world!'</span>	<span class="comment">;预存字符串、</span></span><br><span class="line"><span class="built_in">db</span>	   <span class="number">0dh</span>, <span class="number">0ah</span>, <span class="string">'$'</span>	<span class="comment">;回车换行结束</span></span><br><span class="line"><span class="meta">.code</span>				<span class="comment">;定义代码段</span></span><br><span class="line"><span class="symbol">start:</span>		<span class="keyword">mov</span>	   <span class="built_in">ax</span>, @data		<span class="comment">;装数据段(段</span></span><br><span class="line"><span class="keyword">mov</span>	   <span class="built_in">ds</span>, <span class="built_in">ax</span>		<span class="comment">; 地址送DS)</span></span><br><span class="line"><span class="keyword">lea</span> 	   <span class="built_in">dx</span>, string  		<span class="comment">;调用21H号</span></span><br><span class="line"><span class="keyword">mov</span>	   <span class="number">ah</span>, <span class="number">9</span>		<span class="comment">; 中断，显示</span></span><br><span class="line"><span class="keyword">int</span>	   <span class="number">21h</span>			<span class="comment">; 字符串</span></span><br><span class="line"><span class="keyword">mov</span>	   <span class="built_in">ax</span>, <span class="number">4c00h</span>		<span class="comment">;调用21H号中</span></span><br><span class="line"><span class="keyword">int</span>	   <span class="number">21h</span>			<span class="comment">; 断，返回</span></span><br><span class="line">end	   start		<span class="comment">; 结束汇编</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="2、打开dosbox后，运行hello-asm"><a href="#2、打开dosbox后，运行hello-asm" class="headerlink" title="2、打开dosbox后，运行hello.asm"></a>2、打开dosbox后，运行hello.asm</h3><p>（1）设置虚拟磁盘c为上述文件存储的目录，以笔者目录为例：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount c <span class="regexp">/home/</span>zhanwangc<span class="regexp">/download/m</span>asm</span><br></pre></td></tr></table></figure></p>
+<p>（2）进到虚拟磁盘c<br><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">c:</span></span><br></pre></td></tr></table></figure></p>
+<p>（3）显示目录下情况，查看文件是否齐全<br><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dir</span></span><br></pre></td></tr></table></figure></p>
+<p>（4）编译为obj文件<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">masm hello.<span class="keyword">asm</span></span><br></pre></td></tr></table></figure></p>
+<p>输入上述命令后，连续点击三个回车，即默认编译完成。</p>
+<p>（5）生成可执行文件<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">link</span> <span class="selector-tag">hello</span><span class="selector-class">.obj</span></span><br></pre></td></tr></table></figure></p>
+<p>也是连续点击三个回车，默认生成。</p>
+<p>（6）运行<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">hello</span><span class="selector-class">.exe</span></span><br></pre></td></tr></table></figure></p>
+<p>运行成功显示如下：<br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/img/20200616_3.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2020-06-16T04:36:59.023Z" itemprop="dateUpdated">2020-06-16 12:36:59</time>
+</span><br>
+
+
+        
+        如果文章写得好，就打赏支持一下吧
+        
+    </div>
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="Vinson-sheep">
+            Vinson-sheep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/assembly-language/">assembly language</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2020/06/16/ubuntu-DOSBox编写汇编语言程序/&title=《(ubuntu)DOSBox编写汇编语言程序》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2020/06/16/ubuntu-DOSBox编写汇编语言程序/&title=《(ubuntu)DOSBox编写汇编语言程序》 — Vinson-sheep&source=
+最近在学习汇编语言，无奈win10并不能自带debug。虽然能够安装DOSBox，但是不兼容masm.exe、link.exe等等。此文章转载了一篇关于..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2020/06/16/ubuntu-DOSBox编写汇编语言程序/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(ubuntu)DOSBox编写汇编语言程序》 — Vinson-sheep&url=/2020/06/16/ubuntu-DOSBox编写汇编语言程序/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2020/06/16/ubuntu-DOSBox编写汇编语言程序/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/06/09/2020中山大学系统科学与工程学院（复试经验）/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">2020中山大学系统科学与工程学院（复试经验）</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        爱你哟~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Vinson-sheep &copy; 2016 - 2020</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17065873号-1</a><br>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2020/06/16/ubuntu-DOSBox编写汇编语言程序/&title=《(ubuntu)DOSBox编写汇编语言程序》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2020/06/16/ubuntu-DOSBox编写汇编语言程序/&title=《(ubuntu)DOSBox编写汇编语言程序》 — Vinson-sheep&source=
+最近在学习汇编语言，无奈win10并不能自带debug。虽然能够安装DOSBox，但是不兼容masm.exe、link.exe等等。此文章转载了一篇关于..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2020/06/16/ubuntu-DOSBox编写汇编语言程序/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《(ubuntu)DOSBox编写汇编语言程序》 — Vinson-sheep&url=/2020/06/16/ubuntu-DOSBox编写汇编语言程序/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2020/06/16/ubuntu-DOSBox编写汇编语言程序/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3aSXLCQBAEQP7/aRzhqy25qkfYZpRzIlgkkkPT2+MRn+fnyR9//ezXdx49c3SdCw4GBsbbMp6n5+grJl/u/IfI73v+HgwMjPswZkE2geXXTK5w+DwGBgbGcnBMUsP2J8PAwMBIguP5dfJnMDAwMBLGVcF0JdX7pVocAwPjDRmvGAxc9fiP5xsYGBj/gPF8wTm/cj5aKO6IgYGxNSMZPUYF5KhMXWnJPZK5BAYGxhaMtgRd+bqzkUCUPmJgYGzNmDXok1ZaMjyYDTKL3iEGBsZGjDa0zUaYs+BepKEYGBibMlYaYeuziBxQ/1dgYGBsx2gL0eSzeSnbJpffvIqBgbE1Y2Vh9Krb56ln1DvEwMDYjpEkdjlgZbaYL2pgYGDcmdGucLXt/ryVloRjDAyMuzHagnMl+Vt5XOy1YWBgbMqYjRJnjbO8iI0CPQYGxtaMPMlrm/vFrscoAcXAwLgbI193aF9NzuxehyNMDAyMTRl5AJ01+tc3uIr2HwYGxqaMtonflpRtwG3XzjAwMO7DyMvUNpmrK+lymIGBgXEHRh7U2uHBrGG3BMDAwNiO8SxPW7jmxW07Fi0msRgYGG/OaBOyWQI3K3rrkQAGBsbWjNmIMW/AtWtnecDFwMC4GyMPfElYfEXT7YefAwMDA2Nhbatdp2jLaQwMDIzzG8/SuOHm2qzOxsDA2IjRhsi2udYG02HAxcDA2JTRBuWVJbBrQ/bSfwsGBsZ7MD4A0t4PLJd4fxMAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
