@@ -235,11 +235,11 @@
 
         
 
-            <a href="/tags/js数组/" style="-webkit-order:41;order:41" class="tags-list-item waves-effect waves-button waves-light">js数组</a>
+            <a href="/tags/js客户端对象/" style="-webkit-order:41;order:41" class="tags-list-item waves-effect waves-button waves-light">js客户端对象</a>
 
         
 
-            <a href="/tags/js客户端对象/" style="-webkit-order:42;order:42" class="tags-list-item waves-effect waves-button waves-light">js客户端对象</a>
+            <a href="/tags/js数组/" style="-webkit-order:42;order:42" class="tags-list-item waves-effect waves-button waves-light">js数组</a>
 
         
 
@@ -363,15 +363,15 @@
 
         
 
-            <a href="/tags/ubuntu/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">ubuntu</a>
+            <a href="/tags/病毒/" style="-webkit-order:9;order:9" class="tags-list-item waves-effect waves-button waves-light">病毒</a>
 
         
 
-            <a href="/tags/assembly-language/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">assembly language</a>
+            <a href="/tags/ubuntu/" style="-webkit-order:10;order:10" class="tags-list-item waves-effect waves-button waves-light">ubuntu</a>
 
         
 
-            <a href="/tags/病毒/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">病毒</a>
+            <a href="/tags/assembly-language/" style="-webkit-order:11;order:11" class="tags-list-item waves-effect waves-button waves-light">assembly language</a>
 
         
 
@@ -411,11 +411,11 @@
 
         
 
-            <a href="/tags/发音/" style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">发音</a>
+            <a href="/tags/英语/" style="-webkit-order:21;order:21" class="tags-list-item waves-effect waves-button waves-light">英语</a>
 
         
 
-            <a href="/tags/英语/" style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">英语</a>
+            <a href="/tags/发音/" style="-webkit-order:22;order:22" class="tags-list-item waves-effect waves-button waves-light">发音</a>
 
         
 
@@ -605,6 +605,58 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
 </script>
 
 <script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
+="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
 
 
 <div class="search-panel" id="search-panel">
