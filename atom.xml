@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-06-16T04:36:59.023Z</updated>
+  <updated>2020-10-05T14:38:57.048Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>matplotlib中文显示设置</title>
+    <link href="/2020/10/05/matplotlib%E4%B8%AD%E6%96%87%E6%98%BE%E7%A4%BA%E8%AE%BE%E7%BD%AE/"/>
+    <id>/2020/10/05/matplotlib中文显示设置/</id>
+    <published>2020-10-05T14:34:01.000Z</published>
+    <updated>2020-10-05T14:38:57.048Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>利用pyplot绘制图像的时候，发现中文显示不全，于是总结了一些文章，希望之后碰到类似问题的时候能够得到参考。<br><a id="more"></a></p></blockquote><h2 id="查看系统字体"><a href="#查看系统字体" class="headerlink" title="查看系统字体"></a>查看系统字体</h2><p><a href="https://blog.csdn.net/qq_41498261/article/details/103835747" target="_blank" rel="noopener">Windows——matplotlib添加中文字体</a></p><h2 id="设置matplotlib字体"><a href="#设置matplotlib字体" class="headerlink" title="设置matplotlib字体"></a>设置matplotlib字体</h2><p><a href="https://www.cnblogs.com/hhh5460/p/4323985.html" target="_blank" rel="noopener">matplotlib显示中文</a></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;利用pyplot绘制图像的时候，发现中文显示不全，于是总结了一些文章，希望之后碰到类似问题的时候能够得到参考。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="后端" scheme="/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+    
+      <category term="python" scheme="/tags/python/"/>
+    
+      <category term="matplotlib" scheme="/tags/matplotlib/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>利用mat文件实现matlab和python之间的数据交换</title>
+    <link href="/2020/09/28/%E5%88%A9%E7%94%A8mat%E6%96%87%E4%BB%B6%E5%AE%9E%E7%8E%B0matlab%E5%92%8Cpython%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B0%E6%8D%AE%E4%BA%A4%E6%8D%A2/"/>
+    <id>/2020/09/28/利用mat文件实现matlab和python之间的数据交换/</id>
+    <published>2020-09-28T10:10:11.000Z</published>
+    <updated>2020-09-28T10:35:01.358Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>matlab原本是支持对python子函数的调用，这对于一般的参数（比如array、double等）能够适用，然而当参数为一个大型矩阵的时候，python子函数就频频报错。如果传入的大矩阵依然是一个二维数组，那应当能通过[i]的方式进行访问，显然matlab对大型矩阵的实现与其他数据不同。利用mat文件传输正是解决这个问题的方法。<br><a id="more"></a></p></blockquote><h2 id="讨论"><a href="#讨论" class="headerlink" title="讨论"></a>讨论</h2><p>我们在<strong>tool.py</strong>文件中可以设计一个python子函数，对传入参数进行类型打印：<br><figure class="highlight flix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span></span>(a):</span><br><span class="line">  print(<span class="keyword">type</span>(a))</span><br></pre></td></tr></table></figure></p><p>然后在matlab中调用<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">py</span><span class="selector-class">.tool</span><span class="selector-class">.test</span>(<span class="selector-tag">a_big_matrix</span>)</span><br></pre></td></tr></table></figure></p><p>a_big_matrix可以是一个大型图像数据；程序运行结果为：<br><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="keyword">class</span> '<span class="symbol">memoryview</span>'&gt;</span><br></pre></td></tr></table></figure></p><p>memoryview? 根据python3自身定义的memoryview对象，利用下标[i]确实是能访问内容的，然而这里由matlab传入的memoryview却不行。</p><p>利用<strong>mat文件</strong>存取大型矩阵可以屏蔽掉语言上的差异。</p><h2 id="python存取mat文件"><a href="#python存取mat文件" class="headerlink" title="python存取mat文件"></a>python存取mat文件</h2><p>读取<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scipy.io <span class="keyword">as</span> scio</span><br><span class="line"></span><br><span class="line"><span class="title">dataFile</span> = '<span class="type">E</span>://<span class="class"><span class="keyword">data</span>.mat'</span></span><br><span class="line"><span class="class"><span class="keyword">data</span> = scio.loadmat(<span class="title">dataFile</span>)</span></span><br></pre></td></tr></table></figure></p><p>保存<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dataNew = <span class="string">'E://dataNew.mat'</span></span><br><span class="line">scio.savemat(dataNew, &#123;<span class="string">'A'</span><span class="symbol">:data</span>[<span class="string">'A'</span>]&#125;)</span><br></pre></td></tr></table></figure></p><h2 id="matlab存取mat文件"><a href="#matlab存取mat文件" class="headerlink" title="matlab存取mat文件"></a>matlab存取mat文件</h2><p>读取<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">load</span>(<span class="string">'E:\room\MATLAB\apt\file1.mat'</span>,<span class="string">'A'</span>);   %从指定文件夹中读取变量A</span><br></pre></td></tr></table></figure></p><p>保存<br><figure class="highlight autoit"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">save(<span class="string">'file1.mat'</span>,<span class="string">'A'</span>)<span class="comment">;    %从指定文件夹中保存变量A</span></span><br></pre></td></tr></table></figure></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;matlab原本是支持对python子函数的调用，这对于一般的参数（比如array、double等）能够适用，然而当参数为一个大型矩阵的时候，python子函数就频频报错。如果传入的大矩阵依然是一个二维数组，那应当能通过[i]的方式进行访问，显然matlab对大型矩阵的实现与其他数据不同。利用mat文件传输正是解决这个问题的方法。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="语言学习" scheme="/categories/%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="python" scheme="/tags/python/"/>
+    
+      <category term="matlab" scheme="/tags/matlab/"/>
+    
+  </entry>
   
   <entry>
     <title>(ubuntu)DOSBox编写汇编语言程序</title>
@@ -431,47 +481,6 @@
     
     
       <category term="计算机管理" scheme="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%A1%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>removable disk病毒删除</title>
-    <link href="/2019/03/02/removable-disk%E7%97%85%E6%AF%92%E5%88%A0%E9%99%A4/"/>
-    <id>/2019/03/02/removable-disk病毒删除/</id>
-    <published>2019-03-01T16:55:22.000Z</published>
-    <updated>2019-03-01T17:11:28.049Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>前阵子在红外实验室的电脑发现了一个病毒，名为removable disk。当你将U盘插入到感染病毒的电脑中，你U盘里面的东西会“消失”。<br><a id="more"></a></p></blockquote><p>要处理这个病毒，可以选择以下方法（亲测）。</p><ol><li>将U盘在别的电脑清空，保留一个<strong>杀毒软件安装包</strong>（杀毒软件我推荐<strong>火绒</strong>）</li><li>将U盘插入到受病毒感染的电脑上，这时候可以发现东西都不见了</li><li>操作：<strong>我的电脑</strong>-&gt;<strong>查看</strong>-&gt;<strong>隐藏的项目</strong>，可以在U盘看到存在一个<strong>无名</strong>隐藏文件夹</li><li>点击这个<strong>无名</strong>隐藏的文件夹，可以看到你U盘里面的东西都转移到这里了</li><li>将文件夹里面的东西（杀毒软件安装包）复制到U盘的主目录，然后打开杀毒软件安装包，安装杀毒软件</li><li>进入<strong>杀毒软件</strong>进行全盘杀毒（像火绒这类杀完毒都会报警），这时候重启发现U盘的东西还在（成功了）</li><li>为了避免已经中毒的U盘再次感染电脑，请<strong>保留杀毒软件</strong></li></ol><p>完成</p>]]></content>
-    
-    <summary type="html">
-    
-      no
-    
-    </summary>
-    
-    
-      <category term="病毒" scheme="/tags/%E7%97%85%E6%AF%92/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>win10专业版安装</title>
-    <link href="/2019/02/16/win10%E4%B8%93%E4%B8%9A%E7%89%88%E5%AE%89%E8%A3%85/"/>
-    <id>/2019/02/16/win10专业版安装/</id>
-    <published>2019-02-16T13:30:34.000Z</published>
-    <updated>2019-03-01T16:53:58.315Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>win10专业版，半年激活一下，安装流程记录。<br><a id="more"></a></p></blockquote><h2 id="1-重装准备"><a href="#1-重装准备" class="headerlink" title="1. 重装准备"></a>1. 重装准备</h2><ol><li>一个8G以上的<strong>U盘</strong>，最好将里面的东西清理干净</li><li>在PC上安装<a href="http://www.winbaicai.com/" target="_blank" rel="noopener">大白菜U盘启动盘制作工具</a></li><li>启动大白菜工具，进入操作界面（如图）<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/52900648-53133780-3233-11e9-8f1d-69b181a59249.png" alt="大白菜界面" title>                </div>                <div class="image-caption">大白菜界面</div>            </figure></li><li>选择要刻录的U盘，再点击<strong>一键制作成USB启动盘</strong></li><li>可以选择性点击<strong>模拟启动</strong>，观看PE操作界面</li><li>准备一个<em>win10专业纯净版ghost</em>，后缀为iso，复制到U盘里面（PE和iso文件是独立的）</li></ol><h2 id="2-重装开始"><a href="#2-重装开始" class="headerlink" title="2. 重装开始"></a>2. 重装开始</h2><ol><li>重启电脑，一般来说，不需要设置BIOS的启动顺序，直接就能进入PE选择界面（如图）<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/52900742-adf95e80-3234-11e9-847d-c223673111fb.png" alt="大白菜选择界面" title>                </div>                <div class="image-caption">大白菜选择界面</div>            </figure></li><li>选择<strong>启动Win10 X64 PE（2G以上启动）</strong>，进入PE<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/52900767-16e0d680-3235-11e9-9f32-bccf0742939c.png" alt="PE" title>                </div>                <div class="image-caption">PE</div>            </figure></li><li>之后操作，按照<a href="http://www.winbaicai.com/video_460.html" target="_blank" rel="noopener">官方操作指南</a>即可</li><li>另外，选择ghost的时候，建议选择<strong>Win10专业纯净版</strong>，因为个人自己下载的ghost并没有被识别。</li></ol><h2 id="3-重装问题"><a href="#3-重装问题" class="headerlink" title="3. 重装问题"></a>3. 重装问题</h2><h3 id="垃圾捆绑软件"><a href="#垃圾捆绑软件" class="headerlink" title="垃圾捆绑软件"></a>垃圾捆绑软件</h3><p>大白菜这个ghost，表面是写着纯净版，实际上捆绑了五六个如360等流氓软件，通用方法：<strong>进入控制面板逐一删除</strong>。</p><h3 id="数字间隔问题"><a href="#数字间隔问题" class="headerlink" title="数字间隔问题"></a>数字间隔问题</h3><p>通过默认输入法打汉字，字距没有问题，但英文、数字等都有很大间隔，看起来很不和谐，这是圆角半角的问题，建议方法：参照<strong><a href="https://jingyan.baidu.com/article/1e5468f948b3a6484861b75e.html" target="_blank" rel="noopener">这里</a></strong></p><h3 id="fn关闭问题"><a href="#fn关闭问题" class="headerlink" title="fn关闭问题"></a>fn关闭问题</h3><p>笔记本特有问题。输入一些字符的时候（比如<code>0</code>）会输出<code>0</code>键上面另外的符号（如<code>)</code>），如果按着<code>fn</code>键再按<code>0</code>，这才输出<code>0</code>。这个是fn键默认开启的原因，建议方法：<strong>同时按下<code>Fn</code>+<code>Num lock</code></strong>关闭<code>fn键</code></p><h3 id="不能连接校园网"><a href="#不能连接校园网" class="headerlink" title="不能连接校园网"></a>不能连接校园网</h3><p>这个是输入法问题，解决以上两个问题即可解决。</p><h3 id="win10激活问题"><a href="#win10激活问题" class="headerlink" title="win10激活问题"></a>win10激活问题</h3><p>普通家庭版Win10是可以免费的，但是由于安装的是专业版，功能更为强大，目前没有完美的破解方案，所以只能通过“薛定谔的激活”来维持。建议方法：保存并使用自带<strong>KMSAuto</strong>工具</p><h3 id="旧系统清除问题"><a href="#旧系统清除问题" class="headerlink" title="旧系统清除问题"></a>旧系统清除问题</h3><p>安装了新系统之后，旧系统残留在其他地方，这使得用户每次开机都得选择启动盘，这非常麻烦，最好是将旧系统盘格式化，但是用新系统格式化旧系统盘会提示<strong>权限不够</strong>。建议方法：进入PE，点击<strong>分区工具</strong>，格式化旧系统盘</p><h3 id="删除引导"><a href="#删除引导" class="headerlink" title="删除引导"></a>删除引导</h3><p>即使格式化旧系统盘，旧引导可能残留。建议方法：进入PE，点击<strong>引导修复</strong>，处理掉旧印度</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;win10专业版，半年激活一下，安装流程记录。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="装机" scheme="/tags/%E8%A3%85%E6%9C%BA/"/>
     
   </entry>
   
