@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="/"/>
-  <updated>2020-10-05T14:38:57.048Z</updated>
+  <updated>2020-10-26T14:44:20.379Z</updated>
   <id>/</id>
   
   <author>
@@ -15,6 +15,54 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在ROS中使用Python3</title>
+    <link href="/2020/10/26/%E5%9C%A8ROS%E4%B8%AD%E4%BD%BF%E7%94%A8Python3/"/>
+    <id>/2020/10/26/在ROS中使用Python3/</id>
+    <published>2020-10-26T14:34:19.000Z</published>
+    <updated>2020-10-26T14:44:20.379Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>ROS默认支持python 2.7的，如果要想ROS上运行python3脚本，那么就需要配置一番。<br><a id="more"></a></p></blockquote><p><em>假设你已经安装了ROS melodic</em></p><p>参考文章：<br><a href="https://blog.csdn.net/bluewhalerobot/article/details/80952776" target="_blank" rel="noopener">在ROS中使用Python3</a></p><h2 id="修改python文件"><a href="#修改python文件" class="headerlink" title="修改python文件"></a>修改python文件</h2><p>在你的python文件的顶部添加该shebang<br><figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env python3</span></span><br></pre></td></tr></table></figure></p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 没有创建virtualenv的话，注意需要使用pip3</span></span><br><span class="line">$ pip <span class="keyword">install</span> catkin-tools</span><br><span class="line">$ pip <span class="keyword">install</span> rospkg</span><br></pre></td></tr></table></figure><h2 id="运行脚本文件"><a href="#运行脚本文件" class="headerlink" title="运行脚本文件"></a>运行脚本文件</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">python3</span> a_py_file.<span class="keyword">py</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;ROS默认支持python 2.7的，如果要想ROS上运行python3脚本，那么就需要配置一番。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="auto system" scheme="/categories/auto-system/"/>
+    
+    
+      <category term="python3" scheme="/tags/python3/"/>
+    
+      <category term="ROS" scheme="/tags/ROS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>qgroundcontrol安装（ubuntu版）</title>
+    <link href="/2020/10/26/qgroundcontrol%E5%AE%89%E8%A3%85%EF%BC%88ubuntu%E7%89%88)/"/>
+    <id>/2020/10/26/qgroundcontrol安装（ubuntu版)/</id>
+    <published>2020-10-26T07:32:31.000Z</published>
+    <updated>2020-10-26T14:31:27.178Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>QGC的官网是有墙的，加上我的ubuntu上没有梯子，所以整个过程比较麻烦。好在东拼西凑国内的一些文章终于解决了这个问题。<br><a id="more"></a></p></blockquote><p>参考文章:</p><ol><li><a href="https://www.cnblogs.com/sawyer22/p/9300822.html" target="_blank" rel="noopener">PX4地面站QGroundControl在ubuntu下的安装</a></li><li><a href="http://www.yoyojacky.com/?p=137" target="_blank" rel="noopener">QGroundControl用户指南</a></li></ol><h2 id="1-下载"><a href="#1-下载" class="headerlink" title="1. 下载"></a>1. 下载</h2><ul><li><a href="https://s3-us-west-2.amazonaws.com/qgroundcontrol/latest/QGroundControl.AppImage" target="_blank" rel="noopener">下载QGroundControl.AppImage</a></li><li><a href="https://s3-us-west-2.amazonaws.com/qgroundcontrol/latest/QGroundControl.tar.bz2" target="_blank" rel="noopener">下载QGroundControl.tar.bz2</a></li></ul><h2 id="2-安装QGC"><a href="#2-安装QGC" class="headerlink" title="2. 安装QGC"></a>2. 安装QGC</h2><p>解压压缩包<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">tar</span> <span class="selector-tag">jxf</span> <span class="selector-tag">QGroundControl</span><span class="selector-class">.tar</span><span class="selector-class">.bz2</span></span><br></pre></td></tr></table></figure></p><p>安装附加软件包<br><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install espeak libespeak-<span class="built_in">dev</span> libudev-<span class="built_in">dev</span> libsdl1<span class="number">.2</span>-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure></p><h2 id="3-安装AppImage"><a href="#3-安装AppImage" class="headerlink" title="3. 安装AppImage"></a>3. 安装AppImage</h2><p>使用终端<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod +x ./QGroundControl.AppImage</span><br><span class="line">./QGroundControl.AppImage  (<span class="keyword">or</span> <span class="keyword">double</span> <span class="built_in">click</span> <span class="built_in">run</span>)</span><br></pre></td></tr></table></figure></p><p>此时可能出现如下错误<br><img src alt><br>按照提示执行即可<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -a -G dialout <span class="variable">$USER</span></span><br><span class="line">sudo apt-<span class="builtin-name">get</span> <span class="builtin-name">remove</span> modemmanager</span><br></pre></td></tr></table></figure></p><h2 id="4-运行"><a href="#4-运行" class="headerlink" title="4. 运行"></a>4. 运行</h2><figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> qgroundcontrol</span><br><span class="line">./qgroundcontrol-<span class="built_in">start</span>.sh</span><br></pre></td></tr></table></figure><p>当然可以双击<strong>qgroundcontrol.AppImage</strong>打开QGC.</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;QGC的官网是有墙的，加上我的ubuntu上没有梯子，所以整个过程比较麻烦。好在东拼西凑国内的一些文章终于解决了这个问题。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="auto system" scheme="/categories/auto-system/"/>
+    
+    
+      <category term="无人机" scheme="/tags/%E6%97%A0%E4%BA%BA%E6%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>matplotlib中文显示设置</title>
@@ -437,50 +485,6 @@
       <category term="短篇小说" scheme="/tags/%E7%9F%AD%E7%AF%87%E5%B0%8F%E8%AF%B4/"/>
     
       <category term="short novel" scheme="/tags/short-novel/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>chrome extension</title>
-    <link href="/2019/04/01/%E8%B0%B7%E6%AD%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8F%92%E4%BB%B6chrome-extension%EF%BC%88%E8%8B%B1%E6%96%87%EF%BC%89/"/>
-    <id>/2019/04/01/谷歌浏览器插件chrome-extension（英文）/</id>
-    <published>2019-04-01T12:55:26.000Z</published>
-    <updated>2020-03-18T13:09:36.233Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>Several days ago, I re-installed my computer system, means I have lost my chrome extensions I showed fancy to. Back then, however, I slipped up and spent time a lot to handle this extension. For friendly using in the future, I take a note about the process.<br><a id="more"></a></p></blockquote><h2 id="程序包无效-The-package-is-invalid"><a href="#程序包无效-The-package-is-invalid" class="headerlink" title="程序包无效 The package is invalid"></a>程序包无效 The package is invalid</h2><p>While there are a lot of useful extensions to install, I attempt to go throuth the <code>google store</code> to pick up them. Sadly, domestic wall is too steady that I can’t drop by the site. What about installing by hand? For some reasons, it doesn’t work! A paper written by <a href="https://blog.csdn.net/ppdyhappy/article/details/81014800" target="_blank" rel="noopener">ppdyhappy</a> sort the problem.</p><ol><li><p>Firstly, you should download a <code>.crx</code> extension package you like from the extension site. Of course, when you draw the <code>.crx</code> package into the chrome, it will respond with <strong>the package is invalid</strong>.</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55330517-d1662900-54c3-11e9-8f53-7fcc26108d65.png" alt title>                </div>                <div class="image-caption"></div>            </figure></li><li><p>Change the file extensive name <code>.crx</code> of what you have downloaded into <code>.zip</code> or <code>.rar</code>.</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55330819-96b0c080-54c4-11e9-978a-e5355835a632.jpg" alt title>                </div>                <div class="image-caption"></div>            </figure></li><li>Right click this file. After decompressed with decompression software like <strong>WINRAR</strong>, you will get a new folder.<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55331178-5140c300-54c5-11e9-8fdd-8decc6196ccb.png" alt title>                </div>                <div class="image-caption"></div>            </figure></li><li>Key in Address Bar <code>chrome://extensions/</code> to open the <code>chrome browser extensive management interface</code>. Switch on the <strong>Developer mode(开发者模式)</strong>, and choose <strong>加载正在开发的扩展程序..</strong>，upload the folder you have decompressed.<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55331906-dc6e8880-54c6-11e9-8d38-271face04711.jpg" alt title>                </div>                <div class="image-caption"></div>            </figure></li><li>Normally, you have added a extension to chrome. If you suffer from the attendant problme, you can click <a href="https://blog.csdn.net/ppdyhappy/article/details/81014800" target="_blank" rel="noopener">original site</a> in search of solution.<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55332411-e9d84280-54c7-11e9-8d14-51ed6948479a.png" alt title>                </div>                <div class="image-caption"></div>            </figure></li></ol><h2 id="必备插件-Essential-extension"><a href="#必备插件-Essential-extension" class="headerlink" title="必备插件 Essential extension"></a>必备插件 Essential extension</h2><h3 id="1-谷歌访问助手-Google-Access-Assistant"><a href="#1-谷歌访问助手-Google-Access-Assistant" class="headerlink" title="1. 谷歌访问助手 Google Access Assistant"></a>1. 谷歌访问助手 Google Access Assistant</h3><p>Google Access Assistant is a awesome extension, allowing you to access <strong>google.com(谷歌搜索)</strong>、<strong>mail.google.com（gmail邮箱）</strong> and <strong>chrome store(谷歌商店访问)</strong> without VPN. But you just can use it in 12 hours unless you follow the action of <a href="https://jingyan.baidu.com/article/d2b1d102a89a925c7f37d445.html" target="_blank" rel="noopener">this site</a>. Because of being modified by third party, it smells of nasty money.</p><h3 id="2-Tampermonkey"><a href="#2-Tampermonkey" class="headerlink" title="2. Tampermonkey"></a>2. Tampermonkey</h3><p>This extension allow you to download file beyond 1G in the <strong>Baidu</strong> website, instead of download a PC application in addition. What you should do is just to download the <strong>Tampermonkey</strong> and pose apropriate <strong>script</strong>. More detail about how is in this site</p><p><a href="http://www.cnplugins.com/tool/baiduyun-tampermonkey.html" target="_blank" rel="noopener">图文详解如何利用chrome插件tampermonkey突破百度云盘下载限制</a></p><h3 id="3-Adblock-Plus"><a href="#3-Adblock-Plus" class="headerlink" title="3. Adblock Plus"></a>3. Adblock Plus</h3><p>When you are surfing online, there are no end of websites showing off their product by Ad block. Since you have <strong>Adblock Plus</strong>, you get rid of chaos and click throuth the website more quickly.</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;Several days ago, I re-installed my computer system, means I have lost my chrome extensions I showed fancy to. Back then, however, I slipped up and spent time a lot to handle this extension. For friendly using in the future, I take a note about the process.&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="chrome extension" scheme="/tags/chrome-extension/"/>
-    
-      <category term="browser" scheme="/tags/browser/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于科学使用计算机</title>
-    <link href="/2019/03/28/%E5%85%B3%E4%BA%8E%E7%A7%91%E5%AD%A6%E4%BD%BF%E7%94%A8%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    <id>/2019/03/28/关于科学使用计算机/</id>
-    <published>2019-03-27T16:00:04.000Z</published>
-    <updated>2019-04-06T08:02:54.012Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>想象一下，你的上司，或者你的男女朋友，不经意看见你的电脑桌面有十几二十个图标，会有什么反应？你把你的房间收拾得很好，但总不能让你的电脑留下”Nasty”的骂名对吧？根据我的个人经验，总结了计算机管理中比较好的“习惯”。<br><a id="more"></a></p></blockquote><p><em>总的来说，计算机管理方法是——优雅</em></p><p><em>内容有点多，但是坚持下真的可以赢得上司的加分</em></p><h2 id="桌面管理"><a href="#桌面管理" class="headerlink" title="桌面管理"></a>桌面管理</h2><h3 id="1-桌面凌乱"><a href="#1-桌面凌乱" class="headerlink" title="1.桌面凌乱"></a>1.桌面凌乱</h3><p>桌面保持整洁，像博主我的桌面就只有5个图标，这样能够提高效率。<code>This PC</code>是我的电脑；<code>Sundries</code>是杂物，专门放一些无法分类的小文件，比如头像等；<code>Entertain</code>是娱乐文件夹，放置了所有程序的快捷方式；<code>Recycle Bin</code>是垃圾桶；<code>Work Place</code>是工作文件夹，无论是学习资料，还是最近的工作文件（毕业论文），我都放进去了，当然是“软链接”。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55093389-482faa80-50ef-11e9-93b2-6ac65bbab7c9.png" alt="my desktop" title>                </div>                <div class="image-caption">my desktop</div>            </figure><h3 id="2-软链接使用"><a href="#2-软链接使用" class="headerlink" title="2. 软链接使用"></a>2. 软链接使用</h3><p>比如我正在写<strong>毕业论文</strong>，我要进入<code>This Pc</code>，然后又点击别的什么玩意，找啊找啊，多麻烦。这时候，请使用<strong>软链接</strong>，在<code>Work Place</code>文件夹中新建一个<code>short cut</code>。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55096391-c0e53580-50f4-11e9-8de9-f3c41ea3e824.png" alt="short cut" title>                </div>                <div class="image-caption">short cut</div>            </figure></p><p>让它指向你的毕业论文文件夹即可，这时候就可以用<code>Work Place</code>进入你的毕业论文文件夹了。当你写完论文了，又可以将这个软链接删除。</p><h3 id="3-Start开始的使用"><a href="#3-Start开始的使用" class="headerlink" title="3. Start开始的使用"></a>3. Start开始的使用</h3><p>大家可以欣赏下我的<code>Start</code>（win 10）。按键盘左下角的<code>win</code>键进入，或者windows默认的左下角（对应图中的右上角）。<br><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://user-images.githubusercontent.com/23433138/55098108-2edf2c00-50f8-11e9-8f5f-340ee8865637.png" alt="desktop" title>                </div>                <div class="image-caption">desktop</div>            </figure><br>我习惯把常用软件都放在这个地方，这样快捷方便，而且很优雅，这是我推荐win 10的原因（win7/xp的朋友自然没这种待遇）。</p><h3 id="4-关于桌面管理软件"><a href="#4-关于桌面管理软件" class="headerlink" title="4. 关于桌面管理软件"></a>4. 关于桌面管理软件</h3><p>某些软件，比如<code>wallpaper</code>诸如之类的软件，能够为你的桌面增加一些模块，有的能够列出你常用的软件，有的为你的桌面装扮炫酷的壁纸和特效。这类软件前者占用资源相对较少，后者则非常恐怖。但如果你的电脑已经进入暮年了，那还是不要用这些花里胡哨的东西了。</p><h2 id="管理软件"><a href="#管理软件" class="headerlink" title="管理软件"></a>管理软件</h2><h3 id="1-杀毒软件"><a href="#1-杀毒软件" class="headerlink" title="1. 杀毒软件"></a>1. 杀毒软件</h3><p>首推<code>火绒</code>。火绒是非常简洁的杀毒软件，内含垃圾清理等模块，基本满足一般PC的需求，并且不会有弹窗，杀毒性能优秀。永远不推荐360，360有很多捆绑软件，稍有不甚就下载了。当长期使用360，后台一些程序会长期占用你的CPU和内存，但它没什么作用，这跟病毒有什么区别？</p><h3 id="2-驱动软件"><a href="#2-驱动软件" class="headerlink" title="2. 驱动软件"></a>2. 驱动软件</h3><p>硬件要配合软件，长期更新硬件驱动（比如显卡驱动）有助于让你的计算机再相同配置下跑得更快。</p><p>我推荐<code>鲁大师</code>和<code>驱动精灵</code>。我常用的是<code>鲁大师</code>，没什么，就是用习惯了。<code>驱动精灵</code>用过一段时间，但是弹窗相对厉害，就停止了。</p><h2 id="其他软件"><a href="#其他软件" class="headerlink" title="其他软件"></a>其他软件</h2><h3 id="1-浏览器"><a href="#1-浏览器" class="headerlink" title="1. 浏览器"></a>1. 浏览器</h3><p>推荐用谷歌的<code>chrome</code>，除了快，还能使用一些插件。其他浏览器像<code>firefox</code>、<code>opera</code>、<code>Edge</code>等，我都推荐，但是<code>chrome</code>真的公认的优秀。很多前后端（网页）做得比较垃圾（我不是指谁，就是说我学校的教务系统），需要用到<code>360</code>、<code>UC</code>一类浏览器，但我还是建议，长期使用<code>chrome</code>比较好。<code>360</code>等浏览器可以留在你的硬盘，但一定要屏蔽掉所有副作用，比如<strong>篡改你的主页</strong>（最恶心，没有之一）。</p><h3 id="2-没想到，嘿嘿"><a href="#2-没想到，嘿嘿" class="headerlink" title="2. 没想到，嘿嘿"></a>2. 没想到，嘿嘿</h3><h2 id="习惯养成"><a href="#习惯养成" class="headerlink" title="习惯养成"></a>习惯养成</h2><h3 id="1-开机不启动"><a href="#1-开机不启动" class="headerlink" title="1. 开机不启动"></a>1. 开机不启动</h3><p>很多软件，比如<code>鲁大师</code>，会设置开机启动。但我明明有了<code>火绒</code>这个真爱了，为甚么还要你这个二奶呢？不用的程序请禁用掉，否则从开机开始一直占用你的资源。否则，不要问为什么会卡。</p><h3 id="2-下载的软件不要放在C盘"><a href="#2-下载的软件不要放在C盘" class="headerlink" title="2. 下载的软件不要放在C盘"></a>2. 下载的软件不要放在C盘</h3><p>C盘是系统盘，应该保持它只放系统文件就可以了。如果有病毒感染，第一时间受灾的必定是系统盘，更不用说挽救你桌面的毕业论文了。</p><h3 id="3-删除捆绑软件"><a href="#3-删除捆绑软件" class="headerlink" title="3. 删除捆绑软件"></a>3. 删除捆绑软件</h3><p><code>360</code>等总是捆绑一些软件污染我们的电脑，记得在控制面板清理干净。</p><h3 id="4-定期杀毒和清理垃圾"><a href="#4-定期杀毒和清理垃圾" class="headerlink" title="4. 定期杀毒和清理垃圾"></a>4. 定期杀毒和清理垃圾</h3><p>不用多说了，大家都懂。</p><h3 id="5-实在不行，那就重装"><a href="#5-实在不行，那就重装" class="headerlink" title="5. 实在不行，那就重装"></a>5. 实在不行，那就重装</h3><p>我给许多人装过系统，但是部分反映他们的电脑很快就很卡。这就很奇怪了，我明明给你们装的是同一个ghost安装包，我自己重装也是用这个安装包。计算机很少会出现系统不兼容的问题，因为…系统不兼容硬件诶，那可是大事情啊，老是吃软饭的微软居然会做出不靠谱的系统？我对于“系统不兼容硬件”这种观点保持怀疑的态度，更何况已经更新了许多个版本了。但不管怎么说，人生苦短，实在不行，我选择重装。<a href="/2019/02/16/win10专业版安装/">重装教程</a></p><blockquote><p>保持计算机整洁是个好习惯。多折腾、多去折磨那些陷害我们的捆绑软件，是对强迫他们提升服务体验的间接途径，是一个优秀消费者的维权意识体验，是让自己后院（你的PC）长期绿树开花的优秀习惯。最后，祝每位看到最后的读者，能为自己的上司带来美好的清晨。</p></blockquote><p><em>end</em></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;想象一下，你的上司，或者你的男女朋友，不经意看见你的电脑桌面有十几二十个图标，会有什么反应？你把你的房间收拾得很好，但总不能让你的电脑留下”Nasty”的骂名对吧？根据我的个人经验，总结了计算机管理中比较好的“习惯”。&lt;br&gt;
-    
-    </summary>
-    
-    
-      <category term="计算机管理" scheme="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%A1%E7%90%86/"/>
     
   </entry>
   
