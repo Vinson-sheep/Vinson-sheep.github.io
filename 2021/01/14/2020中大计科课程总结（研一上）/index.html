@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>2020中大计科课程总结（研一上） | Vinson-sheep | Vinson Sheep is on his time zone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+    <meta name="keywords" content="computer science">
+    <meta name="description" content="公开声明：此文档是一份公开的资料，是系统院的师兄师姐根据当年的上课经历总结出来的一份指南。不求回报，不为内卷，本着开源共享的精神，现在将它分享给努力奋斗的你。">
+<meta name="keywords" content="computer science">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020中大计科课程总结（研一上）">
+<meta property="og:url" content="/2021/01/14/2020中大计科课程总结（研一上）/index.html">
+<meta property="og:site_name" content="Vinson-sheep">
+<meta property="og:description" content="公开声明：此文档是一份公开的资料，是系统院的师兄师姐根据当年的上课经历总结出来的一份指南。不求回报，不为内卷，本着开源共享的精神，现在将它分享给努力奋斗的你。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="/img/img/20210114data_mining.png">
+<meta property="og:image" content="/img/img/20210114numeric_analysis.png">
+<meta property="og:image" content="/img/img/20210114statistic_pattern_recognition.jpg">
+<meta property="og:updated_time" content="2021-01-14T12:13:23.763Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2020中大计科课程总结（研一上）">
+<meta name="twitter:description" content="公开声明：此文档是一份公开的资料，是系统院的师兄师姐根据当年的上课经历总结出来的一份指南。不求回报，不为内卷，本着开源共享的精神，现在将它分享给努力奋斗的你。">
+<meta name="twitter:image" content="/img/img/20210114data_mining.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="Vinson-sheep" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Vinson-sheep</h5>
+          <a href="mailto:775014077@qq.com" title="775014077@qq.com" class="mail">775014077@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Article
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tag
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/algorithum/"  >
+                <i class="icon icon-lg icon-puzzle-piece"></i>
+                Algorithum
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/gallery"  >
+                <i class="icon icon-lg icon-paint-brush"></i>
+                Gallery
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/短篇小说/"  >
+                <i class="icon icon-lg icon-pencil"></i>
+                Novel
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Vinson-sheep/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">2020中大计科课程总结（研一上）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">2020中大计科课程总结（研一上）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-01-14T10:29:36.000Z" itemprop="datePublished" class="page-time">
+  2021-01-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/other/">other</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于选课"><span class="post-toc-number">1.</span> <span class="post-toc-text">关于选课</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#计算机科学与技术理论基础（张治国）"><span class="post-toc-number">2.</span> <span class="post-toc-text">计算机科学与技术理论基础（张治国）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#中国特色社会主义（朱亚坤）"><span class="post-toc-number">3.</span> <span class="post-toc-text">中国特色社会主义（朱亚坤）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据挖掘（潘嵘）"><span class="post-toc-number">4.</span> <span class="post-toc-text">数据挖掘（潘嵘）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#英语（张红霞）"><span class="post-toc-number">5.</span> <span class="post-toc-text">英语（张红霞）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数值分析（谭志军）"><span class="post-toc-number">6.</span> <span class="post-toc-text">数值分析（谭志军）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#统计模式识别（孙蕾）"><span class="post-toc-number">7.</span> <span class="post-toc-text">统计模式识别（孙蕾）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#模式识别（胡俊）"><span class="post-toc-number">8.</span> <span class="post-toc-text">模式识别（胡俊）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#音视频编码（胡凡）"><span class="post-toc-number">9.</span> <span class="post-toc-text">音视频编码（胡凡）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于补修"><span class="post-toc-number">10.</span> <span class="post-toc-text">关于补修</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关于前沿讲座"><span class="post-toc-number">11.</span> <span class="post-toc-text">关于前沿讲座</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2020中大计科课程总结（研一上）"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">2020中大计科课程总结（研一上）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-01-14 18:29:36" datetime="2021-01-14T10:29:36.000Z"  itemprop="datePublished">2021-01-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/other/">other</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>公开声明：此文档是一份公开的资料，是系统院的师兄师姐根据当年的上课经历总结出来的一份指南。不求回报，不为内卷，本着开源共享的精神，现在将它分享给努力奋斗的你。<br><a id="more"></a></p>
+</blockquote>
+<p><em>author：Vinson Sheep、林寒涧溯、Struggle、Claire、Suilylylu</em></p>
+<p>学习资料可以询问你任一师兄师姐</p>
+<h2 id="关于选课"><a href="#关于选课" class="headerlink" title="关于选课"></a>关于选课</h2><p>CS学硕的要求可以参考培养方案，总分30分，必修至少20分。写明是必选的肯定要选，但写明必修的相当于选修。如果培养方案的必修课都修完，学分远超30。也就是说，必修课是根据自己兴趣选择，无需全部修完。</p>
+<p>PS：由于我们院特色，上学期的期末可能没有选公共课的通知（辩证或者唯物论二选一）。</p>
+<blockquote>
+<p>Vinson Sheep: 要冲绩点的不要选到26分，除非你已经提前学了。</p>
+</blockquote>
+<h2 id="计算机科学与技术理论基础（张治国）"><a href="#计算机科学与技术理论基础（张治国）" class="headerlink" title="计算机科学与技术理论基础（张治国）"></a>计算机科学与技术理论基础（张治国）</h2><p>这门课正是大名鼎鼎的<strong>计算机哲学</strong>。它以极其迷惑的课堂内容、令人不安的作业布置还有亿点点的考试范围著称。</p>
+<p>课堂内容方面，没有课本，全靠PPT；每一年老师讲的内容都有不同；PPT上的内容都是非常老的理论，很多符号和手写字，无论你是否本科CS，都一视同仁。</p>
+<p>作业方面，老师会定期发一些作业在网盘；作业要认真做，它是你期末考试的根本依据；由于连续的两年讲课内容还是有很大相似度的，所以做题时可以参考上一年；老师从来不提供什么标准答案，这让学生们都善于思考。</p>
+<p>期末考试方面，它出题范围是整份PPT；题目确实简单，前提是PPT全都弄懂了，还会做题；有些内容不在历年的作业题里面，但依然会成为考点，比如elementary function；课程中后期的论文presentation在期末考有涉及，分值很高，有填空题和判断题。</p>
+<p>年轻人耗子尾汁。</p>
+<h2 id="中国特色社会主义（朱亚坤）"><a href="#中国特色社会主义（朱亚坤）" class="headerlink" title="中国特色社会主义（朱亚坤）"></a>中国特色社会主义（朱亚坤）</h2><p>2020年：老师上课是按照PPT讲解的，没有课本。平常不会点名，快到期末了会有课程讨论，这段时间会有点名。期末考试开卷，两道大题，一题依据PPT内容，另一道依据课程讨论内容。基本照抄，如果有比较新的中特课本最好。考研政治的资料也可以带到考场，以防万一。</p>
+<blockquote>
+<p>Vinson Sheep: 不用复习，建议写满。</p>
+</blockquote>
+<h2 id="数据挖掘（潘嵘）"><a href="#数据挖掘（潘嵘）" class="headerlink" title="数据挖掘（潘嵘）"></a>数据挖掘（潘嵘）</h2><p>2020年:课本为《数据挖掘——概念与算法》(Mohammed J.Zaki)。不点名，没有作业。课本里面的内容基本都讲，另外还会拓展一些神经网络的内容（RNN、CNN）等。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/img/20210114data_mining.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>期末考试闭卷，题目比较开放：</p>
+<ul>
+<li>概率密度函数在机器学习中的作用；</li>
+<li>SVM与神经网络的优劣对比；</li>
+<li>什么是泛化能力，如何提高学习机的泛化性能；</li>
+<li>？</li>
+<li>L1和L2正则项如何影响机器学习，如何选择；</li>
+</ul>
+<p>布置在期末的大作业（考试与大作业时间重叠，比较坑）：从理论和实践角度谈谈你对偏置-方差分解的理解。</p>
+<h2 id="英语（张红霞）"><a href="#英语（张红霞）" class="headerlink" title="英语（张红霞）"></a>英语（张红霞）</h2><p>2020年：每个老师的作业量和讲课方式都不一样，但试卷是一样的。恰好张老师态度认真负责，作业量跟所有专业课之和五五开。平时上课要求记笔记，然后课后读写任务特别多，课堂上会有视听说任务。presentation会贯穿整个学期，每个人可能都会有1到2次的机会。</p>
+<p>期末考非常难。5道阅读题，长度和六级相仿，难度和考研英语有一拼，只有25分。一道英译汉，一道汉译英，两题占了近一半分。作文题是二选一，一道是图表描述题，另一道是summary，占30分。时间非常吃紧，英语不是很好的同学可能会有压力。</p>
+<blockquote>
+<p>Vinson Sheep: 笔记要认真做，特别是前期。她会检查的。</p>
+</blockquote>
+<h2 id="数值分析（谭志军）"><a href="#数值分析（谭志军）" class="headerlink" title="数值分析（谭志军）"></a>数值分析（谭志军）</h2><p>2020年：数值分析比较轻松，理论简单粗暴，但实用性很强，建议都入手。平时基本不点名，期末偶尔会有几次（二维码+GPS定位）。定期会有作业，认真做，认真理解，最好有一本答案书。期末考试是开卷，题目很多，真的要做会花很多时间。试卷上70-80%的内容都是书上的题目，直接照抄。剩下的20-30%是原创内容，它会以小题形式卡你。对全书了如指掌是冲分的秘诀，否则你甚至找不到抄的地方，它可能是一些定理的证明。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/img/20210114numeric_analysis.png" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<blockquote>
+<p>Vinson Sheep: 小破站有视频,可以提前学。</p>
+</blockquote>
+<h2 id="统计模式识别（孙蕾）"><a href="#统计模式识别（孙蕾）" class="headerlink" title="统计模式识别（孙蕾）"></a>统计模式识别（孙蕾）</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="/img/img/20210114statistic_pattern_recognition.jpg" alt title>
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="模式识别（胡俊）"><a href="#模式识别（胡俊）" class="headerlink" title="模式识别（胡俊）"></a>模式识别（胡俊）</h2><h2 id="音视频编码（胡凡）"><a href="#音视频编码（胡凡）" class="headerlink" title="音视频编码（胡凡）"></a>音视频编码（胡凡）</h2><h2 id="关于补修"><a href="#关于补修" class="headerlink" title="关于补修"></a>关于补修</h2><p>如果本科就是CS或者相关专业的，请忽略。</p>
+<p>CS学硕的培养方案是跟数据院的一样，里面有这么一条：</p>
+<blockquote>
+<p>补修课程要求：非本专业本科毕业生应补修3门本专业本科课程中的2门。必须考试通过，不计学分。要求在第一学年内完成。</p>
+</blockquote>
+<p>然而，实现这个要求对我们院的学生是非常困难的。正常来说，学院会为我们办理好各种事务，但是我们院实际上不太在意这个事情；另外，由于你补的课在数据院，要想对应的任课老师给你一个分数，必须经过数据院的同意，也就是要开证明；最后，由于研一上的课程已经够多了，在增添课程会在期末有压力。</p>
+<p>注意一个基本的事实：你并不在数据院，而是在系统院。换句话说，你补修的事情，是培养方案规定的，但培养方案是由你学院说了算。所以补修的事情可能不用过分担心（可能打脸）。</p>
+<p>假设你是个认真严谨的人，希望补修：首先你需要去数据院咨询一下科研与研究生秘书，她会让你填表，然后让我们院盖章；盖完章之后，再拿给数据院盖章；最后，这份证明交给任课老师，她会让你参加考试，并给出证明。</p>
+<h2 id="关于前沿讲座"><a href="#关于前沿讲座" class="headerlink" title="关于前沿讲座"></a>关于前沿讲座</h2><p><strong>前沿讲座是一个大坑</strong></p>
+<p>前沿讲座是CS学硕的必选课，它只开在上学期。毫无疑问，数据院那边的培养模式是完善的，它自动给你安排讲座，你不用操心。虽然我们院的学生也选了课，但一点讲座的消息都没有，处境非常尴尬。基本上，我们两届的师兄师姐都没怎么上过讲座，也没有分。只能听学院安排了。</p>
+<p>假设你是个认真严谨的人，希望听讲座：你得联系一个热情的数据院同学，让他/她在每次有讲座消息时候通知你，或者给你签到；15次签到之后，你就成功了。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-01-14T12:13:23.763Z" itemprop="dateUpdated">2021-01-14 20:13:23</time>
+</span><br>
+
+
+        
+        如果文章写得好，就打赏支持一下吧
+        
+    </div>
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="Vinson-sheep">
+            Vinson-sheep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/computer-science/">computer science</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2021/01/14/2020中大计科课程总结（研一上）/&title=《2020中大计科课程总结（研一上）》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2021/01/14/2020中大计科课程总结（研一上）/&title=《2020中大计科课程总结（研一上）》 — Vinson-sheep&source=
+公开声明：此文档是一份公开的资料，是系统院的师兄师姐根据当年的上课经历总结出来的一份指南。不求回报，不为内卷，本着开源共享的精神，现在将它分享给努力奋斗..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2021/01/14/2020中大计科课程总结（研一上）/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《2020中大计科课程总结（研一上）》 — Vinson-sheep&url=/2021/01/14/2020中大计科课程总结（研一上）/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2021/01/14/2020中大计科课程总结（研一上）/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2020/10/26/在ROS中使用Python3/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">在ROS中使用Python3</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        爱你哟~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Vinson-sheep &copy; 2016 - 2021</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17065873号-1</a><br>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2021/01/14/2020中大计科课程总结（研一上）/&title=《2020中大计科课程总结（研一上）》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2021/01/14/2020中大计科课程总结（研一上）/&title=《2020中大计科课程总结（研一上）》 — Vinson-sheep&source=
+公开声明：此文档是一份公开的资料，是系统院的师兄师姐根据当年的上课经历总结出来的一份指南。不求回报，不为内卷，本着开源共享的精神，现在将它分享给努力奋斗..." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2021/01/14/2020中大计科课程总结（研一上）/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《2020中大计科课程总结（研一上）》 — Vinson-sheep&url=/2021/01/14/2020中大计科课程总结（研一上）/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2021/01/14/2020中大计科课程总结（研一上）/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJ0lEQVR42u3aSRLDIAwFUd//0s4BEuP+CFfKolmlMgDPCwVJHAce59eofJPMcDwxZMiQ8VrGORzf3yFLXs1w9Zp8evOAZMiQsQFjHPhSAN/ueOYgZMuQIUPGxWIkpJJfzc0jQ4YMGTx0jn9FUt8/BFwZMmS8kEGS2EqBrJLQLs7FZciQ8UJGJQg+/fqR/oYMGTJexTjDMU5HV+HjXcmQIaM1Iz3YVYpl6Xb5fmTIkNGbQZLV9CrYqqQ3aCfIkCGjNYNvt9IGSB/E+FHezCZDhozWjLUHQfIOD9Nzj0aGDBk9GGtLaZydXtdAWbgMGTJaMwipnrhWynMocZUhQ0ZTxqo0khT9K2vxT2XIkNGPQY50QXkLl+14oEdhXYYMGa0ZaTrKr3ytbQOgmWXIkNGUUWkW8oL+EQ6Svt7ca5MhQ0YjBl9yrkmQluF40JchQ4aMVRe86qly+jhkyJDRlcFT1srljDSV5Y9bhgwZuzF4AllJYtPiHZpZhgwZGzDS5VddS51Lj3+sJUOGjM0YJLCmbc54W+AoKUOGjD0Z6bVUXiyrJK4oTMuQIaMp4wwHCX/8mFi5uipDhox9GHNF/LlCP98QP4zKkCFjHwYJlyR9XXWsnAy4MmTI2IBRL+XzSxiVf4ObgCtDhgwZOLyihQt4GTJkyOCbIwe7tLXJm6lBJ1aGDBktGGliWW9e8usaaF0ZMmS0ZlRSR9KGJO+QlueCRqYMGTLex/gArZBLqZjT9c4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
