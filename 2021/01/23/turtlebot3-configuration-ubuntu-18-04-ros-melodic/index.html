@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>turtlebot3 configuration (ubuntu 18.04 + ros melodic) | Vinson-sheep | Vinson Sheep is on his time zone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    
+    <meta name="keywords" content="ubuntu,ROS">
+    <meta name="description" content="turtlebot3 安装过程异常坎坷。首先，基于wiki的turtlebot3指南由于墙的原因非常的卡，不容易加载出来；其次，turtlebot3的教程不容易找，因为turtlebot3最开始是基于ros kinetic的，也就是大部分的教程不实用于melodic；最后，turtlebot3.git官方包比较大，就算是gitee下载，中途也会断掉。  参考资料：  《ROS机器人开发——实用案">
+<meta name="keywords" content="ubuntu,ROS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="turtlebot3 configuration (ubuntu 18.04 + ros melodic)">
+<meta property="og:url" content="/2021/01/23/turtlebot3-configuration-ubuntu-18-04-ros-melodic/index.html">
+<meta property="og:site_name" content="Vinson-sheep">
+<meta property="og:description" content="turtlebot3 安装过程异常坎坷。首先，基于wiki的turtlebot3指南由于墙的原因非常的卡，不容易加载出来；其次，turtlebot3的教程不容易找，因为turtlebot3最开始是基于ros kinetic的，也就是大部分的教程不实用于melodic；最后，turtlebot3.git官方包比较大，就算是gitee下载，中途也会断掉。  参考资料：  《ROS机器人开发——实用案">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2021-01-28T13:13:31.262Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="turtlebot3 configuration (ubuntu 18.04 + ros melodic)">
+<meta name="twitter:description" content="turtlebot3 安装过程异常坎坷。首先，基于wiki的turtlebot3指南由于墙的原因非常的卡，不容易加载出来；其次，turtlebot3的教程不容易找，因为turtlebot3最开始是基于ros kinetic的，也就是大部分的教程不实用于melodic；最后，turtlebot3.git官方包比较大，就算是gitee下载，中途也会断掉。  参考资料：  《ROS机器人开发——实用案">
+    
+        <link rel="alternate" type="application/atom+xml" title="Vinson-sheep" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide" >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Vinson-sheep</h5>
+          <a href="mailto:775014077@qq.com" title="775014077@qq.com" class="mail">775014077@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                Home
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Article
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                Tag
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/algorithum/"  >
+                <i class="icon icon-lg icon-puzzle-piece"></i>
+                Algorithum
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/gallery"  >
+                <i class="icon icon-lg icon-paint-brush"></i>
+                Gallery
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags/短篇小说/"  >
+                <i class="icon icon-lg icon-pencil"></i>
+                Novel
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/Vinson-sheep/" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-address-book"></i>
+                About
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">turtlebot3 configuration (ubuntu 18.04 + ros melodic)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">turtlebot3 configuration (ubuntu 18.04 + ros melodic)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2021-01-23T12:40:20.000Z" itemprop="datePublished" class="page-time">
+  2021-01-23
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/auto-system/">auto system</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在远程计算机下载软件"><span class="post-toc-number">1.</span> <span class="post-toc-text">在远程计算机下载软件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在SBC上安装软件"><span class="post-toc-number">2.</span> <span class="post-toc-text">在SBC上安装软件</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#远程计算机网络配置"><span class="post-toc-number">3.</span> <span class="post-toc-text">远程计算机网络配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#OpenCR安装"><span class="post-toc-number">4.</span> <span class="post-toc-text">OpenCR安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#网络配置"><span class="post-toc-number">5.</span> <span class="post-toc-text">网络配置</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ssh连接"><span class="post-toc-number">6.</span> <span class="post-toc-text">ssh连接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#控制真实的turtlebot3移动"><span class="post-toc-number">7.</span> <span class="post-toc-text">控制真实的turtlebot3移动</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-turtlebot3-configuration-ubuntu-18-04-ros-melodic"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">turtlebot3 configuration (ubuntu 18.04 + ros melodic)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2021-01-23 20:40:20" datetime="2021-01-23T12:40:20.000Z"  itemprop="datePublished">2021-01-23</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/auto-system/">auto system</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>turtlebot3 安装过程异常坎坷。首先，基于wiki的turtlebot3指南由于墙的原因非常的卡，不容易加载出来；其次，turtlebot3的教程不容易找，因为turtlebot3最开始是基于ros kinetic的，也就是大部分的教程不实用于melodic；最后，turtlebot3.git官方包比较大，就算是gitee下载，中途也会断掉。</p>
+</blockquote>
+<p>参考资料：</p>
+<ul>
+<li><a href="https://detail.tmall.com/item.htm?spm=a230r.1.14.16.24c349b9yDIcxw&amp;id=615515907725&amp;ns=1&amp;abbucket=1" target="_blank" rel="noopener">《ROS机器人开发——实用案例分析》</a></li>
+<li><a href="https://www.ncnynl.com/archives/201906/3123.html" target="_blank" rel="noopener">Turbot3-slam入门教程-安装-PC的系统和软件安装（ubuntu18.04）</a></li>
+<li><a href="https://blog.csdn.net/weixin_30632899/article/details/101943379" target="_blank" rel="noopener">TurtleBot3-ROS包下载速度慢如何解决</a></li>
+<li><a href="https://blog.csdn.net/ZWYZG/article/details/103208467?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1.control&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-1.control" target="_blank" rel="noopener">Ubuntu18.04 LTS安装ROS melodic和turtlebot3</a></li>
+</ul>
+<h2 id="在远程计算机下载软件"><a href="#在远程计算机下载软件" class="headerlink" title="在远程计算机下载软件"></a>在远程计算机下载软件</h2><p>下载Turtlebot 3功能包<br><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install ros-melodic-joy ros-melodic-teleop-twist-joy ros-melodic-teleop-twist-keyboard ros-melodic-laser-<span class="keyword">proc</span><span class="title"> ros-melodic-rgbd-launch</span> ros-melodic-depthimage-to-laserscan<span class="title"> ros-melodic-rosserial-arduino</span> ros-melodic-rosserial-python<span class="title"> ros-melodic-rosserial-server</span> ros-melodic-rosserial-client<span class="title"> ros-melodic-rosserial-msgs</span> ros-melodic-amcl<span class="title"> ros-melodic-map-server</span> ros-melodic-move-base<span class="title"> ros-melodic-urdf</span> ros-melodic-xacro<span class="title"> ros-melodic-compressed-image-transport</span> ros-melodic-rqt-image-view<span class="title"> ros-melodic-gmapping</span> ros-melodic-navigation<span class="title"> ros-melodic-interactive-markers</span></span><br></pre></td></tr></table></figure></p>
+<p>添加官方包<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> ~/catkin_ws/src</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/ROBOTIS-GIT/turtlebot3.git</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> ~/catkin_ws &amp;&amp; catkin_make</span></span><br></pre></td></tr></table></figure></p>
+<p>然而第二次<code>git clone</code>可能卡在某个百分点，那么现在直接做好了一个压缩包，您可以直接下载下来，然后拷贝到您的机器人或者远程PC上。</p>
+<p><a href="https://pan.baidu.com/s/1Iw9G4-DdToLcgC0L8yGSbQ" target="_blank" rel="noopener">下载地址</a> 提取码：ar0x</p>
+<p>解压命令如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">tar</span> <span class="selector-tag">xvf</span> <span class="selector-tag">turtlebot3</span><span class="selector-class">.tar</span><span class="selector-class">.gz</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="在SBC上安装软件"><a href="#在SBC上安装软件" class="headerlink" title="在SBC上安装软件"></a>在SBC上安装软件</h2><p>下载Turtlebot 3功能包<br><figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install ros-melodic-joy ros-melodic-teleop-twist-joy ros-melodic-teleop-twist-keyboard ros-melodic-laser-<span class="keyword">proc</span><span class="title"> ros-melodic-rgbd-launch</span> ros-melodic-depthimage-to-laserscan<span class="title"> ros-melodic-rosserial-arduino</span> ros-melodic-rosserial-python<span class="title"> ros-melodic-rosserial-server</span> ros-melodic-rosserial-client<span class="title"> ros-melodic-rosserial-msgs</span> ros-melodic-amcl<span class="title"> ros-melodic-map-server</span> ros-melodic-move-base<span class="title"> ros-melodic-urdf</span> ros-melodic-xacro<span class="title"> ros-melodic-compressed-image-transport</span> ros-melodic-rqt-image-view<span class="title"> ros-melodic-gmapping</span> ros-melodic-navigation<span class="title"> ros-melodic-interactive-markers</span></span><br></pre></td></tr></table></figure></p>
+<p>添加官方包<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> ~/catkin_ws/src</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git <span class="built_in">clone</span> https://github.com/ROBOTIS-GIT/turtlebot3.git</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> ~/catkin_ws &amp;&amp; catkin_make</span></span><br></pre></td></tr></table></figure></p>
+<p>为turtlebot 3设置udev规则<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>cd ~<span class="regexp">/catkin_ws/src</span><span class="regexp">/turtlebot3/turtlebot</span>3_bringup</span><br><span class="line"><span class="variable">$ </span>sudo cp ./<span class="number">99</span>-turtlebot3-cdc.rules /etc/udev/rules.d/</span><br><span class="line"><span class="variable">$ </span>sudo udevadm control --reload-rules</span><br><span class="line"><span class="variable">$ </span>sudo udevadm trigger</span><br></pre></td></tr></table></figure></p>
+<p>如果<code>git clone</code>卡在某个百分点，参考上面。</p>
+<h2 id="远程计算机网络配置"><a href="#远程计算机网络配置" class="headerlink" title="远程计算机网络配置"></a>远程计算机网络配置</h2><h2 id="OpenCR安装"><a href="#OpenCR安装" class="headerlink" title="OpenCR安装"></a>OpenCR安装</h2><p>参考<a href="https://www.ncnynl.com/archives/201707/1819.html" target="_blank" rel="noopener">Turtlebot3-burger入门教程-OpenCR安装</a> shell脚本安装</p>
+<h2 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h2><p>参考<a href="https://www.ncnynl.com/archives/201707/1819.html" target="_blank" rel="noopener">Turtlebot3-burger入门教程-OpenCR安装</a></p>
+<p>假设你已经固定好远程PC和turtlebot3的IP。</p>
+<p>[romote PC]<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>sudo gedit ~<span class="regexp">/.bashrc</span></span><br></pre></td></tr></table></figure></p>
+<p>在文件末尾添加<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">ROS_MASTER_URI</span>=http://&lt;romote_pc_ip&gt;:11311</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">ROS_HOSTNAME</span>=&lt;romote_pc_ip&gt;</span><br></pre></td></tr></table></figure></p>
+<p>[turtlebot3]<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">export</span> <span class="attribute">ROS_MASTER_URI</span>=http://&lt;romote_pc_ip&gt;:11311</span><br><span class="line"><span class="builtin-name">export</span> <span class="attribute">ROS_HOSTNAME</span>=&lt;turtlebot3_pc_ip&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="ssh连接"><a href="#ssh连接" class="headerlink" title="ssh连接"></a>ssh连接</h2><p>参考<a href="http://vinsongeek.cn/2018/02/01/OpenSSH%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6%E6%9C%8D%E5%8A%A1%E5%99%A8/" target="_blank" rel="noopener">OpenSSH远程控制服务器</a> 其实安装了软件就行，不用修改配置。</p>
+<h2 id="控制真实的turtlebot3移动"><a href="#控制真实的turtlebot3移动" class="headerlink" title="控制真实的turtlebot3移动"></a>控制真实的turtlebot3移动</h2><p>[Remote PC] 启动roscore<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>roscore</span><br></pre></td></tr></table></figure></p>
+<p>[TurtleBot] 启动burger<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ roslaunch turtlebot3_bringup turtlebot3_robot.<span class="built_in">launch</span></span><br></pre></td></tr></table></figure></p>
+<p>[Remote PC] 启动rviz<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="builtin-name">export</span> <span class="attribute">TURTLEBOT3_MODEL</span>=burger</span><br><span class="line">$ roslaunch turtlebot3_bringup turtlebot3_model.launch</span><br></pre></td></tr></table></figure></p>
+<p>[Remote PC] 启动进行简单远程操作测试<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ roslaunch turtlebot3_teleop turtlebot3_teleop_key.<span class="built_in">launch</span></span><br></pre></td></tr></table></figure></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2021-01-28T13:13:31.262Z" itemprop="dateUpdated">2021-01-28 21:13:31</time>
+</span><br>
+
+
+        
+        如果文章写得好，就打赏支持一下吧
+        
+    </div>
+    <footer>
+        <a href="">
+            <img src="/img/avatar.jpg" alt="Vinson-sheep">
+            Vinson-sheep
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ROS/">ROS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubuntu/">ubuntu</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2021/01/23/turtlebot3-configuration-ubuntu-18-04-ros-melodic/&title=《turtlebot3 configuration (ubuntu 18.04 + ros melodic)》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2021/01/23/turtlebot3-configuration-ubuntu-18-04-ros-melodic/&title=《turtlebot3 configuration (ubuntu 18.04 + ros melodic)》 — Vinson-sheep&source=分享技术和生活的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2021/01/23/turtlebot3-configuration-ubuntu-18-04-ros-melodic/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《turtlebot3 configuration (ubuntu 18.04 + ros melodic)》 — Vinson-sheep&url=/2021/01/23/turtlebot3-configuration-ubuntu-18-04-ros-melodic/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2021/01/23/turtlebot3-configuration-ubuntu-18-04-ros-melodic/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2021/01/14/ubuntu-ros安装/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">ubuntu ros安装</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        爱你哟~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Vinson-sheep &copy; 2016 - 2021</span>
+            <span>
+                
+                <a href="http://www.miitbeian.gov.cn/" target="_blank">粤ICP备17065873号-1</a><br>
+                
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=/2021/01/23/turtlebot3-configuration-ubuntu-18-04-ros-melodic/&title=《turtlebot3 configuration (ubuntu 18.04 + ros melodic)》 — Vinson-sheep&pic=/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=/2021/01/23/turtlebot3-configuration-ubuntu-18-04-ros-melodic/&title=《turtlebot3 configuration (ubuntu 18.04 + ros melodic)》 — Vinson-sheep&source=分享技术和生活的博客" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=/2021/01/23/turtlebot3-configuration-ubuntu-18-04-ros-melodic/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《turtlebot3 configuration (ubuntu 18.04 + ros melodic)》 — Vinson-sheep&url=/2021/01/23/turtlebot3-configuration-ubuntu-18-04-ros-melodic/&via=" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=/2021/01/23/turtlebot3-configuration-ubuntu-18-04-ros-melodic/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3azW7rIBAG0L7/S7vbXqmm38w4VzIcVlFCMMcLxPx8fcXj+jF+fjP/df2UhwcGBsZrGddyrLeSbzFZZ/0K7p6IgYFxDuPukXdz1t8k4PWrzPeGgYGBkZB6+Pygx8DAwJgwJlvpvQgMDIyTGflWqte+/JUlofIDsTgGBsYLGZND8NOfP1LfwMDAeBXjKo5qaiw/Iq/BwMDA2JuRH3BJWr/aNtH71+1MDAyMrRmTqXdzegFt3i5WuD5iYGC8nNGLensptjV4dBnFwMDYmpEHkNU2ixy8bmZdH7gYGBinMSaNF70iaDUw/mO3GBgYmzLyC1l16fzS2SsYFCZhYGC8nFEtSeZh57wwma+MgYGxN6N6getd9Xr/LST1MDAwDmAkBcX8YZ97KX/ccDEwMLZmPHDkDeY/0C6GgYFxACO/3uWlgkm4myf7/gliMTAwNmUkS1QTcEmpoHp8Y2BgnMyoPrhKra6QhKy/zMfAwNia0Wv86gXDeeNF9YViYGCcwMgTZMn89TrVfxWSgBgYGEcyeimwSStGkua7/R4DA+MARkJKWjT+ZwIOAwPjBMZVHL3GiOplsZrIw8DA2JuRj4SXbGjexjHCYGBgvJZR3WLvcy9ULhy4GBgYBzDyouZTm0uunsnRj4GBgZEHq9VCZt4iFq2MgYGBMW6t6JUq88srBgbGCYwkiO0l63NAtUiAgYFxDiMPHSeFz6fKog/UNzAwMN7E+AYspDf1p51xzgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
